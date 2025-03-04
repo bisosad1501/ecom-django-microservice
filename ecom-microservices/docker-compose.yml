@@ -1,0 +1,116 @@
+services:
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    networks:
+      - ecom-net
+    command: [ nginx-debug, '-g', 'daemon off;' ]
+
+  api-gateway:
+    build: ./api-gateway/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - book-service
+      - cart-service
+      - customer-service
+    networks:
+      - ecom-net
+
+  customer-service:
+    build: customer-service
+    ports:
+      - "8001:8001"
+    command: python manage.py runserver 0.0.0.0:8001
+    environment:
+      - DB_HOST=db-mysql
+      - DB_PORT=3306
+      - DB_NAME=customer_db
+      - DB_USER=root
+      - DB_PASSWORD=15012003
+    depends_on:
+      - db-mysql
+    networks:
+      - ecom-net
+
+  db-mysql:
+      image: mysql:8.0
+      environment:
+        MYSQL_ROOT_PASSWORD: 15012003
+        MYSQL_DATABASE: customer_db
+      volumes:
+        - mysql_data:/var/lib/mysql
+      networks:
+        - ecom-net
+
+
+  book-service:
+    build: book-service
+    restart: always
+    ports:
+    - "8002:8002"
+    environment:
+      - DB_HOST=db-mongo
+      - DB_PORT=27017
+    command: 'python manage.py runserver 0.0.0.0:8002'
+    volumes:
+    - ./book-service:/app
+    - ./book-service/staticfiles:/app/staticfiles  # Mount thư mục staticfiles
+
+    depends_on:
+    - db-mongo
+    networks:
+      - ecom-net
+
+  db-mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+     - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 15012003
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - ecom-net
+
+  cart-service:
+    build: cart-service
+    ports:
+      - "8003:8003"
+    command: python manage.py runserver 0.0.0.0:8003
+    environment:
+      - DB_HOST=db-postgres
+      - DB_PORT=5432
+      - DB_NAME=cart_db
+      - DB_USER=postgres
+      - DB_PASSWORD=15012003
+    depends_on:
+      - db-postgres
+    networks:
+      - ecom-net
+
+  db-postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 15012003
+      POSTGRES_DB: cart_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecom-net
+
+networks:
+  ecom-net:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  postgres_data:
+  mysql_data:

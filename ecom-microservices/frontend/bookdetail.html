@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShopNow">
+    <title>ShopNow - Book Detail</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/base.css" rel="stylesheet">
+    <link href="assets/css/bookdetail.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-book me-2"></i>ShopNow
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Sách</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Sách văn học</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách kỹ năng</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách thiếu nhi</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Quần áo</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Điện tử</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Điện thoại</a></li>
+                                    <li><a class="dropdown-item" href="#">Laptop</a></li>
+                                    <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Giày dép</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Giày nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày thể thao</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <!-- Phần chưa đăng nhập - ẩn khi đã đăng nhập -->
+                    <div id="authButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2" id="loginBtn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                        </a>
+                        <a href="register.html" class="btn btn-light" id="registerBtn">
+                            <i class="fas fa-user-plus me-2"></i>Đăng ký
+                        </a>
+                    </div>
+
+                    <!-- Phần đã đăng nhập - ẩn khi chưa đăng nhập -->
+                    <div id="userProfile" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>
+                                <span id="userNameDisplay">Xin chào</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user me-2"></i>Hồ sơ cá nhân</a></li>
+                                <li><a class="dropdown-item" href="cart.html">
+                                    <i class="fas fa-shopping-cart me-2"></i>Đơn hàng của tôi</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- Book Detail Page -->
+<div class="container-fluid book-detail-page py-5">
+    <div class="row g-5">
+        <!-- Phần ảnh sách -->
+        <div class="col-lg-5">
+            <div class="book-gallery position-sticky" style="top: 2rem;">
+                <!-- Ảnh chính -->
+                <div class="main-image mb-4 text-center">
+                    <img id="cover-image" class="img-fluid rounded-4 shadow-lg"
+                         style="max-height: 500px; object-fit: contain;"
+                         alt="Ảnh bìa sách">
+                </div>
+
+                <!-- Ảnh phụ -->
+                <div id="additional-images" class="d-flex justify-content-center gap-3 mb-4">
+                    <!-- Thumbnails sẽ được thêm động -->
+                </div>
+
+                <!-- Thông tin nhanh -->
+                <div class="book-quick-info bg-light p-3 rounded-4">
+                    <div class="d-flex justify-content-between">
+                        <div class="text-center flex-grow-1">
+                            <i class="bi bi-shield-check text-success fs-4 d-block mb-2"></i>
+                            <span class="small">Bảo hành</span>
+                        </div>
+                        <div class="text-center flex-grow-1">
+                            <i class="bi bi-truck text-primary fs-4 d-block mb-2"></i>
+                            <span class="small">Giao hàng toàn quốc</span>
+                        </div>
+                        <div class="text-center flex-grow-1">
+                            <i class="bi bi-arrow-repeat text-warning fs-4 d-block mb-2"></i>
+                            <span class="small">Đổi trả dễ dàng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sách -->
+        <div class="col-lg-7">
+            <div class="book-details">
+                <!-- Tiêu đề và đánh giá -->
+                <div class="mb-4">
+                    <h1 id="book-title" class="display-5 fw-bold text-dark mb-2"></h1>
+                    <h4 id="book-subtitle" class="text-muted mb-3"></h4>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="rating text-warning me-3" id="book-rating-stars">
+                            <!-- Sao đánh giá sẽ được render động -->
+                        </div>
+                        <span class="text-muted">
+                            (<span id="book-total-reviews">0</span> đánh giá)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Thông tin chi tiết -->
+                <div class="book-meta mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">Tác giả</small>
+                                <span id="book-author" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">Nhà xuất bản</small>
+                                <span id="book-publisher" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">Thể loại</small>
+                                <span id="book-category" class="fw-bold"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">Ngôn ngữ</small>
+                                <span id="book-language" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">Mã SKU</small>
+                                <span id="book-sku" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="meta-item">
+                                <small class="text-muted d-block">ISBN</small>
+                                <span id="book-isbn" class="fw-bold"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giá và trạng thái -->
+                <div class="book-pricing mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <span id="book-price" class="h2 text-primary fw-bold me-3"></span>
+                        <small id="book-sale-price" class="text-muted text-decoration-line-through"></small>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="text-success me-4">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Còn <span id="book-stock" class="fw-bold">0</span> bản trong kho
+                        </div>
+                        <div class="text-warning">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Tình trạng: <span id="book-availability">Đang có sẵn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tùy chọn mua hàng -->
+                <div class="book-actions mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <button id="add-to-cart-btn" class="btn btn-primary btn-lg w-100 py-3">
+                                <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-outline-secondary btn-lg w-100 py-3">
+                                <i class="bi bi-heart me-2"></i>Yêu thích
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mô tả sách -->
+                <div class="book-description mb-4">
+                    <h4 class="mb-3">Giới thiệu sách</h4>
+                    <p id="book-description" class="text-muted lh-lg"></p>
+                </div>
+
+                <!-- Chi tiết kỹ thuật -->
+                <div class="book-specifications">
+                    <h4 class="mb-3">Thông số kỹ thuật</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="spec-item">
+                                <small class="text-muted d-block">Số trang</small>
+                                <span id="book-pages" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="spec-item">
+                                <small class="text-muted d-block">Kích thước</small>
+                                <span id="book-dimensions" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="spec-item">
+                                <small class="text-muted d-block">Ngày xuất bản</small>
+                                <span id="book-publication-date" class="fw-bold"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="spec-item">
+                                <small class="text-muted d-block">Trọng lượng</small>
+                                <span id="book-weight" class="fw-bold">Chưa cập nhật</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần sách liên quan -->
+    <div class="related-books container mt-5">
+        <h3 class="text-center mb-4">Sách liên quan</h3>
+        <div id="related-books-carousel" class="owl-carousel owl-theme">
+            <!-- Các thẻ sách liên quan sẽ được thêm động -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal xem nhanh ảnh -->
+<div class="modal fade" id="bookImageModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img id="modal-book-image" class="img-fluid" alt="Ảnh sách">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>Về ShopNow</h5>
+                    <p>Nền tảng thương mại điện tử hàng đầu Việt Nam</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Dịch Vụ Khách Hàng</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Chăm Sóc Khách Hàng</a></li>
+                        <li><a href="#" class="text-white">Điều Khoản</a></li>
+                        <li><a href="#" class="text-white">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kết Nối Với Chúng Tôi</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2025 ShopNow. Bản quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/base.js"></script>
+    <script src="assets/js/bookdetail.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+</body>
+</html>

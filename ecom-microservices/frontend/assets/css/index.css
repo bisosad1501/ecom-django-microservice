@@ -1,0 +1,189 @@
+/* Search Section */
+.search-section {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.search-box .form-control {
+    border-radius: 5px 0 0 5px;
+    border: 2px solid var(--primary-color);
+}
+
+.search-box .btn {
+    border-radius: 0 5px 5px 0;
+    padding: 0 30px;
+}
+
+/* Banner Slider */
+.banner-slider {
+    margin-bottom: 30px;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+}
+
+.side-banners img {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.side-banners img:hover {
+    transform: scale(1.02);
+}
+
+/* Flash Sale Section */
+.flash-sale {
+    background-color: #fff;
+}
+
+.time-box {
+    background: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.price-box {
+    margin: 10px 0;
+}
+
+.new-price {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 0.9em;
+    margin-left: 8px;
+}
+
+/* Categories Section */
+.category-item {
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 24px;
+}
+
+/* Popular Products Section */
+.category-tabs .btn {
+    margin: 0 5px;
+    border-radius: 20px;
+}
+
+.wishlist-icon {
+    background: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wishlist-icon:hover {
+    color: #dc3545;
+    transform: scale(1.1);
+}
+
+.rating-count {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Brand Section */
+.brand-card img {
+    max-width: 100%;
+    max-height: 80px; /* Giới hạn chiều cao ảnh để không bị tràn */
+    object-fit: contain; /* Đảm bảo ảnh giữ nguyên tỉ lệ mà không bị méo */
+}
+.brand-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    height: 100px;
+    width: 100%; /* Đảm bảo không bị co lại */
+    overflow: hidden; /* Ngăn ảnh tràn ra ngoài */
+    text-align: center;
+}
+
+.brand-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .category-tabs {
+        display: none;
+    }
+
+    .side-banners {
+        margin-top: 20px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+}
+
+/* Section Headers */
+.section-title {
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+}

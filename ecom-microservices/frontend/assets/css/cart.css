@@ -1,0 +1,155 @@
+:root {
+            --primary-color: #4A90E2;
+            --secondary-color: #F5F5F5;
+            --accent-color: #3498db;
+            --light-gray: #f5f7fa;
+            --dark-gray: #7f8c8d;
+        }
+body {
+    padding-top: 80px; /* Điều chỉnh theo chiều cao header */
+}
+        body {
+            background-color: var(--light-gray);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-header {
+            background-color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .cart-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cart-summary {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quantity-control {
+            width: 60px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #checkout-btn {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        #checkout-btn:hover {
+            background-color: #1a2530;
+        }
+
+        #checkout-btn:disabled {
+            background-color: var(--dark-gray);
+        }
+
+        .continue-shopping-btn {
+            color: var(--accent-color);
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            padding: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .continue-shopping-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .savings-badge {
+            background-color: #27ae60;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .remove-item {
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .remove-item:hover {
+            opacity: 1;
+        }
+
+        .empty-cart-container {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .empty-cart-icon {
+            font-size: 5rem;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .cart-item-image {
+                width: 60px;
+                height: 90px;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
