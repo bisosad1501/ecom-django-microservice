@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -44,7 +43,20 @@ class UserListAPI(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class UserDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class UserDetailAPI(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    lookup_field = 'id'  # Định danh user bằng UUID
+    lookup_field = 'id'
+
+    def retrieve(self, request, *args, **kwargs):
+        try:
+            # Lấy user theo ID từ URL
+            instance = self.get_object()
+            serializer = self.get_serializer(instance)
+            return Response(serializer.data)
+        
+        except User.DoesNotExist:
+            return Response(
+                {"error": "Người dùng không tồn tại"}, 
+                status=status.HTTP_404_NOT_FOUND
+            )
