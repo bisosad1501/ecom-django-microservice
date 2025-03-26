@@ -115,3 +115,34 @@ class OrderViewSet(viewsets.ModelViewSet):
             return Response({"error": "Thiếu user_id"}, status=status.HTTP_400_BAD_REQUEST)
         orders = Order.objects.filter(user_id=user_id).order_by('-created_at')
         return Response(OrderSerializer(orders, many=True).data)
+    
+    @action(detail=False, methods=['GET'], url_path='verify-purchase', url_name='verify-purchase')
+    def verify_purchase(self, request):
+        """API để Review Service kiểm tra trạng thái mua hàng"""
+        user_id = request.query_params.get('user_id')
+        product_id = request.query_params.get('product_id')
+
+        if not user_id or not product_id:
+            return Response(
+                {"error": "Thiếu user_id hoặc product_id"}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        order_item = OrderItem.objects.filter(
+            order__user_id=user_id,
+            product_id=product_id,
+            order__status='pending'
+        ).first()
+
+        if order_item:
+            return Response({
+                'verified': True,
+                'order_id': str(order_item.order.id),
+                'purchase_date': order_item.order.created_at,
+                'delivery_date': order_item.order.updated_at
+            })
+
+        return Response({
+            'verified': False,
+            'message': 'Không tìm thấy đơn hàng đã giao của sản phẩm này'
+        }, status=status.HTTP_404_NOT_FOUND)
