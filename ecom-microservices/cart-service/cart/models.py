@@ -21,6 +21,7 @@ class Cart(models.Model):
     def __str__(self):
         return f"Cart {self.id} - User {self.user_id}"
 
+
 class Wishlist(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.UUIDField(db_index=True)
@@ -83,3 +84,4 @@ class CartItem(models.Model):
         if self.original_price and self.original_price > self.sale_price:
             return self.original_price - self.sale_price
         return Decimal('0.00')
+

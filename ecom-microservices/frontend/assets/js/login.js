@@ -1,118 +1,157 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector('.container');
+    const registerBtn = document.querySelector('.register-btn');
+    const loginBtn = document.querySelector('.login-btn');
 
-    if (!loginForm) {
-        console.error('Không tìm thấy form đăng nhập');
-        return;
-    }
+    registerBtn.addEventListener('click', () => {
+        container.classList.add('active');
+    });
 
-    loginForm.addEventListener('submit', function(event) {
+    loginBtn.addEventListener('click', () => {
+        container.classList.remove('active');
+    });
+
+    // Đăng ký tài khoản
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
         event.preventDefault();
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value;
+        if (!username || !email || !password) {
+            Swal.fire("Lỗi", "Vui lòng điền đầy đủ thông tin!", "warning");
+            return;
+        }
 
-        // Validate input
-        if (!validateInput(username, password)) return;
+        if (password !== confirmPassword) {
+            Swal.fire("Lỗi", "Mật khẩu không khớp!", "error");
+            return;
+        }
 
-        // Hiển thị loading
         Swal.fire({
-            title: 'Đang xác thực...',
-            html: 'Vui lòng chờ giây lát',
+            title: "Đang xử lý...",
+            html: "Vui lòng chờ",
             allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading()
-            }
+            didOpen: () => Swal.showLoading()
         });
 
-        // Gửi request đăng nhập
-        fetch('http://localhost/user/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
+        fetch("http://localhost/user/register/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password })
         })
-        .then(async (response) => {
-            console.log('Response Status:', response.status);
+        .then(response => {
+            if (response.status === 201) return response.json();
+            throw new Error("Đăng ký không thành công");
+        })
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Thành công!",
+                text: "Tài khoản đã được tạo!",
+                showConfirmButton: false,
+                timer: 1000
+            }).then(() => {
+                container.classList.remove("active"); // Chuyển về form đăng nhập
+            });
+        })
+        .catch(error => Swal.fire("Lỗi", error.message, "error"));
+    });
 
-            // Kiểm tra status code
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Lỗi HTTP: ${response.status} - ${errorText}`);
-            }
+    // Đăng nhập tài khoản
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value;
 
-            // Parse JSON
+        if (!username || !password) {
+            Swal.fire("Lỗi", "Vui lòng nhập đầy đủ thông tin!", "warning");
+            return;
+        }
+
+        Swal.fire({
+            title: "Đang xác thực...",
+            html: "Vui lòng chờ",
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        fetch("http://localhost/user/login/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => {
+            if (!response.ok) return response.text().then(text => { throw new Error(text) });
             return response.json();
         })
         .then(data => {
-            if (data.access && data.refresh) {
-                // Lưu tokens
-                localStorage.setItem('accessToken', data.access);
-                localStorage.setItem('refreshToken', data.refresh);
+            localStorage.setItem("accessToken", data.access);
+            localStorage.setItem("refreshToken", data.refresh);
+            localStorage.setItem("userName", username);
+            localStorage.setItem("userId", data.user_id);
 
-                localStorage.setItem('userName', username);
-                localStorage.setItem('userId', data.user_id);
-
-                console.log('user_id:', data.user_id);
-
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Đăng nhập thành công!',
-                    text: 'Chuyển đến trang chủ',
-                    timer: 1500,
-                    showConfirmButton: false
-                }).then(() => {
-                    window.location.href = 'index.html';
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Lỗi đăng nhập chi tiết:', error);
-
-            // Hiển thị thông báo lỗi cụ thể
             Swal.fire({
-                icon: 'error',
-                title: 'Đăng Nhập Thất Bại',
-                text: error.message || 'Không thể đăng nhập. Vui lòng thử lại.',
-                footer: 'Kiểm tra lại thông tin đăng nhập'
+                icon: "success",
+                title: "Thành công!",
+                text: "Đăng nhập thành công!",
+                showConfirmButton: false,
+                timer: 1000
+            }).then(() => {
+                window.location.href = "index.html";
             });
-        });
+        })
+        .catch(error => Swal.fire("Lỗi", error.message || "Không thể đăng nhập", "error"));
     });
 });
 
-// Hàm validate input
-function validateInput(username, password) {
-    if (!username) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Lỗi',
-            text: 'Vui lòng nhập tên đăng nhập'
-        });
-        return false;
-    }
+function setupPasswordToggle() {
+    document.querySelectorAll('input[type="password"]').forEach(passwordInput => {
+        // Kiểm tra xem đã thêm toggle chưa
+        if (!passwordInput.parentNode.querySelector('.password-toggle')) {
+            // Tạo nút toggle
+            const toggleBtn = document.createElement('span');
+            toggleBtn.innerHTML = '<i class="bx bx-show-alt"></i>';
+            toggleBtn.classList.add('password-toggle');
+            toggleBtn.style.display = 'none'; // Ẩn ban đầu
+            
+            // Chèn nút vào parent của input
+            passwordInput.parentNode.appendChild(toggleBtn);
+            
+            // Sự kiện input để kiểm soát hiển thị nút
+            passwordInput.addEventListener('input', function() {
+                const toggleBtn = this.parentNode.querySelector('.password-toggle');
+                if (this.value.length > 0) {
+                    toggleBtn.style.display = 'block';
+                } else {
+                    toggleBtn.style.display = 'none';
+                }
+            });
+            
+            // Sự kiện click để toggle
+            toggleBtn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('bx-show-alt');
+                    icon.classList.add('bx-hide');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('bx-hide');
+                    icon.classList.add('bx-show-alt');
+                }
+            });
 
-    if (!password) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Lỗi',
-            text: 'Vui lòng nhập mật khẩu'
-        });
-        return false;
-    }
-
-    if (password.length < 6) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Lỗi',
-            text: 'Mật khẩu phải có ít nhất 6 ký tự'
-        });
-        return false;
-    }
-
-    return true;
+            // Xử lý khi xóa hết nội dung
+            passwordInput.addEventListener('change', function() {
+                const toggleBtn = this.parentNode.querySelector('.password-toggle');
+                if (this.value.length === 0) {
+                    toggleBtn.style.display = 'none';
+                }
+            });
+        }
+    });
 }
+// Gọi hàm setup khi trang tải
+setupPasswordToggle();
