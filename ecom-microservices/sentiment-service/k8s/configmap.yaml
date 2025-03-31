@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sentiment-service-config
+  namespace: microservices
+  labels:
+    app: sentiment-service
+data:
+  HOST: "0.0.0.0"
+  PORT: "5000"
+  DEBUG: "false"
+  API_VERSION: "v1"
+  REVIEW_SERVICE_URL: "http://review-service.microservices.svc.cluster.local:5000/api"
+  REVIEW_SERVICE_TIMEOUT: "10"
+  REPORTS_DIR: "/app/reports/sentiment_analysis"
+  CORS_ORIGINS: "*"
+  CACHE_ENABLED: "true"
+  CACHE_TTL: "3600"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sentiment-service-nlp-config
+  namespace: microservices
+data:
+  sentiment_keywords.json: |-
+    {
+      "positive_words": [
+        "excellent", "amazing", "good", "great", "best", "love", "awesome", "fantastic",
+        "perfect", "recommend", "happy", "pleased", "satisfied", "wonderful", "impressive",
+        "quality", "helpful", "reliable", "smooth", "easy", "worth", "favorite",
+        "enjoy", "enjoyed", "nice", "like", "likes", "liked", "well", "fast", "quick", "efficient",
+        "convenient", "comfortable", "effective", "stellar", "superior", "outstanding",
+        "top-notch", "superb", "delightful", "premium", "fabulous", "flawless", "spectacular"
+      ],
+      "negative_words": [
+        "bad", "poor", "terrible", "horrible", "worst", "hate", "disappointing", "disappointed",
+        "awful", "broken", "refund", "return", "unhappy", "expensive", "cheap", "defective",
+        "useless", "difficult", "hard", "problem", "problems", "issue", "issues", "fail", "failed",
+        "failure", "slow", "painful", "annoying", "frustrating", "waste", "overpriced", "avoid",
+        "regret", "regrets", "regretted", "complaint", "complaints", "damaged", "lacking",
+        "mediocre", "inferior", "unusable", "upset", "inconvenient", "unacceptable", "unsatisfactory"
+      ],
+      "intensifiers": {
+        "very": 1.5, "really": 1.5, "extremely": 2.0, "absolutely": 2.0, "completely": 1.8,
+        "highly": 1.5, "totally": 1.8, "truly": 1.5, "super": 1.8, "incredibly": 2.0,
+        "particularly": 1.4, "especially": 1.5, "entirely": 1.7, "quite": 1.3, "so": 1.5,
+        "too": 1.4, "remarkably": 1.7
+      },
+      "negations": [
+        "not", "no", "never", "none", "neither", "nor", "don't", "doesn't", "didn't", "wasn't",
+        "weren't", "isn't", "aren't", "haven't", "hasn't", "hadn't", "won't", "wouldn't", 
+        "couldn't", "shouldn't", "can't", "cannot", "without"
+      ]
+    } 

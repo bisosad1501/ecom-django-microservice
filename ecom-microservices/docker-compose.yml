@@ -18,6 +18,8 @@ services:
       - book-service
       - cart-service
       - customer-service
+      - recommendation-service
+      - sentiment-service
     networks:
       - ecom-net
 
@@ -205,6 +207,45 @@ services:
       - db-mysql
     networks:
       - ecom-net
+  sentiment-service:
+    build: ./sentiment-service
+    ports:
+      - "8010:8010"
+    environment:
+      - REVIEW_SERVICE_URL=http://review-service:8004
+    depends_on:
+      - review-service
+
+  recommendation-service:
+    build: ./recommendation-service
+    ports:
+      - "5002:5000"
+    environment:
+      - DEBUG=True
+      - PRODUCT_SERVICE_URL=http://product-service:8005
+      - BOOK_SERVICE_URL=http://book-service:8002
+      - SHOE_SERVICE_URL=http://shoe-service:8006
+      - REVIEW_SERVICE_URL=http://review-service:8004
+      - SENTIMENT_SERVICE_URL=http://sentiment-service:8010/api
+      - CACHE_ENABLED=True
+    depends_on:
+      - sentiment-service
+      - review-service
+      - product-service
+      - book-service
+      - shoe-service
+      - redis-recommendation
+    networks:
+      - ecom-net
+
+  redis-recommendation:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-recommendation-data:/data
+    networks:
+      - ecom-net
 
 networks:
   ecom-net:
@@ -214,4 +255,5 @@ volumes:
   mongo_data:
   postgres_data:
   mysql_data:
+  redis-recommendation-data:
 

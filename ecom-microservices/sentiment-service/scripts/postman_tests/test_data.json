@@ -1,0 +1,71 @@
+{
+  "single_text_samples": {
+    "english": [
+      {
+        "text": "This product is amazing, I love it so much!",
+        "expected_sentiment": "positive"
+      },
+      {
+        "text": "The quality is mediocre, not really impressed.",
+        "expected_sentiment": "neutral"
+      },
+      {
+        "text": "Terrible product, broke after one day. Would not recommend.",
+        "expected_sentiment": "negative"
+      }
+    ],
+    "vietnamese": [
+      {
+        "text": "Sản phẩm này rất tốt, tôi rất hài lòng.",
+        "expected_sentiment": "positive"
+      },
+      {
+        "text": "Sản phẩm bình thường, không đặc biệt lắm.",
+        "expected_sentiment": "neutral"
+      },
+      {
+        "text": "Sản phẩm chất lượng kém, không đáng giá tiền.",
+        "expected_sentiment": "negative"
+      },
+      {
+        "text": "Tôi đã mua sản phẩm này và nó hoạt động tốt trong nhiều tháng.",
+        "expected_sentiment": "positive"
+      },
+      {
+        "text": "Hàng giao nhanh, đúng hẹn, đóng gói cẩn thận.",
+        "expected_sentiment": "positive"
+      },
+      {
+        "text": "Không như mô tả, thất vọng với chất lượng.",
+        "expected_sentiment": "negative"
+      }
+    ]
+  },
+  "batch_text_samples": {
+    "mixed_language": [
+      "This product exceeds all my expectations, highly recommended!",
+      "Sản phẩm này thật tuyệt vời, tôi rất thích!",
+      "The delivery was delayed and customer service was unhelpful.",
+      "Hàng đến chậm và bị hư hỏng, rất thất vọng!",
+      "Average product, works as expected but nothing special.",
+      "Sản phẩm tạm được, không có gì đặc biệt."
+    ]
+  },
+  "product_review_samples": {
+    "product_ids": ["12345", "67890", "24680", "13579"]
+  },
+  "performance_test": {
+    "small_batch": {
+      "count": 10,
+      "expected_time_ms": 500
+    },
+    "medium_batch": {
+      "count": 50,
+      "expected_time_ms": 2000
+    },
+    "large_batch": {
+      "count": 100,
+      "expected_time_ms": 5000
+    }
+  }
+} 

@@ -1,0 +1,43 @@
+# Sentiment Analysis Service - Dependencies
+flask==2.0.1
+werkzeug==2.0.3
+flask-cors==3.0.10
+gunicorn==20.1.0
+python-dotenv==1.0.0
+requests==2.28.2
+nltk==3.8.1
+pandas==1.5.3
+numpy==1.24.2
+matplotlib==3.7.1
+seaborn==0.12.2
+scikit-learn==1.2.2
+Jinja2==3.1.2
+pytest==7.3.1
+pytest-cov==4.1.0
+requests-mock==1.10.0
+redis==4.5.4
+newrelic==8.8.0
+prometheus-client==0.16.0
+pydantic==1.10.8
+tabulate==0.9.0
+
+# Machine Learning Libraries
+transformers==4.28.1
+torch==2.0.1
+sentencepiece==0.1.99
+accelerate==0.20.3
+
+# Additional dependencies
+langdetect==1.0.9
+
+# Thư viện cho đóng gói và kiểm thử
+pytest-mock==3.10.0
+black==23.1.0
+isort==5.12.0
+mypy==1.0.1
+pylint==2.16.1
+
+# Thư viện cho CI/CD  
+flake8==6.0.0
+pre-commit==3.0.4
+tox==4.4.6

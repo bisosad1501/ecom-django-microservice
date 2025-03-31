@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "Sentiment Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8010/api/health",
+        "description": "Kiểm tra trạng thái hoạt động của service"
+      }
+    },
+    {
+      "name": "Phân tích cảm xúc văn bản",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8010/api/analyze",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Sản phẩm này rất tốt, tôi rất hài lòng\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Phân tích cảm xúc của một đoạn văn bản đơn lẻ"
+      }
+    },
+    {
+      "name": "Phân tích cảm xúc văn bản (tiêu cực)",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8010/api/analyze",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Sản phẩm kém chất lượng, không đáng tiền\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Phân tích cảm xúc tiêu cực của một đoạn văn bản"
+      }
+    },
+    {
+      "name": "Phân tích cảm xúc văn bản theo batch",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8010/api/analyze_batch",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"texts\": [\n    \"Sản phẩm này rất tốt, tôi rất hài lòng\",\n    \"Sản phẩm tạm được, không có gì đặc biệt\",\n    \"Sản phẩm kém chất lượng, không đáng tiền\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Phân tích cảm xúc cho nhiều đoạn văn bản cùng lúc"
+      }
+    },
+    {
+      "name": "Phân tích cảm xúc reviews",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8010/api/reviews/sentiment",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reviews\": [\n    {\n      \"id\": \"1\",\n      \"comment\": \"Sản phẩm này rất tốt, tôi rất hài lòng\"\n    },\n    {\n      \"id\": \"2\",\n      \"comment\": \"Sản phẩm kém chất lượng, không đáng tiền\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Phân tích cảm xúc cho danh sách reviews có ID"
+      }
+    },
+    {
+      "name": "Lấy phân tích cảm xúc sản phẩm",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8010/api/product/PROD001/sentiment",
+        "description": "Lấy thông tin phân tích cảm xúc cho tất cả reviews của một sản phẩm"
+      }
+    },
+    {
+      "name": "Lấy phân tích cảm xúc sản phẩm (với limit)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8010/api/product/PROD001/sentiment?limit=50",
+          "host": ["localhost:8010"],
+          "path": ["api", "product", "PROD001", "sentiment"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "50"
+            }
+          ]
+        },
+        "description": "Lấy thông tin phân tích cảm xúc cho tối đa 50 reviews của một sản phẩm"
+      }
+    },
+    {
+      "name": "Lấy phân phối cảm xúc tổng quan",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8010/api/trends/distribution",
+        "description": "Lấy thông tin phân phối cảm xúc tổng quan của toàn bộ hệ thống"
+      }
+    },
+    {
+      "name": "Lấy sản phẩm với cảm xúc tốt nhất",
+      "request": {
+        "method": "GET", 
+        "url": "http://localhost:8010/api/products/top",
+        "description": "Lấy danh sách sản phẩm có cảm xúc tích cực nhất"
+      }
+    },
+    {
+      "name": "Lấy sản phẩm với cảm xúc tốt nhất (với limit)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8010/api/products/top?limit=5",
+          "host": ["localhost:8010"],
+          "path": ["api", "products", "top"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        },
+        "description": "Lấy tối đa 5 sản phẩm có cảm xúc tích cực nhất"
+      }
+    },
+    {
+      "name": "So sánh cảm xúc giữa các sản phẩm",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8010/api/products/compare?product_ids=PROD001,PROD002",
+          "host": ["localhost:8010"],
+          "path": ["api", "products", "compare"],
+          "query": [
+            {
+              "key": "product_ids",
+              "value": "PROD001,PROD002"
+            }
+          ]
+        },
+        "description": "So sánh cảm xúc giữa hai hoặc nhiều sản phẩm"
+      }
+    }
+  ]
+}

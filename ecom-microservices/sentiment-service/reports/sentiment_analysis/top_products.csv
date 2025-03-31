@@ -1,0 +1,11 @@
+product_id,product_name,sentiment_score,total_reviews,positive,neutral,negative,positive_pct,neutral_pct,negative_pct,avg_rating
+p001,Premium Wireless Headphones,0.86,109,64,34,9,59,32,9,4.4
+p002,Smart Fitness Tracker,0.76,91,62,15,12,69,17,14,4.3
+p003,Ultra HD 4K Monitor,0.71,88,65,7,14,74,9,17,4.2
+p004,Professional Camera Lens,0.66,79,62,1,15,79,2,19,4.2
+p005,Ergonomic Office Chair,0.6,70,59,-4,15,85,-7,22,4.1
+p006,Multi-function Blender,0.57,72,63,-8,17,88,-12,24,4.1
+p007,Portable Power Bank,0.48,65,63,-16,18,97,-25,28,4.0
+p008,Gaming Mechanical Keyboard,0.43,47,47,-14,14,100,-31,31,3.9
+p009,Smart Home Speaker,0.37,40,40,-13,13,100,-34,34,3.9
+p010,Designer Desk Lamp,0.29,34,34,-12,12,100,-38,38,3.8

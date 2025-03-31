@@ -42,8 +42,7 @@ class VerifiedReview(BaseReview):
         unique_together = ['product_id', 'user_id', 'order_id']
 
 class GeneralReview(BaseReview):
-    class Meta:
-        unique_together = ['product_id', 'user_id']
+    pass
 
 class ReviewComment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

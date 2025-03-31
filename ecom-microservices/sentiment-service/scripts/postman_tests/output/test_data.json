@@ -1,0 +1,3004 @@
+{
+  "reviews": [
+    {
+      "id": "9b3e407a-531c-4281-a2a7-1139a2e1200e",
+      "product_id": "PROD008",
+      "user_id": "47c5469e-bb15-486f-a5f1-2051377e71e7",
+      "comment": "Nó hoạt động như mong đợi. Ổn thông thường tạm tạm được ổn dở. Không đặc biệt thông thường tạm được bình thường đủ cơ bản.",
+      "rating": 3,
+      "date": "2024-12-23",
+      "helpful_votes": 28,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "160a7f8d-120b-42c8-9283-61b986b5e474",
+      "product_id": "PROD011",
+      "user_id": "2241f839-ab80-493f-af63-150c7714246a",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tốt hoàn hảo khó chịu đẹp tuyệt tuyệt vời hay vời. Yêu thông thường vời yêu.",
+      "rating": 5,
+      "date": "2025-02-01",
+      "helpful_votes": 35,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "eeb4eb20-a818-4d3d-9d6b-9991bc02416e",
+      "product_id": "PROD007",
+      "user_id": "ee6a4323-fbef-465b-9d17-8634c38117f2",
+      "comment": "Đây là sự lãng phí tiền bạc. Hư chẳng bình thường hư gãy không hài lòng khó chịu không tốt gãy vấn đề. Hỏng kém khó chịu không vấn đề dở kém khó chịu kém tệ. Chẳng xấu lỗi thất vọng khó chịu không hài lòng chán kém khó chịu.",
+      "rating": 1,
+      "date": "2025-01-24",
+      "helpful_votes": 14,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "e1718aef-6fe5-4e60-ad96-08722f59734c",
+      "product_id": "PROD008",
+      "user_id": "4693a0fc-43a5-4d2b-9d56-03dbf20170f1",
+      "comment": "Nó hoạt động như mong đợi. Hư bình thường tạm không đặc biệt thông thường. Thường trung bình hư đủ thông thường thông thường cơ bản tạm được.",
+      "rating": 3,
+      "date": "2024-11-08",
+      "helpful_votes": 20,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "adcf13e0-2d0a-4fea-b9c8-8df073c72196",
+      "product_id": "PROD001",
+      "user_id": "686a7f6f-2c62-48da-96b4-f390d83f58fd",
+      "comment": "Chất lượng rất tốt. Xuất sắc thông thường tuyệt tuyệt hảo tuyệt hấp dẫn xuất sắc. Tuyệt hảo xuất sắc đẹp tốt nhất hấp dẫn tốt yêu hấp dẫn tệ.",
+      "rating": 5,
+      "date": "2025-03-02",
+      "helpful_votes": 38,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "66a32241-a146-436a-ae01-ef041c02b6e3",
+      "product_id": "PROD005",
+      "user_id": "c1bd482a-03aa-4ae9-b221-1e0882a4b8e0",
+      "comment": "Nó tạm ổn với giá tiền. Thường thông thường thông thường lỗi không ổn. Thường tạm ổn ổn xuất sắc không đặc biệt ổn.",
+      "rating": 3,
+      "date": "2024-11-15",
+      "helpful_votes": 19,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "8ea9c990-f066-4a79-a1d8-c0d740755dca",
+      "product_id": "PROD004",
+      "user_id": "4e47896b-f919-4f21-82f3-346119084319",
+      "comment": "Nó hoạt động như mong đợi. Bình thường không đặc biệt tạm kém tạm. Cơ bản tạm được đủ bình thường ổn tạm được trung bình. Thông thường tốt không đặc biệt thông thường tạm được thông thường đủ tạm được trung bình.",
+      "rating": 3,
+      "date": "2025-03-27",
+      "helpful_votes": 32,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "bb5d8262-402e-4394-ae34-62bd914fdd34",
+      "product_id": "PROD001",
+      "user_id": "ad7a8cc6-aeda-4d9b-82f0-c2375398a3ca",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt nhất tiện lợi hoàn hảo tốt giỏi xuất sắc. Tuyệt hảo tiện lợi hoàn hảo yêu hoàn hảo hoàn hảo thường không đặc biệt vời. Tuyệt vời tốt tuyệt hảo hay hay tiện lợi dở hoàn hảo.",
+      "rating": 5,
+      "date": "2024-11-22",
+      "helpful_votes": 6,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "e6f94ca8-eb4c-4eb0-9bb1-590268ec1b5d",
+      "product_id": "PROD009",
+      "user_id": "d15ff603-b78f-4ec6-9478-01738383d1b5",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Bình thường lỗi khó chịu không hài lòng bình thường xấu không tốt không tốt dở khó chịu. Kém kém dở không hài lòng hỏng.",
+      "rating": 2,
+      "date": "2024-11-10",
+      "helpful_votes": 8,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "f64070bd-ba31-4831-b4cd-c34ea5fc3b88",
+      "product_id": "PROD014",
+      "user_id": "820c60d6-e395-4ff7-9049-3250fd5b0d45",
+      "comment": "Đây đúng là thứ tôi cần. Đẹp tuyệt tốt nhất tuyệt tuyệt hảo không tốt hay hài lòng vời đẹp. Yêu giỏi giỏi hấp dẫn tạm.",
+      "rating": 5,
+      "date": "2025-02-04",
+      "helpful_votes": 40,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "8175e33f-5ef8-4769-94af-5f270bf67f59",
+      "product_id": "PROD013",
+      "user_id": "ad82f289-ea88-4cc8-87de-9bc368628fa2",
+      "comment": "Nó tạm ổn với giá tiền. Ổn ổn thường bình thường tạm được. Thường bình thường yêu tuyệt vời không đặc biệt.",
+      "rating": 3,
+      "date": "2024-12-03",
+      "helpful_votes": 14,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "7a52d695-953e-4912-aa58-2d13831cbc70",
+      "product_id": "PROD007",
+      "user_id": "d8524f0b-d9ba-4830-ae41-72c5a51ee8f0",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Tốt nhất tạm được tuyệt trung bình thường thông thường trung bình không đặc biệt. Bình thường bình thường thường kém tạm cơ bản.",
+      "rating": 3,
+      "date": "2024-12-21",
+      "helpful_votes": 38,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "62f67b35-a01a-4745-b378-d44c443933b3",
+      "product_id": "PROD015",
+      "user_id": "01833d60-68d4-4334-bda9-34d60e0a0459",
+      "comment": "Chất lượng rất tốt. Hấp dẫn tốt tiện lợi không đặc biệt đẹp tiện lợi vời.",
+      "rating": 5,
+      "date": "2024-12-01",
+      "helpful_votes": 22,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "c94cd04f-bf73-4256-8b42-ce4487098496",
+      "product_id": "PROD001",
+      "user_id": "e535e91c-a8cb-4d77-b5ee-0547b1cfe4ea",
+      "comment": "Tôi thất vọng với sản phẩm này. Thất vọng không trung bình xấu hư vấn đề dở. Hỏng không tốt khó chịu tệ lỗi khó chịu không hài lòng. Vấn đề không đặc biệt gãy kém.",
+      "rating": 1,
+      "date": "2025-03-01",
+      "helpful_votes": 31,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "6429fcf6-cdb2-4f36-9955-abae9d47d8d8",
+      "product_id": "PROD010",
+      "user_id": "4153fee9-3de4-488c-8733-30ddb168ec3b",
+      "comment": "Tôi chắc chắn sẽ mua lại. Hoàn hảo tuyệt thích đẹp yêu hoàn hảo yêu giỏi. Tuyệt vời hay hay hài lòng hài lòng giỏi tuyệt hảo chán tuyệt. Tuyệt hoàn hảo yêu tạm hay thường xuất sắc.",
+      "rating": 5,
+      "date": "2025-01-27",
+      "helpful_votes": 39,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "34c6b773-5c19-4790-a37d-96b3dffa0b4f",
+      "product_id": "PROD011",
+      "user_id": "a060623a-457d-4685-8ee2-ec1d14414f64",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Yêu ổn tạm được đủ ổn vời. Thích tuyệt vời tiện lợi thích vời hay giỏi giỏi thất vọng. Tuyệt vời hấp dẫn kém tốt hay hài lòng.",
+      "rating": 5,
+      "date": "2025-03-09",
+      "helpful_votes": 6,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "1dae673f-1ee5-494a-a792-ae8a098c2f59",
+      "product_id": "PROD010",
+      "user_id": "67a16004-224e-4a9e-ae73-47bed264afc7",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Ổn đủ bình thường tạm không đặc biệt trung bình thông thường tạm. Bình thường trung bình trung bình vời giỏi tạm được đủ bình thường trung bình thường. Bình thường cơ bản không đặc biệt ổn không đặc biệt trung bình thông thường không đặc biệt.",
+      "rating": 3,
+      "date": "2024-11-20",
+      "helpful_votes": 33,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "be3ccaae-06ad-4699-b760-3c8509d8cb1d",
+      "product_id": "PROD001",
+      "user_id": "6a3969d7-f75d-4fe0-b893-74989e057d38",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Thông thường thông thường gãy thường.",
+      "rating": 3,
+      "date": "2025-02-23",
+      "helpful_votes": 12,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "9b85f974-c901-498f-87f1-ae9bd2e00ba3",
+      "product_id": "PROD003",
+      "user_id": "99b5fea3-efa3-49fa-877c-3c483d1b64f9",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tốt hài lòng hay xuất sắc. Thông thường xuất sắc vấn đề hay tuyệt tuyệt hảo.",
+      "rating": 5,
+      "date": "2024-12-07",
+      "helpful_votes": 0,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "9fd00d64-be42-4c85-a86a-90b82cb9e369",
+      "product_id": "PROD001",
+      "user_id": "c36541d2-e2ca-482f-8e29-70deba7105b1",
+      "comment": "Chất lượng rất tốt. Yêu hoàn hảo tuyệt hảo yêu hay tuyệt vời tiện lợi tốt hay.",
+      "rating": 5,
+      "date": "2025-02-05",
+      "helpful_votes": 7,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "08ce161c-2c89-428f-88a5-39230eb3e2a1",
+      "product_id": "PROD013",
+      "user_id": "0af27122-f8f0-4a69-af72-abaea282a820",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tuyệt vời gãy tiện lợi tốt xuất sắc hay vời giỏi không. Tiện lợi tốt tuyệt hảo tuyệt hảo tốt nhất không đặc biệt hay hài lòng. Tệ giỏi không tốt hay thất vọng tốt nhất.",
+      "rating": 5,
+      "date": "2025-03-06",
+      "helpful_votes": 6,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "484fcd12-928d-492e-a8e5-6b5201816fc8",
+      "product_id": "PROD012",
+      "user_id": "47e4166d-535a-42ed-9dee-a9fc365e6905",
+      "comment": "Nó hoạt động như mong đợi. Không đặc biệt không đặc biệt thường bình thường tiện lợi tạm ổn tạm tạm được khó chịu. Trung bình đủ tạm tạm được thường đủ thích.",
+      "rating": 3,
+      "date": "2025-02-28",
+      "helpful_votes": 38,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "c92d2406-6958-4d33-be50-35ea275dc08c",
+      "product_id": "PROD003",
+      "user_id": "9b14a98b-2e63-4262-afcf-9ef08f5514d0",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Đẹp tốt nhất vấn đề hay.",
+      "rating": 5,
+      "date": "2024-12-18",
+      "helpful_votes": 28,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "d8365694-1e7e-48ef-9312-6d8c6fb30f78",
+      "product_id": "PROD011",
+      "user_id": "66e9ee78-6102-4720-b7e6-779fb76278e3",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt nhất tuyệt vời yêu vời thích tốt nhất.",
+      "rating": 5,
+      "date": "2024-12-06",
+      "helpful_votes": 25,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "5b625841-1b84-4571-883b-8bcf063c1738",
+      "product_id": "PROD004",
+      "user_id": "73cd46ac-70d7-41de-ac6b-8e8a00210c14",
+      "comment": "Nó tạm ổn với giá tiền. Tạm bình thường thông thường bình thường cơ bản thường thường trung bình. Xấu bình thường cơ bản cơ bản cơ bản.",
+      "rating": 3,
+      "date": "2025-01-08",
+      "helpful_votes": 9,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "6cd279a4-ab1d-42a4-8364-64c96bc28a2d",
+      "product_id": "PROD007",
+      "user_id": "527928ec-1456-43ed-86c9-34b1f6000580",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tuyệt hoàn hảo tuyệt tốt tiện lợi thích. Hấp dẫn tuyệt hảo hoàn hảo vời.",
+      "rating": 5,
+      "date": "2025-03-14",
+      "helpful_votes": 13,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "43369007-b918-47dd-9c17-d20dde1ead0c",
+      "product_id": "PROD006",
+      "user_id": "818bcd85-f567-4d84-9dc6-dd994b2586b1",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Gãy ổn hư chẳng không hài lòng tiện lợi không.",
+      "rating": 2,
+      "date": "2025-02-09",
+      "helpful_votes": 48,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "3fb9fccb-75bf-4cb7-9e2a-09ae393613e1",
+      "product_id": "PROD007",
+      "user_id": "f0b6efb2-7022-408d-9983-e8e2ae9a4934",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Hấp dẫn tốt yêu tốt gãy. Hay yêu tuyệt tốt không đặc biệt thích hài lòng hay tốt. Hoàn hảo tiện lợi đẹp thích thích.",
+      "rating": 5,
+      "date": "2025-01-20",
+      "helpful_votes": 18,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "dc2f6042-59f8-4df1-9178-a32267446590",
+      "product_id": "PROD002",
+      "user_id": "ec9d7cf1-eb27-437a-8ca2-6945f4f46495",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tiện lợi tuyệt hảo đẹp giỏi tuyệt vời vời cơ bản hoàn hảo yêu yêu.",
+      "rating": 5,
+      "date": "2025-03-04",
+      "helpful_votes": 45,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "94d79705-69dc-4182-a6a3-efb9b28736a9",
+      "product_id": "PROD009",
+      "user_id": "d3d545a0-bafe-4678-b5a3-d297b97d562f",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Thích bình thường thích yêu tốt hài lòng tuyệt vời tuyệt vời.",
+      "rating": 5,
+      "date": "2025-02-05",
+      "helpful_votes": 41,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "82e3da78-1198-4a66-bb47-10fcc25987b1",
+      "product_id": "PROD005",
+      "user_id": "5c82667e-40f1-4c2e-a40f-763fe4c0edc0",
+      "comment": "Tôi rất thích sản phẩm này. Đẹp hay tuyệt hảo thích. Thông thường đủ thông thường tuyệt vời tiện lợi xuất sắc hoàn hảo yêu. Tốt tiện lợi tốt nhất hấp dẫn vời không đặc biệt hoàn hảo hay tuyệt vời.",
+      "rating": 5,
+      "date": "2025-01-05",
+      "helpful_votes": 21,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "7f55e906-3f33-4973-992f-88bb3a817bef",
+      "product_id": "PROD006",
+      "user_id": "72e5cfd3-06ff-467c-bc2a-4800d2a66cfd",
+      "comment": "Tôi rất thích sản phẩm này. Yêu hài lòng hài lòng hoàn hảo yêu tốt nhất hay. Vời đẹp trung bình không hài lòng xuất sắc thất vọng không thích tốt nhất tuyệt hảo hấp dẫn.",
+      "rating": 5,
+      "date": "2024-12-07",
+      "helpful_votes": 39,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "7af8df89-c080-4901-8f18-f28089c43e2d",
+      "product_id": "PROD012",
+      "user_id": "e241943b-17b1-48a1-9ea1-b026c2ed54ae",
+      "comment": "Chất lượng rất tốt. Tuyệt thích vời yêu tuyệt vời vời. Giỏi giỏi tuyệt trung bình tốt thích vời yêu hài lòng.",
+      "rating": 5,
+      "date": "2025-01-31",
+      "helpful_votes": 19,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "b9337d30-3c11-4212-b6b6-f5ebfeede4b1",
+      "product_id": "PROD004",
+      "user_id": "6f0e4230-47b5-47e6-a543-e576a1558967",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Thích bình thường tuyệt vời hấp dẫn vời trung bình yêu đủ giỏi yêu.",
+      "rating": 5,
+      "date": "2025-01-24",
+      "helpful_votes": 27,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "c3978d5e-461d-4b64-bb81-7dd5f65c1bfd",
+      "product_id": "PROD009",
+      "user_id": "8c93fda6-0d79-489c-8937-0ef95ba717d0",
+      "comment": "Tôi thất vọng với sản phẩm này. Gãy tệ thất vọng khó chịu không đặc biệt chẳng chán hư. Thông thường đủ xấu không hài lòng hư lỗi dở chán.",
+      "rating": 2,
+      "date": "2025-03-20",
+      "helpful_votes": 1,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "dfe63c5f-9998-4a64-b5dc-7ce088011540",
+      "product_id": "PROD004",
+      "user_id": "25cb3c0b-c97a-49c3-8c63-c4d9740efe06",
+      "comment": "Tôi chắc chắn sẽ mua lại. Xuất sắc đẹp thường tốt hay hoàn hảo giỏi tốt tuyệt vời.",
+      "rating": 5,
+      "date": "2024-11-25",
+      "helpful_votes": 10,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "e339d251-7e5f-45c9-9070-617877cbf68a",
+      "product_id": "PROD002",
+      "user_id": "fb61f556-22f3-40e6-bb34-52b57036fc07",
+      "comment": "Tôi chắc chắn sẽ mua lại. Hài lòng tiện lợi vời tuyệt hảo vời hài lòng tốt tuyệt tuyệt hài lòng. Đẹp đẹp tạm được tuyệt hoàn hảo tiện lợi tuyệt đẹp cơ bản.",
+      "rating": 5,
+      "date": "2024-11-03",
+      "helpful_votes": 46,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "fc3d4703-2ec3-4d3e-a3e3-b71a2282c114",
+      "product_id": "PROD011",
+      "user_id": "11d61542-417c-45e0-ab49-cc0a54d06861",
+      "comment": "Tôi chắc chắn sẽ mua lại. Yêu tuyệt giỏi hấp dẫn xuất sắc tốt giỏi. Hoàn hảo vời yêu tuyệt vời hỏng không đặc biệt gãy vời đẹp đẹp. Hài lòng tạm được giỏi tuyệt tốt nhất.",
+      "rating": 5,
+      "date": "2024-12-10",
+      "helpful_votes": 34,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "276194bb-aee7-4ba4-8dc4-eae5c1586c51",
+      "product_id": "PROD004",
+      "user_id": "f203562d-4c3a-4b55-add7-c39e1cc44b2d",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tệ tuyệt vời tiện lợi yêu tuyệt vời xuất sắc tốt hấp dẫn hấp dẫn. Hoàn hảo tốt nhất hấp dẫn yêu vời tốt tiện lợi.",
+      "rating": 5,
+      "date": "2024-11-27",
+      "helpful_votes": 42,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "e88c1f00-07eb-4760-9992-ce9ee9bead14",
+      "product_id": "PROD011",
+      "user_id": "36849675-1af9-4a97-b59a-255aecded285",
+      "comment": "Nó tạm ổn với giá tiền. Trung bình trung bình thường không thích bình thường tạm cơ bản tạm được ổn thường. Tạm được tạm tạm ổn cơ bản cơ bản không đặc biệt cơ bản. Tốt cơ bản thường thường ổn trung bình bình thường xấu.",
+      "rating": 3,
+      "date": "2024-10-10",
+      "helpful_votes": 20,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "6de07ee6-1f6c-42b1-ad7b-c4ddb01f660e",
+      "product_id": "PROD015",
+      "user_id": "33bd323a-8288-4309-bd0e-dff4327e193f",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Giỏi yêu tuyệt vời tuyệt vời tuyệt vời tốt tốt kém. Vời tuyệt vời hay hấp dẫn.",
+      "rating": 5,
+      "date": "2025-01-30",
+      "helpful_votes": 45,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "f7ca9877-3aa6-4e99-85b5-8f923575b79f",
+      "product_id": "PROD013",
+      "user_id": "f51ba599-16e3-4268-8c91-6660f4454f39",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tốt trung bình tốt nhất hài lòng hoàn hảo tạm tiện lợi tuyệt hảo tiện lợi không tốt.",
+      "rating": 5,
+      "date": "2024-10-02",
+      "helpful_votes": 46,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "e4d29b87-576d-4d3c-9a5c-ec13d6d5dc1f",
+      "product_id": "PROD008",
+      "user_id": "621aac5c-2274-4faa-987a-8be35745bccc",
+      "comment": "Tôi rất thích sản phẩm này. Tuyệt tuyệt tốt tốt nhất hư hay tuyệt vời thường hay thường. Hoàn hảo thích hài lòng hấp dẫn xuất sắc. Trung bình tệ hài lòng dở tạm.",
+      "rating": 5,
+      "date": "2024-10-07",
+      "helpful_votes": 37,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "88c26f54-8296-4b9e-ae28-d88aeb3aede6",
+      "product_id": "PROD008",
+      "user_id": "b183ed2d-a258-40d2-984f-0c4669d5edca",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Vời tốt giỏi đẹp hấp dẫn tuyệt vời thích.",
+      "rating": 5,
+      "date": "2025-01-21",
+      "helpful_votes": 5,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "db723ccf-560d-48ad-9dca-b474ce227b26",
+      "product_id": "PROD003",
+      "user_id": "e2b76630-347b-4b4a-b7bc-7879c0609411",
+      "comment": "Chất lượng rất tốt. Vời hấp dẫn tiện lợi xuất sắc hài lòng hấp dẫn tốt nhất xấu. Tuyệt hảo bình thường ổn thích tiện lợi tiện lợi hoàn hảo thích hoàn hảo yêu. Đẹp vời tuyệt hảo xuất sắc.",
+      "rating": 5,
+      "date": "2025-01-18",
+      "helpful_votes": 2,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "53c87bcd-8379-462b-b869-24397455c67d",
+      "product_id": "PROD001",
+      "user_id": "99c52dd4-03a8-4a70-a455-b38a85369678",
+      "comment": "Nó hoạt động như mong đợi. Tạm bình thường cơ bản thường đủ trung bình tạm cơ bản.",
+      "rating": 3,
+      "date": "2024-11-23",
+      "helpful_votes": 41,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b5da3845-66c5-49f0-be09-3c66d07cc5ed",
+      "product_id": "PROD010",
+      "user_id": "840513c6-fc53-4efc-9bfa-0bcc28c5a0f6",
+      "comment": "Đây đúng là thứ tôi cần. Đẹp thích tuyệt hảo vời vời vời hoàn hảo đẹp. Yêu gãy tuyệt hảo hay không đặc biệt hấp dẫn hấp dẫn. Gãy không tốt giỏi giỏi.",
+      "rating": 5,
+      "date": "2024-10-05",
+      "helpful_votes": 20,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "892e1065-24e7-44ef-84bf-c63cbc39ff9e",
+      "product_id": "PROD002",
+      "user_id": "70ad7714-e530-40dd-97a7-3f8cdf32dc4d",
+      "comment": "Đây đúng là thứ tôi cần. Vời giỏi xuất sắc đẹp tuyệt xuất sắc ổn xuất sắc hài lòng. Yêu tuyệt tuyệt vời yêu tuyệt vời yêu yêu tuyệt vời.",
+      "rating": 5,
+      "date": "2025-01-18",
+      "helpful_votes": 47,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "77dd35d5-2958-4607-a941-0cf128388482",
+      "product_id": "PROD011",
+      "user_id": "3c05de41-4def-4358-acc4-926f6dbad7e6",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Đủ ổn trung bình thường tiện lợi thất vọng. Bình thường ổn yêu ổn.",
+      "rating": 3,
+      "date": "2025-03-25",
+      "helpful_votes": 2,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "30cdf24d-2ee6-4126-a24a-90d509966c53",
+      "product_id": "PROD003",
+      "user_id": "c9f4aa90-80b8-4717-9c77-3ed787494240",
+      "comment": "Nó hoạt động như mong đợi. Trung bình tạm được tạm được không đặc biệt giỏi không đặc biệt khó chịu.",
+      "rating": 3,
+      "date": "2024-12-09",
+      "helpful_votes": 36,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "9cf9a315-034a-46da-861c-459f8cc7943d",
+      "product_id": "PROD003",
+      "user_id": "2213735c-3538-4792-a421-8b7c8205ff1a",
+      "comment": "Tôi chắc chắn sẽ mua lại. Xuất sắc đẹp yêu yêu vời hay tuyệt vời tuyệt hảo tuyệt.",
+      "rating": 5,
+      "date": "2024-11-26",
+      "helpful_votes": 36,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "eb6a74d7-7873-4719-8205-f7f07fea6a28",
+      "product_id": "PROD012",
+      "user_id": "c42fdb47-f15a-4a4b-9cc5-3b19c3e9d63d",
+      "comment": "Đây đúng là thứ tôi cần. Hay không thích kém tuyệt vời tuyệt vời. Tốt nhất tạm tốt nhất tuyệt vời tuyệt vời hay giỏi yêu hoàn hảo. Yêu đẹp tốt nhất không đặc biệt hay vời xuất sắc hay hoàn hảo tiện lợi.",
+      "rating": 5,
+      "date": "2024-11-15",
+      "helpful_votes": 11,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "a43e88eb-d744-4c2d-b782-fbc9a35f1561",
+      "product_id": "PROD001",
+      "user_id": "5ba28ead-117b-4d0b-bb88-92d2517b9da1",
+      "comment": "Đây là một sản phẩm trung bình. Tạm được tạm không đặc biệt đủ tạm cơ bản đủ đủ thông thường.",
+      "rating": 3,
+      "date": "2025-03-28",
+      "helpful_votes": 26,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "8f5a6c3a-94e9-4c9f-b994-0f198e239e55",
+      "product_id": "PROD003",
+      "user_id": "03bf532f-344e-42d5-8799-2beb5ec2b541",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Cơ bản cơ bản thường thường. Đủ lỗi không đặc biệt ổn thường trung bình trung bình tạm được.",
+      "rating": 3,
+      "date": "2025-02-24",
+      "helpful_votes": 29,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "45e76587-ceec-4683-9d90-07e818a821f5",
+      "product_id": "PROD014",
+      "user_id": "fb2b99f7-800d-4fd8-a91b-71de6b85db32",
+      "comment": "Tôi thất vọng với sản phẩm này. Xấu không hư hỏng không hài lòng dở tệ. Chẳng kém chẳng dở tuyệt thất vọng thất vọng không tốt xấu.",
+      "rating": 1,
+      "date": "2024-12-12",
+      "helpful_votes": 24,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "4add1ca7-b5e7-4187-81ea-4bee66c7e03c",
+      "product_id": "PROD003",
+      "user_id": "b3f04235-a0d8-48ae-81a4-705c5e878df7",
+      "comment": "Nó hoạt động như mong đợi. Ổn dở trung bình dở tạm thông thường thất vọng cơ bản cơ bản không đặc biệt. Trung bình thông thường thông thường thường bình thường không đặc biệt đủ không đặc biệt trung bình trung bình. Thông thường thường ổn tốt trung bình bình thường.",
+      "rating": 3,
+      "date": "2024-11-14",
+      "helpful_votes": 8,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "70dc7a0e-7c19-41e3-bc19-0d607a9145e7",
+      "product_id": "PROD010",
+      "user_id": "88043821-dcfa-4199-8912-39bf5944d4f0",
+      "comment": "Đây đúng là thứ tôi cần. Hài lòng tuyệt vời vời thích tuyệt vời hoàn hảo hoàn hảo. Tuyệt hảo không đẹp hấp dẫn. Tuyệt vời thích tiện lợi hài lòng khó chịu tiện lợi tuyệt hảo bình thường vấn đề.",
+      "rating": 5,
+      "date": "2024-12-13",
+      "helpful_votes": 22,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "4b5e5baa-54d7-4946-a98c-6ab1ae903e87",
+      "product_id": "PROD011",
+      "user_id": "5710fa04-09b9-4760-a52f-44c13e96425b",
+      "comment": "Tôi rất thích sản phẩm này. Hoàn hảo yêu thích trung bình giỏi tuyệt hảo hấp dẫn không đặc biệt. Thích tốt bình thường tuyệt vời giỏi giỏi tiện lợi.",
+      "rating": 5,
+      "date": "2025-01-27",
+      "helpful_votes": 48,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "1dccba01-154d-4a90-901b-f151f6e60bc5",
+      "product_id": "PROD006",
+      "user_id": "92616aa3-0907-4353-b7d8-7830bd71062a",
+      "comment": "Tôi rất thích sản phẩm này. Hấp dẫn tuyệt hấp dẫn tiện lợi hoàn hảo.",
+      "rating": 5,
+      "date": "2025-01-05",
+      "helpful_votes": 34,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "09debe43-3e55-489d-b0d3-1c7d93239516",
+      "product_id": "PROD013",
+      "user_id": "f22b7a81-c94c-4b37-ae71-080980c8bd9b",
+      "comment": "Tôi thất vọng với sản phẩm này. Đủ lỗi không thích chẳng.",
+      "rating": 2,
+      "date": "2025-03-20",
+      "helpful_votes": 43,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "c3fa1799-af5d-470e-9e50-60276600705c",
+      "product_id": "PROD005",
+      "user_id": "74e2fea2-9b1a-4ec7-a2e5-5997689d7cee",
+      "comment": "Nó hoạt động như mong đợi. Tạm thường trung bình trung bình thích thông thường thường bình thường tạm cơ bản.",
+      "rating": 3,
+      "date": "2025-03-27",
+      "helpful_votes": 17,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "eeaa5896-7eba-4b30-8ed3-087657ac6218",
+      "product_id": "PROD011",
+      "user_id": "efcc1271-55bd-49b3-8ea5-0aee10bbd4d1",
+      "comment": "Tôi rất thích sản phẩm này. Tuyệt yêu tiện lợi hoàn hảo tuyệt tiện lợi đẹp giỏi hấp dẫn hay. Tiện lợi tuyệt hảo kém hoàn hảo tạm được yêu. Tuyệt tốt hoàn hảo yêu.",
+      "rating": 5,
+      "date": "2025-01-23",
+      "helpful_votes": 21,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "72bb892c-c6cc-42bc-bb62-e934e2081234",
+      "product_id": "PROD003",
+      "user_id": "cfb40466-5773-4c79-9c29-ca5358cd3633",
+      "comment": "Tôi chắc chắn sẽ mua lại. Đẹp tuyệt vời xuất sắc hoàn hảo tuyệt vời.",
+      "rating": 5,
+      "date": "2025-03-12",
+      "helpful_votes": 9,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "1ba40e91-e5db-4599-93e5-eb179edd739e",
+      "product_id": "PROD002",
+      "user_id": "c90635a6-11da-43f0-99c2-fd243ac96697",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt nhất yêu thích bình thường hài lòng vời giỏi hoàn hảo. Thường thích hấp dẫn thích. Vời thích hoàn hảo xuất sắc xuất sắc xuất sắc yêu.",
+      "rating": 5,
+      "date": "2025-01-25",
+      "helpful_votes": 14,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "f95f81c5-bab6-4e60-8432-da0cf2648d06",
+      "product_id": "PROD002",
+      "user_id": "74c1f82e-4dcf-45b0-82a1-ed113e8eecc6",
+      "comment": "Chất lượng rất tốt. Đẹp tuyệt hảo thích hoàn hảo hoàn hảo không vấn đề.",
+      "rating": 5,
+      "date": "2025-03-16",
+      "helpful_votes": 26,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "5fe4105e-1ecb-429b-a78c-0722354337f8",
+      "product_id": "PROD001",
+      "user_id": "e318c815-09f3-4ae4-9f6c-b781b4cfbd5b",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt nhất vời tốt hoàn hảo. Thích tốt nhất tuyệt hảo đẹp xuất sắc tốt tạm gãy đẹp. Hoàn hảo yêu xuất sắc tốt nhất chẳng tốt tuyệt hảo tuyệt hảo tuyệt hảo tuyệt vời.",
+      "rating": 5,
+      "date": "2025-03-10",
+      "helpful_votes": 36,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "35a9dcf4-4b2d-439c-9729-1fa99e0e7aab",
+      "product_id": "PROD012",
+      "user_id": "9b069d7f-f6c5-4304-a521-115ee0bc3d9f",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tiện lợi hoàn hảo tốt hay hấp dẫn. Hay tiện lợi xuất sắc hài lòng hay. Tuyệt vời yêu không đặc biệt hay tiện lợi tuyệt hảo hay vời thường hoàn hảo.",
+      "rating": 5,
+      "date": "2025-02-27",
+      "helpful_votes": 40,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "07ac21e2-08b4-45a8-b6c2-e4512150ac7d",
+      "product_id": "PROD012",
+      "user_id": "d460a077-35e5-4b5f-b612-7293795c0836",
+      "comment": "Đây là sự lãng phí tiền bạc. Hỏng không chán tuyệt hảo tệ. Không hài lòng chán không tốt xuất sắc lỗi không tốt thất vọng.",
+      "rating": 2,
+      "date": "2025-01-29",
+      "helpful_votes": 6,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "31145de6-1a66-4614-a471-939cf6c8c7af",
+      "product_id": "PROD001",
+      "user_id": "44844a81-de83-4f1b-aff3-0096a60b2eef",
+      "comment": "Tôi thất vọng với sản phẩm này. Gãy hư xuất sắc không thích không tốt đủ.",
+      "rating": 2,
+      "date": "2024-11-21",
+      "helpful_votes": 19,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "9be4044f-704e-4f56-a963-130e85ece3d9",
+      "product_id": "PROD005",
+      "user_id": "b28ca23a-619b-4a94-958d-7d873b2a0356",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Tệ không đặc biệt gãy khó chịu. Hỏng hỏng không kém hoàn hảo xấu.",
+      "rating": 2,
+      "date": "2025-03-31",
+      "helpful_votes": 11,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "fac41ab6-4d66-4888-8cbc-bfd2db9472ec",
+      "product_id": "PROD009",
+      "user_id": "b1e58bdf-1105-44d3-8c69-04ea668c0b94",
+      "comment": "Chất lượng rất tốt. Vời hấp dẫn ổn thích thích đẹp xuất sắc thích hay.",
+      "rating": 5,
+      "date": "2024-12-01",
+      "helpful_votes": 28,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "62963b45-e15d-43a6-ae85-b8587721833d",
+      "product_id": "PROD015",
+      "user_id": "2aefb61d-a188-4007-8d69-f5e297cfc9d3",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Bình thường thông thường cơ bản trung bình tạm bình thường hỏng cơ bản. Thông thường thông thường tạm được đủ ổn không đặc biệt không đặc biệt cơ bản bình thường. Trung bình ổn trung bình đẹp.",
+      "rating": 3,
+      "date": "2024-10-17",
+      "helpful_votes": 16,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "20c45245-83e2-431a-8d9c-2276023239d5",
+      "product_id": "PROD012",
+      "user_id": "4f5b4b69-5104-49c9-8af3-82fe2e647b44",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tuyệt hảo hay xuất sắc tốt nhất xuất sắc.",
+      "rating": 5,
+      "date": "2024-10-14",
+      "helpful_votes": 27,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "4031e918-8b7a-4392-8d22-a35628160050",
+      "product_id": "PROD012",
+      "user_id": "c15aa9e8-0766-481d-8916-e2d195a01341",
+      "comment": "Đây đúng là thứ tôi cần. Tiện lợi không thích xuất sắc tuyệt hảo đẹp tuyệt hảo hấp dẫn đủ tuyệt hảo giỏi.",
+      "rating": 5,
+      "date": "2024-12-26",
+      "helpful_votes": 47,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "6b4180ce-c6ac-4217-b1ba-025f407ef7db",
+      "product_id": "PROD009",
+      "user_id": "10694e0f-0cb4-4849-8e45-9c6dda672e2d",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Tạm cơ bản tạm ổn không đặc biệt tạm.",
+      "rating": 3,
+      "date": "2025-01-04",
+      "helpful_votes": 2,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "aaabeba5-0029-472c-bb64-cfc98986adee",
+      "product_id": "PROD014",
+      "user_id": "fc6d0375-bcb7-42e2-9994-cf265f932740",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tuyệt hảo tuyệt vời thích tuyệt thích hoàn hảo vời tuyệt.",
+      "rating": 5,
+      "date": "2024-12-08",
+      "helpful_votes": 50,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "9c6fcdde-f779-470b-8f28-c80f6a09dd9a",
+      "product_id": "PROD015",
+      "user_id": "90aa40e2-f162-4b1e-9113-5aa0c4525a8a",
+      "comment": "Đây đúng là thứ tôi cần. Hay tuyệt hảo tuyệt hảo tốt hoàn hảo tuyệt tốt nhất hoàn hảo tuyệt giỏi. Tuyệt tốt nhất hoàn hảo tuyệt hảo giỏi tiện lợi vời hoàn hảo vời tiện lợi.",
+      "rating": 5,
+      "date": "2024-11-16",
+      "helpful_votes": 15,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "6a62bab5-0e42-4547-a780-87586e8aa283",
+      "product_id": "PROD012",
+      "user_id": "8e1466d9-5db7-4630-aa4f-0be82addfd21",
+      "comment": "Tôi rất thích sản phẩm này. Xuất sắc tuyệt vời giỏi thích hấp dẫn hài lòng. Tuyệt yêu tốt nhất hoàn hảo giỏi tốt. Tốt đẹp tuyệt hảo hoàn hảo tuyệt xuất sắc tiện lợi.",
+      "rating": 5,
+      "date": "2025-01-19",
+      "helpful_votes": 21,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "5e6bc09e-01e7-475b-b4e2-3100e2336ab6",
+      "product_id": "PROD013",
+      "user_id": "fdd037e9-2d91-4f29-a093-58a80fbd5080",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt tuyệt hài lòng lỗi hoàn hảo giỏi hấp dẫn tiện lợi. Tạm được hoàn hảo hấp dẫn hư thường tuyệt không đặc biệt xấu.",
+      "rating": 5,
+      "date": "2025-03-21",
+      "helpful_votes": 47,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "6174fac6-a2d3-4d50-ba90-687dab6f6dd1",
+      "product_id": "PROD013",
+      "user_id": "e0ffaa1a-d524-47b2-9318-631f8e563b0e",
+      "comment": "Tôi rất thích sản phẩm này. Vời tuyệt hảo tuyệt giỏi không đặc biệt xuất sắc giỏi hoàn hảo tuyệt.",
+      "rating": 5,
+      "date": "2024-10-21",
+      "helpful_votes": 7,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "6e127dcf-1ef6-49ba-a505-9ed9a108e636",
+      "product_id": "PROD004",
+      "user_id": "83d184d1-5dd8-4b88-a2bb-923c7d79de35",
+      "comment": "Đây đúng là thứ tôi cần. Tuyệt hảo tốt tuyệt hảo tốt nhất thích. Tốt hoàn hảo tốt nhất xuất sắc yêu tuyệt hảo.",
+      "rating": 5,
+      "date": "2024-12-24",
+      "helpful_votes": 12,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "37549247-4025-44bd-a284-54d3826021f2",
+      "product_id": "PROD006",
+      "user_id": "9b262aca-a6f0-4cc5-938f-e2ad24cc2061",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Hỏng thất vọng hư tuyệt vời kém tệ. Chán khó chịu cơ bản chẳng hư thất vọng gãy. Xấu hư dở vấn đề đẹp không thích dở lỗi dở dở.",
+      "rating": 2,
+      "date": "2025-01-08",
+      "helpful_votes": 40,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "9a3f10ec-5b8b-492b-bb71-f68dc37ef4fa",
+      "product_id": "PROD004",
+      "user_id": "5e2573f7-e517-4d76-9c9d-0daf67f2cb33",
+      "comment": "Tôi thất vọng với sản phẩm này. Hỏng khó chịu gãy gãy đủ.",
+      "rating": 2,
+      "date": "2025-02-10",
+      "helpful_votes": 21,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "ca8c7a1f-cd43-4c8d-8d21-a506a908639e",
+      "product_id": "PROD002",
+      "user_id": "5744ff17-8221-4040-aadc-b8215519ad32",
+      "comment": "Tôi rất thích sản phẩm này. Tốt thích vời bình thường.",
+      "rating": 5,
+      "date": "2025-02-09",
+      "helpful_votes": 17,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "0dcc2765-f3b2-4eac-9755-f8a9265c742a",
+      "product_id": "PROD010",
+      "user_id": "045c6980-545e-4fe3-9d6c-0e572aff809a",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Xuất sắc tốt nhất thích yêu hoàn hảo tạm thích tốt. Giỏi tốt kém hài lòng. Khó chịu tuyệt vời hay tuyệt vời tốt tốt nhất vời thông thường hay vời.",
+      "rating": 5,
+      "date": "2025-01-21",
+      "helpful_votes": 4,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "3016f216-1fd3-43f7-a1ab-bc36aa4d4a5a",
+      "product_id": "PROD008",
+      "user_id": "a0db52bd-6daa-44f6-841d-2bbc547e9e6d",
+      "comment": "Nó tạm ổn với giá tiền. Ổn chán đủ tạm được đủ tạm chẳng.",
+      "rating": 3,
+      "date": "2024-12-12",
+      "helpful_votes": 12,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "dfc65838-cee0-4b98-8991-f0f5f5121ced",
+      "product_id": "PROD001",
+      "user_id": "058a30a7-16e0-4b31-b3b5-010f9b49f87d",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt nhất tuyệt vời tuyệt hảo vời hay xuất sắc giỏi vấn đề chẳng.",
+      "rating": 5,
+      "date": "2024-11-02",
+      "helpful_votes": 29,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "c90b07ff-c560-4c3e-858c-5fbf25b536c1",
+      "product_id": "PROD013",
+      "user_id": "08f7ef8f-e6c4-4746-bc3f-a7ed9a56aae3",
+      "comment": "Đây đúng là thứ tôi cần. Tốt vời hay tuyệt hảo giỏi xuất sắc không thích hài lòng tốt nhất hoàn hảo. Xuất sắc tốt nhất xuất sắc hay đẹp thích giỏi. Hấp dẫn tuyệt vời đẹp tuyệt vời hoàn hảo xuất sắc ổn tuyệt.",
+      "rating": 5,
+      "date": "2025-02-10",
+      "helpful_votes": 50,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "50a24d73-3f6c-4dea-ab3f-5a87e2ab2fe5",
+      "product_id": "PROD011",
+      "user_id": "1aa83515-dd9b-4306-8ed2-f5ac4e706461",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Bình thường trung bình không đặc biệt trung bình thường ổn. Không đặc biệt tạm thông thường thường bình thường cơ bản.",
+      "rating": 3,
+      "date": "2025-01-19",
+      "helpful_votes": 11,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "5ac09849-2079-4aef-aa84-748c6427935e",
+      "product_id": "PROD008",
+      "user_id": "a4eb7673-6262-4d69-afbc-865d2b8667a6",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Không hài lòng tệ xuất sắc không hài lòng hấp dẫn. Chẳng không hài lòng vấn đề kém xấu chẳng.",
+      "rating": 1,
+      "date": "2025-03-12",
+      "helpful_votes": 39,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "f50b498d-69d4-4486-b56f-745c7e454b86",
+      "product_id": "PROD011",
+      "user_id": "a392cb83-eb18-475f-8ef4-52313b3a5e04",
+      "comment": "Chất lượng rất tốt. Tạm được tuyệt hảo tiện lợi giỏi tuyệt vời hoàn hảo đẹp.",
+      "rating": 5,
+      "date": "2024-12-17",
+      "helpful_votes": 32,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "e33b0cfd-0e6a-4696-8f60-31f5c89b70e1",
+      "product_id": "PROD008",
+      "user_id": "7bdc9c13-5464-40d7-95fd-e843851fc638",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Tệ hỏng xấu không thích. Đủ hỏng tệ không thích.",
+      "rating": 2,
+      "date": "2025-01-30",
+      "helpful_votes": 8,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "1dd75739-14e2-4dfd-be20-40b57668dd7c",
+      "product_id": "PROD005",
+      "user_id": "3ff07ff9-b9ff-4ccb-8ab3-8f5263326c07",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Hư thất vọng không không dở. Không thích xấu gãy hư khó chịu không không hài lòng. Chán vấn đề không thất vọng khó chịu gãy.",
+      "rating": 1,
+      "date": "2025-03-23",
+      "helpful_votes": 2,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "e481c892-fe1b-4a3d-90dc-86ae71586ae0",
+      "product_id": "PROD009",
+      "user_id": "9dfe9181-0b62-4f78-af43-c8cb3eb0c8a2",
+      "comment": "Chất lượng rất tốt. Thích thích tiện lợi giỏi tuyệt thích tiện lợi.",
+      "rating": 5,
+      "date": "2024-10-10",
+      "helpful_votes": 2,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "7ddbcf12-0e2f-45de-86a0-b959497ff25b",
+      "product_id": "PROD006",
+      "user_id": "834cdd2a-4e4e-413f-9735-b1c5b4f426e8",
+      "comment": "Tôi thất vọng với sản phẩm này. Chán không lỗi gãy hư không hài lòng thất vọng không hài lòng.",
+      "rating": 1,
+      "date": "2025-01-10",
+      "helpful_votes": 23,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "d5d78d78-b4d8-481a-8615-669bcd059c2b",
+      "product_id": "PROD005",
+      "user_id": "9199a32f-3cbc-4b0a-aa1d-415800a3269a",
+      "comment": "Chất lượng rất tốt. Hấp dẫn tuyệt vời hay yêu hay xuất sắc.",
+      "rating": 5,
+      "date": "2024-10-17",
+      "helpful_votes": 0,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "51097916-fd48-471e-a914-54316bf91e9d",
+      "product_id": "PROD009",
+      "user_id": "741a7f48-c2a3-4952-82aa-b4ac0a08b500",
+      "comment": "Nó tạm ổn với giá tiền. Không hài lòng ổn tạm được tuyệt ổn tiện lợi bình thường không đặc biệt thông thường tạm được. Thường thông thường cơ bản đủ không đặc biệt tạm được thông thường tạm được tạm thông thường.",
+      "rating": 3,
+      "date": "2025-01-30",
+      "helpful_votes": 43,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "76d8df57-02ef-41af-8159-bf23534bd9ba",
+      "product_id": "PROD001",
+      "user_id": "f25f3849-22d1-4f91-a6d8-3a5291e076b9",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tuyệt vời giỏi thích giỏi hay.",
+      "rating": 5,
+      "date": "2024-11-11",
+      "helpful_votes": 36,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "b308a535-ba0d-4513-88bd-579aaffb3230",
+      "product_id": "PROD003",
+      "user_id": "6a867580-42dd-4324-9bfe-fea02b5bfcaf",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Giỏi hấp dẫn tốt nhất yêu bình thường hoàn hảo tốt. Hài lòng giỏi hấp dẫn thích thất vọng vời.",
+      "rating": 5,
+      "date": "2025-03-03",
+      "helpful_votes": 13,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "b4b4e381-8a6a-4111-8cb4-70bd4dd134e9",
+      "product_id": "PROD013",
+      "user_id": "cc2725a9-fd78-4c41-a7b6-d65dd5b05848",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tốt nhất không đặc biệt tuyệt hảo tuyệt hảo tốt nhất giỏi tiện lợi tuyệt hảo tốt chán.",
+      "rating": 5,
+      "date": "2024-12-03",
+      "helpful_votes": 42,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "106e958c-7284-43b0-a02e-a12a688543ba",
+      "product_id": "PROD013",
+      "user_id": "69bc6c89-404d-451c-a455-ce8290a348a7",
+      "comment": "Đây đúng là thứ tôi cần. Đẹp hấp dẫn hài lòng đẹp tốt nhất hài lòng đẹp xuất sắc hay. Tốt tuyệt vời vời giỏi hay tốt nhất yêu tốt nhất. Hay tuyệt hảo tuyệt hảo tuyệt chán thất vọng tuyệt.",
+      "rating": 5,
+      "date": "2025-03-21",
+      "helpful_votes": 13,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "5b1a80f3-d6a8-457c-b4d5-dd5e4b6332f2",
+      "product_id": "PROD006",
+      "user_id": "919d3c19-ccdc-4af1-9e56-71c098ca0a36",
+      "comment": "Tôi rất thích sản phẩm này. Giỏi tuyệt vời tuyệt hảo yêu tốt vời.",
+      "rating": 5,
+      "date": "2025-02-26",
+      "helpful_votes": 23,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "55576cd7-af96-4ca4-a78f-362f3fae0686",
+      "product_id": "PROD002",
+      "user_id": "d7d9dcfc-6b83-4f67-891f-1e4aa75e52c0",
+      "comment": "Chất lượng rất tốt. Tuyệt vời hay xuất sắc vời đủ hấp dẫn hư. Tuyệt tạm được thích tuyệt tốt giỏi hài lòng vời vời.",
+      "rating": 5,
+      "date": "2025-01-18",
+      "helpful_votes": 30,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "4e56e9c5-7d44-4843-ad33-08ba901e09e3",
+      "product_id": "PROD013",
+      "user_id": "41028f66-82d0-4c53-b4ae-2c8311278573",
+      "comment": "Tôi rất thích sản phẩm này. Không xuất sắc hay hay tiện lợi tiện lợi xuất sắc đẹp.",
+      "rating": 5,
+      "date": "2024-12-20",
+      "helpful_votes": 38,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "edce8b6c-cd92-4dd5-9b6c-46c91b666dbc",
+      "product_id": "PROD005",
+      "user_id": "fd8baf76-1079-4a55-9a36-ea11a7ca86cb",
+      "comment": "Đây đúng là thứ tôi cần. Giỏi tốt xuất sắc hấp dẫn hấp dẫn xuất sắc tốt nhất. Tốt nhất hài lòng hài lòng tốt xấu hấp dẫn yêu tiện lợi giỏi.",
+      "rating": 5,
+      "date": "2024-12-23",
+      "helpful_votes": 2,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "bec47549-8685-4824-af6a-20d4a591d211",
+      "product_id": "PROD013",
+      "user_id": "72cb7be9-d68b-4b12-af86-89c7a4e8a47a",
+      "comment": "Chất lượng rất tốt. Tiện lợi thích hấp dẫn yêu xuất sắc xuất sắc tuyệt vời hay khó chịu hấp dẫn. Vời tuyệt hảo tốt hoàn hảo hấp dẫn đẹp tạm được hay. Đẹp giỏi thích hay cơ bản tuyệt đẹp kém hoàn hảo.",
+      "rating": 5,
+      "date": "2024-12-12",
+      "helpful_votes": 46,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b5168325-9c71-4a3e-9059-e17e55321a40",
+      "product_id": "PROD015",
+      "user_id": "57cb0fda-2a5d-465d-8c49-c98a94b56e9c",
+      "comment": "Đây đúng là thứ tôi cần. Xuất sắc không tốt tiện lợi đẹp tuyệt hảo tuyệt vời. Chẳng tuyệt hảo không hài lòng tuyệt vời hấp dẫn.",
+      "rating": 5,
+      "date": "2024-11-10",
+      "helpful_votes": 39,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "59489416-a956-4b45-ba17-b9e8cde35057",
+      "product_id": "PROD009",
+      "user_id": "772e6c36-02ec-4eab-8487-e3caf98e099f",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tuyệt vời tốt tuyệt tuyệt hảo tuyệt tốt nhất tốt nhất. Tốt vời yêu tốt xuất sắc dở tuyệt vời tạm được. Yêu hấp dẫn gãy hay.",
+      "rating": 5,
+      "date": "2024-10-19",
+      "helpful_votes": 11,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "c7479a54-1ab5-4fc1-83d2-47428d6395d3",
+      "product_id": "PROD001",
+      "user_id": "61d3d122-0669-4dd5-b021-98e9b224b767",
+      "comment": "Nó hoạt động như mong đợi. Trung bình tạm được cơ bản thường không đặc biệt thường. Cơ bản tiện lợi thường đủ ổn giỏi. Tạm được không đặc biệt không đặc biệt thường thường bình thường ổn không đặc biệt tạm.",
+      "rating": 3,
+      "date": "2024-10-22",
+      "helpful_votes": 22,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "f7dce72d-5799-4239-8087-47a98230ef9a",
+      "product_id": "PROD009",
+      "user_id": "d9563da3-a4c0-4c42-9bbb-4413a660b6d5",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Tạm được ổn ổn thông thường không đặc biệt thông thường không đặc biệt ổn thông thường tạm được. Tạm cơ bản thường chẳng thông thường tốt nhất bình thường không đủ cơ bản.",
+      "rating": 3,
+      "date": "2024-12-17",
+      "helpful_votes": 50,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "e286df6f-9f3a-4b5e-aa44-00c44a92d834",
+      "product_id": "PROD012",
+      "user_id": "64fdcee3-c145-4fcc-8162-055cdd6bad28",
+      "comment": "Tôi rất thích sản phẩm này. Hấp dẫn vời chẳng tuyệt hảo đẹp.",
+      "rating": 5,
+      "date": "2025-01-30",
+      "helpful_votes": 34,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "90459f08-3f7d-41fa-948a-43998af424e5",
+      "product_id": "PROD010",
+      "user_id": "1b4af7a8-3fa4-4132-a167-1e1f198e2c9e",
+      "comment": "Nó hoạt động như mong đợi. Trung bình tạm được thông thường chán thích tốt thích. Đủ tạm được thông thường đủ trung bình. Tạm vời khó chịu tạm được tạm xấu đủ vời.",
+      "rating": 3,
+      "date": "2025-01-13",
+      "helpful_votes": 41,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "f5366980-d96e-4d36-9449-c76e8a88dcf7",
+      "product_id": "PROD014",
+      "user_id": "dff6fdac-0465-406d-a3e9-ff3e27fdff11",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tuyệt tuyệt hảo đẹp thích yêu hay. Tuyệt hoàn hảo hấp dẫn yêu tuyệt vời đẹp thích tốt nhất hấp dẫn hay. Đẹp không thích hoàn hảo yêu hay kém xuất sắc.",
+      "rating": 5,
+      "date": "2025-02-15",
+      "helpful_votes": 10,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "24058e95-0dfc-4ae1-b37a-006a4934285d",
+      "product_id": "PROD009",
+      "user_id": "392c1db0-ac62-41b0-b025-01362f723bd7",
+      "comment": "Chất lượng rất tốt. Tuyệt vời đủ yêu hoàn hảo vời bình thường hấp dẫn hấp dẫn. Hài lòng hay xuất sắc hoàn hảo tuyệt vời thích tiện lợi tốt nhất hài lòng. Yêu trung bình hấp dẫn tiện lợi bình thường tiện lợi tuyệt hảo tuyệt vời tuyệt hảo tốt nhất.",
+      "rating": 5,
+      "date": "2024-11-12",
+      "helpful_votes": 41,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "88e53d59-2683-4a08-a2e0-1349a2f59d1a",
+      "product_id": "PROD008",
+      "user_id": "42839b5b-b8a8-44d0-a73b-ea67af436726",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Không tốt hỏng đủ khó chịu chẳng khó chịu lỗi. Hỏng chẳng không thích gãy không tốt vấn đề dở không. Không tốt không hài lòng khó chịu dở ổn hỏng dở hỏng.",
+      "rating": 1,
+      "date": "2025-03-08",
+      "helpful_votes": 37,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "4cf61c8a-48d0-41c5-acdc-7caa0b6b9ec0",
+      "product_id": "PROD004",
+      "user_id": "da4f36b8-e663-407a-abef-5b0f0e4e304f",
+      "comment": "Chất lượng rất kém. Hỏng không không thích dở. Không tốt khó chịu thích hư thất vọng hỏng.",
+      "rating": 2,
+      "date": "2024-11-17",
+      "helpful_votes": 28,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "f8856a97-5a7f-4867-aacc-e311d055303a",
+      "product_id": "PROD007",
+      "user_id": "c67a887f-8f0b-44dd-8fb2-8c4c7451eb92",
+      "comment": "Nó tạm ổn với giá tiền. Đủ yêu thường trung bình chán tạm được bình thường bình thường trung bình.",
+      "rating": 3,
+      "date": "2025-01-17",
+      "helpful_votes": 40,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b2780040-cf7d-41c3-833d-0906dd3bfa69",
+      "product_id": "PROD001",
+      "user_id": "40ddd54c-01c6-4b23-8958-02d73a0c8915",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Thích tuyệt tốt nhất hay yêu vời.",
+      "rating": 5,
+      "date": "2024-11-01",
+      "helpful_votes": 20,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "942c9fce-85f5-4b10-83e2-12731b1260b0",
+      "product_id": "PROD012",
+      "user_id": "127988b3-7d4c-4fa7-92b4-15d468c3b80f",
+      "comment": "Tôi rất thích sản phẩm này. Hấp dẫn tiện lợi thông thường cơ bản tốt nhất hài lòng. Tuyệt tốt nhất thích đẹp.",
+      "rating": 5,
+      "date": "2025-03-31",
+      "helpful_votes": 2,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "7e68378c-124f-412b-b523-eaae1a56a1ee",
+      "product_id": "PROD010",
+      "user_id": "8d68e0c5-964b-4861-9a71-35bc3e373031",
+      "comment": "Tôi chắc chắn sẽ mua lại. Đẹp hấp dẫn tuyệt tuyệt hảo tiện lợi tuyệt vời không hài lòng hài lòng tiện lợi không đặc biệt.",
+      "rating": 5,
+      "date": "2024-10-19",
+      "helpful_votes": 30,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "61c294bc-e351-4f39-b000-feee885d7961",
+      "product_id": "PROD011",
+      "user_id": "67dd7651-b53d-4ac7-819a-154221cfba2c",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Không hài lòng vấn đề chán hài lòng không không đặc biệt lỗi gãy hấp dẫn không hài lòng.",
+      "rating": 1,
+      "date": "2025-02-08",
+      "helpful_votes": 5,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "12ce326d-cbb8-45b8-8699-d53192a1c6c7",
+      "product_id": "PROD014",
+      "user_id": "9d357962-b8c8-4f35-a6fc-c0adaf02093e",
+      "comment": "Chất lượng rất tốt. Thích xuất sắc kém hoàn hảo tuyệt hấp dẫn tuyệt. Hay tiện lợi đủ tốt. Không tốt tiện lợi hoàn hảo hoàn hảo.",
+      "rating": 5,
+      "date": "2025-03-04",
+      "helpful_votes": 1,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "5f5c89c6-b743-4677-8302-21e6efcf183f",
+      "product_id": "PROD003",
+      "user_id": "c5f23f30-2216-4a7f-9cf9-2bfdc2c69b19",
+      "comment": "Tôi rất thích sản phẩm này. Hoàn hảo tệ yêu tốt nhất hỏng tốt tuyệt vời lỗi vời. Thích tốt nhất tốt nhất giỏi xuất sắc hay tốt thích.",
+      "rating": 5,
+      "date": "2024-10-23",
+      "helpful_votes": 41,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "9714db29-1a20-4a16-aa55-149978e71254",
+      "product_id": "PROD002",
+      "user_id": "fed5ffd4-5962-4dcc-9463-e0062345ba0e",
+      "comment": "Nó tạm ổn với giá tiền. Đủ không đặc biệt bình thường trung bình không đặc biệt thường ổn ổn xấu. Ổn tiện lợi thông thường ổn. Đủ ổn bình thường trung bình trung bình thông thường cơ bản đủ.",
+      "rating": 3,
+      "date": "2024-10-27",
+      "helpful_votes": 41,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "7f96f44b-4bbf-426b-b6b7-00b1fc6da008",
+      "product_id": "PROD009",
+      "user_id": "12f7c198-5de1-4859-b6e8-f6343b887f2b",
+      "comment": "Chất lượng rất tốt. Yêu đẹp xuất sắc tuyệt vời thích.",
+      "rating": 5,
+      "date": "2025-02-10",
+      "helpful_votes": 10,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "1da6a418-0cd7-4675-b42b-a07ecf4755a7",
+      "product_id": "PROD010",
+      "user_id": "bba024bd-9618-48da-9a35-b93e1b69caf0",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Tệ chán lỗi không tốt khó chịu lỗi. Thất vọng không hài lòng chẳng khó chịu xấu không đặc biệt không thích. Yêu hư kém gãy gãy.",
+      "rating": 1,
+      "date": "2024-12-12",
+      "helpful_votes": 27,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "05bd5cc0-6e3b-47aa-a8ff-dd1ec15c422b",
+      "product_id": "PROD005",
+      "user_id": "779fd423-9913-4092-b56a-c485b98b3fa3",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Chẳng lỗi không hài lòng thất vọng khó chịu thất vọng.",
+      "rating": 2,
+      "date": "2025-01-25",
+      "helpful_votes": 45,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "0b90a223-a2ee-4c9d-b0c6-0178beacbc0b",
+      "product_id": "PROD004",
+      "user_id": "66b19e01-2e19-45c8-9bd7-7e1cc5655f80",
+      "comment": "Đây đúng là thứ tôi cần. Yêu thích xuất sắc thích tốt nhất tiện lợi hay tuyệt hảo hài lòng tuyệt vời.",
+      "rating": 5,
+      "date": "2024-11-10",
+      "helpful_votes": 28,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "e9409f7f-9f05-4f2d-b615-54ea928f5ead",
+      "product_id": "PROD014",
+      "user_id": "3fc55c47-cb2b-4ad4-87b8-420d8a512467",
+      "comment": "Đây đúng là thứ tôi cần. Hoàn hảo yêu tốt giỏi hay.",
+      "rating": 5,
+      "date": "2025-03-27",
+      "helpful_votes": 7,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "ffffa0c1-06db-4aee-b01b-7cea7b44cb1f",
+      "product_id": "PROD009",
+      "user_id": "538dd264-0796-4a00-a052-a3a8d9d7b2ee",
+      "comment": "Nó tạm ổn với giá tiền. Đủ ổn cơ bản tiện lợi trung bình tạm tạm được thường ổn tạm được. Đủ trung bình ổn thông thường tốt nhất hài lòng.",
+      "rating": 3,
+      "date": "2024-11-06",
+      "helpful_votes": 42,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "3370eeeb-bd36-4926-b7d2-c41270614f38",
+      "product_id": "PROD009",
+      "user_id": "93931ec4-5646-4bd0-af21-226e74268465",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Thường ổn cơ bản thường trung bình không đặc biệt.",
+      "rating": 3,
+      "date": "2024-12-18",
+      "helpful_votes": 2,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "df6efa09-8d80-4a15-968f-a1e9a1b87be5",
+      "product_id": "PROD004",
+      "user_id": "b170edcc-dd70-4800-9f9a-07d0a9f4eb8b",
+      "comment": "Chất lượng rất tốt. Tuyệt đẹp tuyệt xuất sắc tiện lợi giỏi hoàn hảo. Tuyệt tuyệt vời hài lòng xuất sắc hoàn hảo thông thường hoàn hảo giỏi.",
+      "rating": 5,
+      "date": "2025-01-28",
+      "helpful_votes": 10,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "2f72a5d7-776d-4813-8fad-d08d61eee0f3",
+      "product_id": "PROD006",
+      "user_id": "d7c934c9-30f9-4791-9ea4-3551ddb2f613",
+      "comment": "Nó tạm ổn với giá tiền. Trung bình tạm tạm được trung bình tiện lợi tạm thường trung bình thường ổn. Ổn tạm được cơ bản tạm được không không hài lòng thông thường tạm xuất sắc.",
+      "rating": 3,
+      "date": "2025-02-15",
+      "helpful_votes": 23,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "5b6bea01-9cc1-451a-8054-aaf140ceb531",
+      "product_id": "PROD001",
+      "user_id": "d00d407e-2ca7-48a2-ad37-64ae65304fce",
+      "comment": "Nó tạm ổn với giá tiền. Bình thường cơ bản thông thường thông thường cơ bản thường. Trung bình chán thường hấp dẫn bình thường thường đủ hay cơ bản bình thường. Tạm được trung bình không đặc biệt đủ.",
+      "rating": 3,
+      "date": "2025-01-31",
+      "helpful_votes": 27,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "9671af7f-a55b-411b-8b71-b92fb50ac4e2",
+      "product_id": "PROD008",
+      "user_id": "4a326d28-deb0-4ab4-bbf7-dcced722fd43",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Hỏng thông thường xấu thất vọng hài lòng xấu. Thất vọng lỗi vấn đề gãy. Xuất sắc thất vọng xấu gãy kém lỗi khó chịu không thích không hài lòng hỏng.",
+      "rating": 1,
+      "date": "2025-02-06",
+      "helpful_votes": 29,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "8772eddd-da5c-4d27-84a6-e19612f49cb1",
+      "product_id": "PROD008",
+      "user_id": "e6bf1bf7-69ce-4d40-a334-6a733b9a6dd2",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Tuyệt hảo tuyệt vời ổn tạm được đủ. Không đặc biệt không không đặc biệt ổn đủ thường đủ. Cơ bản thường tuyệt hảo thông thường tạm được tạm được gãy không đặc biệt.",
+      "rating": 3,
+      "date": "2025-02-14",
+      "helpful_votes": 40,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "4b9d97f2-6b1a-4a6c-9d4d-f46e7caf6427",
+      "product_id": "PROD009",
+      "user_id": "ec1c2f26-5b45-4ed6-a57e-11e957ef6a40",
+      "comment": "Chất lượng rất tốt. Hay tốt hay đẹp tuyệt vời tuyệt hoàn hảo yêu.",
+      "rating": 5,
+      "date": "2024-12-31",
+      "helpful_votes": 16,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "0954d632-bbb2-442a-adb9-fd8e841b8c3e",
+      "product_id": "PROD002",
+      "user_id": "c4901a70-ead4-4faa-8763-8efb294beb11",
+      "comment": "Đây đúng là thứ tôi cần. Kém hay hài lòng hài lòng hấp dẫn đủ tuyệt vời.",
+      "rating": 5,
+      "date": "2025-01-18",
+      "helpful_votes": 39,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "160de9d9-fabe-4984-9d33-fa16494e8abc",
+      "product_id": "PROD009",
+      "user_id": "1bd6b7d8-2f9d-4c83-8ef3-11dc186e2758",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Dở tệ hỏng chán thất vọng thất vọng không thích không. Tệ chẳng dở dở ổn dở hư. Vấn đề xấu tệ tệ không thất vọng.",
+      "rating": 1,
+      "date": "2025-03-20",
+      "helpful_votes": 27,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "d703139e-b75a-461a-abef-950ab052628a",
+      "product_id": "PROD012",
+      "user_id": "e44a2245-39ab-438c-b13a-86d2f08b4293",
+      "comment": "Tôi thất vọng với sản phẩm này. Khó chịu chẳng cơ bản khó chịu gãy không thích lỗi. Không hỏng không không. Hư hư dở không hài lòng lỗi không tốt thất vọng dở.",
+      "rating": 2,
+      "date": "2025-02-03",
+      "helpful_votes": 28,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "e42e2ee2-5b5a-4014-99a9-898b12d83341",
+      "product_id": "PROD007",
+      "user_id": "84f9e9aa-b7ba-45d1-9768-a1993066aee3",
+      "comment": "Tôi rất thích sản phẩm này. Yêu tốt giỏi tiện lợi hay tuyệt hoàn hảo tuyệt vời. Lỗi bình thường hài lòng không tốt vời thích hoàn hảo tốt thích.",
+      "rating": 5,
+      "date": "2024-11-08",
+      "helpful_votes": 48,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "609b6d3f-a130-46ed-ad7b-c2bc8700ff90",
+      "product_id": "PROD012",
+      "user_id": "8a699f20-81d3-4048-bc33-c6c0778ec3dd",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Ổn tệ đủ đủ thường tạm được tuyệt hảo thường. Thông thường cơ bản trung bình ổn.",
+      "rating": 3,
+      "date": "2024-11-29",
+      "helpful_votes": 0,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "f187d9f5-b719-410f-8433-a89f7a211adf",
+      "product_id": "PROD015",
+      "user_id": "89f9ad98-f816-49f3-8fc3-8c3edf7df4c9",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tốt tuyệt hảo tuyệt vời tệ thích vời yêu hấp dẫn.",
+      "rating": 5,
+      "date": "2025-01-26",
+      "helpful_votes": 0,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "92417f6f-b9ba-439e-8cd4-6d32733c7554",
+      "product_id": "PROD001",
+      "user_id": "917f445f-ffb1-4ffe-ba6d-a9e9210ffd4a",
+      "comment": "Đây đúng là thứ tôi cần. Tuyệt tạm yêu hay.",
+      "rating": 5,
+      "date": "2025-01-22",
+      "helpful_votes": 5,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "7a9bf5ab-cd0b-4480-be18-1d1e86487ff6",
+      "product_id": "PROD011",
+      "user_id": "18f3d573-f3fc-4c0e-9868-15ad6843f3f8",
+      "comment": "Chất lượng rất kém. Xấu không tốt không chán không tốt vấn đề vấn đề chẳng không thích gãy.",
+      "rating": 2,
+      "date": "2024-10-11",
+      "helpful_votes": 12,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "dbd6e1a9-9886-44b9-9844-cf7dde9c7486",
+      "product_id": "PROD012",
+      "user_id": "a0720e3a-cc27-45ca-8c97-fde78dc1c074",
+      "comment": "Chất lượng rất tốt. Tuyệt hảo tuyệt vời yêu đẹp bình thường tạm được hay trung bình hay yêu. Tiện lợi giỏi thích tốt hay tiện lợi tuyệt tuyệt vời giỏi tốt nhất.",
+      "rating": 5,
+      "date": "2025-03-11",
+      "helpful_votes": 40,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "ace39465-1a6c-4c4a-807a-25bfe38238b5",
+      "product_id": "PROD006",
+      "user_id": "3a6d1239-1b13-41d7-b001-875da34f09f6",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Hoàn hảo xuất sắc đẹp tuyệt hảo tiện lợi.",
+      "rating": 5,
+      "date": "2025-01-23",
+      "helpful_votes": 22,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "dfdc0951-3c87-4196-87ac-b3681009f7cb",
+      "product_id": "PROD001",
+      "user_id": "461899c9-5e25-44db-9e9e-a388a7fb20b7",
+      "comment": "Đây là sự lãng phí tiền bạc. Vấn đề xấu vấn đề gãy vấn đề thất vọng dở.",
+      "rating": 2,
+      "date": "2025-03-31",
+      "helpful_votes": 18,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "97fd97b6-0146-4aaf-88a3-0c13110be174",
+      "product_id": "PROD010",
+      "user_id": "36de964a-5f93-4a71-9a58-6fc6eeca958d",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Bình thường cơ bản thông thường trung bình trung bình dở trung bình thường. Trung bình bình thường tốt cơ bản thông thường ổn.",
+      "rating": 3,
+      "date": "2024-12-26",
+      "helpful_votes": 37,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "12228f81-60f5-4699-9f22-5524398c25fb",
+      "product_id": "PROD015",
+      "user_id": "7c4e9cb5-c485-40b9-9cc7-bcde9731643b",
+      "comment": "Tôi chắc chắn sẽ mua lại. Hoàn hảo tiện lợi xuất sắc tiện lợi vời. Không hài lòng thích tuyệt hảo lỗi tuyệt vời. Xuất sắc tốt thông thường tuyệt hảo vời vời xuất sắc hay tốt nhất yêu.",
+      "rating": 5,
+      "date": "2024-12-23",
+      "helpful_votes": 10,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "0950a87b-b01d-43f8-afeb-331279819d62",
+      "product_id": "PROD013",
+      "user_id": "0f31374d-d7bb-4ba4-95c7-6c5bcfc83a34",
+      "comment": "Đây đúng là thứ tôi cần. Hấp dẫn tốt nhất tốt nhất xuất sắc hấp dẫn hấp dẫn tốt nhất. Xuất sắc hoàn hảo tốt hấp dẫn thích thích tốt hoàn hảo vời.",
+      "rating": 5,
+      "date": "2024-12-28",
+      "helpful_votes": 25,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "876beb15-0417-45ed-8878-5ab9dce30483",
+      "product_id": "PROD005",
+      "user_id": "82778256-105b-40f7-abf8-edfc1838d26e",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Đủ không đặc biệt tạm thường cơ bản cơ bản tạm thường tạm được.",
+      "rating": 3,
+      "date": "2025-03-02",
+      "helpful_votes": 0,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "fca66e8d-f597-4015-a4b8-00c5d6a5463b",
+      "product_id": "PROD015",
+      "user_id": "5d2bec34-2382-4698-93f0-3473d529683e",
+      "comment": "Chất lượng rất tốt. Tốt hoàn hảo hay tuyệt hảo tuyệt vời ổn tốt thích.",
+      "rating": 5,
+      "date": "2024-11-24",
+      "helpful_votes": 42,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "14ca5521-ce2a-47ee-a5b9-a05047fab7d3",
+      "product_id": "PROD004",
+      "user_id": "dac88d57-080e-4ce3-9d57-2543037a9c15",
+      "comment": "Tôi rất thích sản phẩm này. Tuyệt hảo hoàn hảo tuyệt tốt nhất yêu tốt nhất tuyệt vời. Yêu hấp dẫn tiện lợi hài lòng dở yêu. Tuyệt vời tuyệt yêu tuyệt vời thích.",
+      "rating": 5,
+      "date": "2025-03-04",
+      "helpful_votes": 1,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "0339bcc7-533b-49ff-a00e-f8c941171db6",
+      "product_id": "PROD015",
+      "user_id": "74fbcdb6-48b9-4c30-88ad-0d6b31f68fee",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Khó chịu dở không dở thất vọng dở gãy hư. Hư không tốt chẳng hư lỗi chán không tốt.",
+      "rating": 1,
+      "date": "2025-01-02",
+      "helpful_votes": 11,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "ca7965a1-f8c2-4de4-917f-bd7d0017594e",
+      "product_id": "PROD011",
+      "user_id": "14c458bb-3704-4ad2-9168-b63b7dfdc585",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tuyệt hoàn hảo thường tốt giỏi.",
+      "rating": 5,
+      "date": "2024-12-26",
+      "helpful_votes": 49,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "617685ec-c801-4336-b66b-c0dbde7e1429",
+      "product_id": "PROD004",
+      "user_id": "b27d4edb-175f-40e3-b7ae-fe8fbf9f97aa",
+      "comment": "Đây đúng là thứ tôi cần. Tuyệt tuyệt tuyệt xuất sắc tốt.",
+      "rating": 5,
+      "date": "2024-10-22",
+      "helpful_votes": 8,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "8c36bd19-5ec5-43fc-9980-29d9b132b42e",
+      "product_id": "PROD011",
+      "user_id": "f05920f6-30e6-460f-bb66-40bf9bac0361",
+      "comment": "Đây là sự lãng phí tiền bạc. Không hài lòng dở không thích không thích kém gãy không tốt kém không thích yêu.",
+      "rating": 1,
+      "date": "2025-02-05",
+      "helpful_votes": 36,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "bb2985d4-120d-49dd-941a-780ec3ec15b4",
+      "product_id": "PROD009",
+      "user_id": "bbaf9cfc-07c9-4ac8-82d6-e23546efa69e",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tiện lợi tuyệt đẹp hay.",
+      "rating": 5,
+      "date": "2025-02-20",
+      "helpful_votes": 4,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "4ef212eb-4261-4ab4-9529-12680f424f60",
+      "product_id": "PROD005",
+      "user_id": "bb4fcb3f-d6ee-406e-bd0f-e7f640b65c58",
+      "comment": "Tôi rất thích sản phẩm này. Vời tốt không hài lòng vời tốt.",
+      "rating": 5,
+      "date": "2025-03-18",
+      "helpful_votes": 48,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "b09688cf-d626-457b-aef3-1f0c2e4a67d4",
+      "product_id": "PROD006",
+      "user_id": "b4c546b6-9b46-41d0-8b09-83688573f87c",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Không đặc biệt thường bình thường thường tạm tạm được bình thường thông thường ổn. Không đặc biệt bình thường thường đủ tạm được. Không đặc biệt tạm được bình thường không đặc biệt đủ bình thường.",
+      "rating": 3,
+      "date": "2025-02-16",
+      "helpful_votes": 42,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 5,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "01eaa31c-06c4-4278-9709-ff7a62cb6c8a",
+      "product_id": "PROD014",
+      "user_id": "204d0d8c-0002-4e99-97b5-4fd111e8d9bd",
+      "comment": "Đây đúng là thứ tôi cần. Trung bình tốt nhất tuyệt hảo tuyệt vời thích tuyệt vời. Thích yêu tuyệt vời tốt giỏi tiện lợi không hài lòng vời.",
+      "rating": 5,
+      "date": "2025-03-07",
+      "helpful_votes": 19,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 3,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "61904e4f-40c1-461a-90ef-4e2c1c8ba63e",
+      "product_id": "PROD003",
+      "user_id": "aad4ef39-e604-4f70-b7cd-f72454f9ffb5",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tiện lợi tiện lợi tiện lợi giỏi đẹp vời đẹp đẹp. Tuyệt tuyệt vời trung bình tuyệt vời hư tiện lợi tuyệt hảo. Hài lòng không đặc biệt thích hấp dẫn.",
+      "rating": 5,
+      "date": "2024-10-10",
+      "helpful_votes": 35,
+      "not_helpful_votes": 1,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "4222052d-3e52-49cb-b2ba-e4f991d61b21",
+      "product_id": "PROD010",
+      "user_id": "7ba1db9e-9756-4f49-826a-01866f5ec7ec",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Không thích thất vọng tạm được không tốt không hài lòng không thất vọng.",
+      "rating": 2,
+      "date": "2025-02-14",
+      "helpful_votes": 7,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "bfbea921-b244-4cef-b56c-d1fd6264b927",
+      "product_id": "PROD009",
+      "user_id": "be784dba-8513-4cc6-94c4-9d263657b4cd",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tốt nhất giỏi tạm được tạm được ổn hấp dẫn vời hoàn hảo hay. Tuyệt hài lòng tuyệt vời thích thích xuất sắc hay tiện lợi tốt nhất. Hấp dẫn hài lòng xuất sắc thường xuất sắc trung bình đẹp hay đẹp.",
+      "rating": 5,
+      "date": "2025-02-01",
+      "helpful_votes": 9,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "798741e7-ba84-4bdc-96d8-dd0b3bcf78b3",
+      "product_id": "PROD014",
+      "user_id": "b8b3e62c-ee6d-49e2-b32a-3363babc971d",
+      "comment": "Tôi thất vọng với sản phẩm này. Không tốt tuyệt vời kém đẹp.",
+      "rating": 1,
+      "date": "2025-02-15",
+      "helpful_votes": 37,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "801ea604-06a4-436b-932e-ad0f085af834",
+      "product_id": "PROD003",
+      "user_id": "a72a3e8e-7493-43f1-8af0-e16a87c871f0",
+      "comment": "Tôi thất vọng với sản phẩm này. Chán chán không thích lỗi. Kém thất vọng dở yêu khó chịu hài lòng dở. Không thích xấu tệ không thích tệ dở.",
+      "rating": 2,
+      "date": "2024-12-26",
+      "helpful_votes": 43,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "e0b2917b-4557-4d2e-b789-2f0323156550",
+      "product_id": "PROD011",
+      "user_id": "c3f83783-2813-485f-a57d-1937afab4aed",
+      "comment": "Chất lượng rất tốt. Tạm tốt giỏi tốt nhất yêu giỏi tuyệt hảo tuyệt hảo tốt nhất thích.",
+      "rating": 5,
+      "date": "2024-11-23",
+      "helpful_votes": 20,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "ece1fbe3-1072-498b-a2a9-79f95048d4f7",
+      "product_id": "PROD002",
+      "user_id": "789edef6-e045-4063-96c4-4265185cfb0a",
+      "comment": "Đây đúng là thứ tôi cần. Hay hài lòng dở thất vọng.",
+      "rating": 5,
+      "date": "2025-02-12",
+      "helpful_votes": 13,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 5,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b7d19b52-2bee-46e2-b238-d5d6b5a9a131",
+      "product_id": "PROD002",
+      "user_id": "05883419-1f97-4f1b-81c1-8a898625f39e",
+      "comment": "Đây đúng là thứ tôi cần. Giỏi tiện lợi tuyệt giỏi hoàn hảo xuất sắc giỏi hài lòng giỏi.",
+      "rating": 5,
+      "date": "2024-10-12",
+      "helpful_votes": 18,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "8e4d8a7c-8d1b-4c45-bf7f-8bc477a9d329",
+      "product_id": "PROD012",
+      "user_id": "37209f66-7aa7-4671-929b-ac4986d8457d",
+      "comment": "Tôi chắc chắn sẽ mua lại. Tuyệt hảo hay thích xuất sắc thích tiện lợi thích xuất sắc hấp dẫn hay.",
+      "rating": 5,
+      "date": "2024-11-29",
+      "helpful_votes": 46,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "865e23e0-1e74-48e3-8d01-353b34ddaf83",
+      "product_id": "PROD009",
+      "user_id": "5b8e3161-fa32-484b-8407-4d5eacb81b6c",
+      "comment": "Chất lượng rất tốt. Hài lòng tiện lợi hấp dẫn tuyệt hảo thích.",
+      "rating": 5,
+      "date": "2024-10-13",
+      "helpful_votes": 42,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "f0c1fc07-49d0-44ed-be50-84815d35165b",
+      "product_id": "PROD001",
+      "user_id": "34a7e75e-865a-4c6e-b7ac-dc25f6b396a8",
+      "comment": "Nó hoạt động như mong đợi. Trung bình chẳng đủ không đặc biệt thường thông thường ổn cơ bản đủ. Giỏi đủ tiện lợi tạm thông thường cơ bản xấu thường ổn. Bình thường thông thường không hài lòng tốt tạm được không đặc biệt.",
+      "rating": 3,
+      "date": "2025-02-14",
+      "helpful_votes": 46,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "0917822e-a0db-41a6-b90d-55d48eb95327",
+      "product_id": "PROD015",
+      "user_id": "53b43b6b-0088-4561-b3ce-af5873798bc2",
+      "comment": "Chất lượng rất tốt. Không hài lòng tốt nhất tuyệt thông thường tuyệt tuyệt yêu hấp dẫn xuất sắc. Thích đẹp giỏi yêu xuất sắc.",
+      "rating": 5,
+      "date": "2024-11-09",
+      "helpful_votes": 37,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "b2da8612-2d69-4df1-8a7b-a652963e9f37",
+      "product_id": "PROD002",
+      "user_id": "26377418-42a6-4d2c-b89e-0be3405eff3c",
+      "comment": "Đây là một sản phẩm trung bình. Bình thường không đặc biệt ổn bình thường tạm tạm được hỏng. Tạm ổn tạm được tạm thích ổn trung bình. Trung bình bình thường trung bình trung bình tạm được tạm tạm hư trung bình.",
+      "rating": 3,
+      "date": "2025-03-26",
+      "helpful_votes": 7,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "0d793ba6-d2ac-4f1d-b28d-b0352b58686b",
+      "product_id": "PROD011",
+      "user_id": "4c948785-13f4-4d81-9c20-48a068a9a51a",
+      "comment": "Tôi chắc chắn sẽ mua lại. Đẹp yêu hoàn hảo hoàn hảo hấp dẫn tốt tuyệt vời hài lòng hay.",
+      "rating": 5,
+      "date": "2024-12-11",
+      "helpful_votes": 24,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "7aa05205-1dd5-4e91-bdb5-8b97a3eb0d10",
+      "product_id": "PROD014",
+      "user_id": "e14fe32e-ca52-4fd3-b384-a1a4f35e7efb",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Ổn đủ ổn tạm được không đặc biệt tạm không đặc biệt đủ bình thường. Chán thường đủ cơ bản trung bình bình thường đủ. Bình thường cơ bản xấu trung bình thông thường đủ trung bình khó chịu bình thường.",
+      "rating": 3,
+      "date": "2025-02-10",
+      "helpful_votes": 16,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "4d074268-d628-4f66-80e8-6edf52b41b2a",
+      "product_id": "PROD014",
+      "user_id": "0d038907-c973-456d-94c4-79e282921462",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Tiện lợi thích hấp dẫn hoàn hảo tuyệt tiện lợi hoàn hảo tiện lợi hoàn hảo. Thường vời tốt hấp dẫn ổn tuyệt hảo thích. Hài lòng thích không tốt hay hấp dẫn xuất sắc.",
+      "rating": 5,
+      "date": "2024-10-29",
+      "helpful_votes": 43,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "db01dd1d-c794-4e77-aa30-351aee84f6f1",
+      "product_id": "PROD014",
+      "user_id": "220edeb3-bb58-401a-bc12-09ae1bf091ef",
+      "comment": "Đây đúng là thứ tôi cần. Tốt nhất giỏi hư tốt thường. Xuất sắc tuyệt vời xuất sắc yêu.",
+      "rating": 5,
+      "date": "2025-02-19",
+      "helpful_votes": 29,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b475191d-6637-4516-954e-e48c4edda2d1",
+      "product_id": "PROD002",
+      "user_id": "89d0a49a-e148-4ec1-90fb-ecf3e864d837",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Vời vời hoàn hảo tuyệt vời thông thường hay tuyệt vời.",
+      "rating": 5,
+      "date": "2025-01-23",
+      "helpful_votes": 5,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "4ebb2ed9-21c8-4ce3-9d31-90430f987910",
+      "product_id": "PROD001",
+      "user_id": "770ef77d-ba0a-496e-b29d-71847dcdbcdc",
+      "comment": "Không có gì đặc biệt về sản phẩm này. Thường thông thường thông thường trung bình. Ổn không đặc biệt trung bình cơ bản đủ cơ bản. Trung bình cơ bản bình thường không đặc biệt ổn thông thường.",
+      "rating": 3,
+      "date": "2025-02-09",
+      "helpful_votes": 11,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 3,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "00016c08-eac5-48ce-8276-d78a45780e31",
+      "product_id": "PROD010",
+      "user_id": "9d44f1eb-b0bd-4d75-a19f-989923199c0e",
+      "comment": "Chất lượng rất tốt. Tuyệt vời vời xuất sắc vời cơ bản lỗi thường tuyệt. Thông thường giỏi tuyệt vời hoàn hảo yêu xuất sắc hài lòng thích hài lòng.",
+      "rating": 5,
+      "date": "2024-11-19",
+      "helpful_votes": 36,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "b385c487-a2d1-4a0d-9e01-ff20c7e2c297",
+      "product_id": "PROD004",
+      "user_id": "e42b49cd-70c5-4649-9bb8-76a6fc9083e6",
+      "comment": "Sản phẩm này vượt quá mong đợi của tôi. Thích hay thường tốt hoàn hảo tuyệt hảo tốt nhất hài lòng. Tốt tốt xuất sắc vời hài lòng không tốt xuất sắc thích hoàn hảo.",
+      "rating": 5,
+      "date": "2024-11-14",
+      "helpful_votes": 22,
+      "not_helpful_votes": 3,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 4,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "dd81482b-507e-4770-8cef-f97e79bcda6a",
+      "product_id": "PROD009",
+      "user_id": "5159dea0-6194-4bb2-a280-8a39f793beab",
+      "comment": "Đây là một sản phẩm trung bình. Thường trung bình cơ bản ổn ổn. Thất vọng ổn bình thường tạm được không hài lòng đủ tạm được cơ bản. Đủ tuyệt hảo thông thường trung bình yêu thường hay cơ bản không đặc biệt.",
+      "rating": 3,
+      "date": "2025-03-07",
+      "helpful_votes": 20,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "3823503a-44d4-4288-a3b2-73e6032d2808",
+      "product_id": "PROD009",
+      "user_id": "2595e29e-4534-4991-9aee-0ebec391a6fb",
+      "comment": "Tôi không khuyên dùng sản phẩm này. Không thích hư hỏng không tốt dở.",
+      "rating": 2,
+      "date": "2024-12-03",
+      "helpful_votes": 10,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "fefd7a69-f254-437b-98d9-90e1e92cc709",
+      "product_id": "PROD011",
+      "user_id": "51963df6-dcb0-4818-b1b9-7c20ddf9f930",
+      "comment": "Tôi rất thích sản phẩm này. Tốt hài lòng tốt nhất tuyệt vời trung bình tốt nhất đẹp.",
+      "rating": 5,
+      "date": "2024-11-25",
+      "helpful_votes": 13,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "76d921fd-3674-4a1b-bd51-d8c48a923ea0",
+      "product_id": "PROD005",
+      "user_id": "e1feff16-ab8b-4c83-bac6-44c689331de2",
+      "comment": "Nó hoạt động như mong đợi. Giỏi thông thường tạm tạm cơ bản. Bình thường tạm được ổn bình thường. Bình thường bình thường trung bình cơ bản thường thường cơ bản tạm thường.",
+      "rating": 3,
+      "date": "2024-10-17",
+      "helpful_votes": 28,
+      "not_helpful_votes": 5,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "2b2d7eb4-8000-4891-8911-110cf000e83c",
+      "product_id": "PROD003",
+      "user_id": "5d7d693b-9248-4c63-984a-cd5ebeb25392",
+      "comment": "Tôi chắc chắn sẽ mua lại. Giỏi giỏi tạm được hài lòng tuyệt tốt nhất tốt nhất đẹp.",
+      "rating": 5,
+      "date": "2025-01-22",
+      "helpful_votes": 17,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 1,
+        "shipping_rating": 5
+      }
+    },
+    {
+      "id": "e7fbc82d-3bc4-4d55-9030-8d1a4564678a",
+      "product_id": "PROD012",
+      "user_id": "8224c8f9-ff76-4c26-b7a2-8a67f20135e4",
+      "comment": "Đây là sự lãng phí tiền bạc. Thường kém tốt nhất kém lỗi. Tạm được khó chịu không tốt tệ không tốt chẳng tệ dở không hài lòng lỗi.",
+      "rating": 2,
+      "date": "2024-11-24",
+      "helpful_votes": 45,
+      "not_helpful_votes": 2,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 5,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "c0f054fc-d93f-425f-96f4-8195fb640c25",
+      "product_id": "PROD006",
+      "user_id": "272f8c26-0e8f-4b7d-83ca-5a86c50a1d68",
+      "comment": "Đây là sự lãng phí tiền bạc. Không thích xuất sắc hỏng kém không thích tệ. Chẳng tốt gãy hư thất vọng hư kém hư chán chẳng. Không hài lòng dở không tốt khó chịu.",
+      "rating": 2,
+      "date": "2024-10-24",
+      "helpful_votes": 46,
+      "not_helpful_votes": 7,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "f7d2ad1d-73f2-42e4-b1b3-43931f564c24",
+      "product_id": "PROD003",
+      "user_id": "a587159b-fb1f-4bd0-bb81-4e20d40e5c5a",
+      "comment": "Tôi rất thích sản phẩm này. Tuyệt hảo tuyệt hài lòng tốt thích đẹp thích giỏi hấp dẫn.",
+      "rating": 5,
+      "date": "2025-03-17",
+      "helpful_votes": 6,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 3,
+        "value_rating": 4,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "c446a1b4-2610-4f88-8dfc-1f8800ab37ce",
+      "product_id": "PROD004",
+      "user_id": "5e1f0efc-b6aa-478e-a68c-8218c2a7ed5e",
+      "comment": "Tôi chắc chắn sẽ mua lại. Vời yêu tiện lợi thích xuất sắc yêu hay thích. Hài lòng tuyệt hảo hoàn hảo tuyệt hảo vời hài lòng. Vời yêu xuất sắc tuyệt tuyệt tuyệt giỏi chán tuyệt tuyệt.",
+      "rating": 5,
+      "date": "2025-02-02",
+      "helpful_votes": 46,
+      "not_helpful_votes": 8,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "e892a351-a404-4dfa-814f-ec6914d04e76",
+      "product_id": "PROD008",
+      "user_id": "cbf84dcb-2386-4235-850d-9d24e635efa0",
+      "comment": "Tôi rất thích sản phẩm này. Hài lòng tốt giỏi tiện lợi tạm được. Tuyệt vời tuyệt giỏi giỏi. Vời tuyệt thích tốt nhất đẹp hài lòng.",
+      "rating": 5,
+      "date": "2024-11-10",
+      "helpful_votes": 35,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 1,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "614f8596-c501-49af-89d9-148efa2720a1",
+      "product_id": "PROD003",
+      "user_id": "b0784303-7a36-45a6-a4f6-425ce3175442",
+      "comment": "Nó làm được việc nhưng không có gì hơn. Bình thường thông thường cơ bản tạm được hay tạm thường chán cơ bản. Không đặc biệt vấn đề tạm tạm được thường bình thường. Tạm cơ bản chẳng đủ gãy tạm được xấu.",
+      "rating": 3,
+      "date": "2025-01-24",
+      "helpful_votes": 27,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 1,
+        "shipping_rating": 2
+      }
+    },
+    {
+      "id": "e67d78ee-eeac-408e-bd46-9c440b0c7ccd",
+      "product_id": "PROD001",
+      "user_id": "5dbac78d-9d46-4856-944e-8717d3565306",
+      "comment": "Nó bị hỏng sau vài lần sử dụng. Không tệ chẳng thường thất vọng tệ bình thường. Không khó chịu hỏng không hài lòng. Không hài lòng không hài lòng chẳng không vấn đề.",
+      "rating": 1,
+      "date": "2025-02-08",
+      "helpful_votes": 32,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 4
+      }
+    },
+    {
+      "id": "314e3990-7809-4d94-ba93-4789fe68b41f",
+      "product_id": "PROD006",
+      "user_id": "0696c28c-e957-4e26-95de-e71265f85f5d",
+      "comment": "Chất lượng rất tốt. Yêu hài lòng tuyệt tuyệt hảo. Tiện lợi không hài lòng tuyệt hảo hoàn hảo giỏi.",
+      "rating": 5,
+      "date": "2024-12-08",
+      "helpful_votes": 24,
+      "not_helpful_votes": 0,
+      "attributes": {
+        "quality_rating": 2,
+        "value_rating": 5,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "2c3b3647-e90c-4dc5-a157-0058a6d6aa43",
+      "product_id": "PROD005",
+      "user_id": "e45f6836-1134-4517-9654-f235f6a295f7",
+      "comment": "Đây đúng là thứ tôi cần. Xuất sắc tiện lợi xuất sắc giỏi. Tiện lợi tốt nhất tiện lợi hấp dẫn thích tuyệt yêu không thích vời thất vọng.",
+      "rating": 5,
+      "date": "2025-03-17",
+      "helpful_votes": 25,
+      "not_helpful_votes": 6,
+      "attributes": {
+        "quality_rating": 5,
+        "value_rating": 1,
+        "shipping_rating": 1
+      }
+    },
+    {
+      "id": "f88f14ba-a065-4968-8fde-2657db0d66a6",
+      "product_id": "PROD015",
+      "user_id": "34083be3-d6e3-40a3-8d5a-66560c80819f",
+      "comment": "Chất lượng rất kém. Không hài lòng không không thích tệ thất vọng vấn đề tốt nhất vấn đề.",
+      "rating": 1,
+      "date": "2024-10-26",
+      "helpful_votes": 1,
+      "not_helpful_votes": 4,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 2,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "599cbf15-32f6-4680-81d1-96ace481833a",
+      "product_id": "PROD014",
+      "user_id": "fa6a7499-b7b9-4177-9e40-d24bf619d4c8",
+      "comment": "Đây đúng là thứ tôi cần. Tuyệt hảo khó chịu vời vời tốt thích tiện lợi hấp dẫn tuyệt hoàn hảo. Không thích hay cơ bản xuất sắc hoàn hảo giỏi tuyệt giỏi bình thường tốt nhất. Vời yêu hài lòng thích thích yêu.",
+      "rating": 5,
+      "date": "2024-10-30",
+      "helpful_votes": 37,
+      "not_helpful_votes": 10,
+      "attributes": {
+        "quality_rating": 1,
+        "value_rating": 3,
+        "shipping_rating": 3
+      }
+    },
+    {
+      "id": "31ab3c80-7248-4ce0-946e-ad310c5ff7f8",
+      "product_id": "PROD013",
+      "user_id": "5b33067b-2db0-4246-a3c8-7b771ed5e213",
+      "comment": "Tôi thất vọng với sản phẩm này. Không hài lòng tốt bình thường xấu chán chán kém kém thất vọng không thích.",
+      "rating": 2,
+      "date": "2025-02-18",
+      "helpful_votes": 37,
+      "not_helpful_votes": 9,
+      "attributes": {
+        "quality_rating": 4,
+        "value_rating": 4,
+        "shipping_rating": 2
+      }
+    }
+  ]
+}
