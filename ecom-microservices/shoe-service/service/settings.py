@@ -69,7 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'book.apps.BookConfig',
+    'shoe.apps.ShoeConfig',
     'corsheaders',
     'djongo',
 
@@ -116,9 +116,9 @@ WSGI_APPLICATION = 'service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'book_db',
+        'NAME': 'shoe_db',
         'CLIENT': {
-            'host': 'mongodb://root:15012003@db-mongo:27017/book-service?authSource=admin',
+            'host': 'mongodb://root:15012003@db-mongo:27017/shoe-service?authSource=admin',
         }
     }
 }

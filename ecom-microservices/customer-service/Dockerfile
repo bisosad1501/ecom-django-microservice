@@ -8,6 +8,7 @@ RUN apt-get update && \
     default-libmysqlclient-dev \
     libmariadb-dev-compat \
     netcat-openbsd \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

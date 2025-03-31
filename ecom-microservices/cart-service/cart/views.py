@@ -12,7 +12,7 @@ from .serializers import (
 from decimal import Decimal
 
 CUSTOMER_SERVICE_URL = "http://customer-service:8001/user/list/"
-BOOK_SERVICE_URL = "http://book-service:8002/books/detail/"
+PRODUCT_SERVICE_URL = "http://product-service:8005/products/"
 
 def is_valid_user(user_id):
     try:
@@ -50,12 +50,12 @@ class CreateCartAPI(APIView):
 class AddItemToCartView(APIView):
     def post(self, request):
         user_id = request.data.get("user_id")
-        book_id = request.data.get("book_id")
+        product_id = request.data.get("product_id")
         quantity = request.data.get("quantity", 1)
 
-        if not user_id or not book_id:
+        if not user_id or not product_id:
             return Response(
-                {"error": "Thiếu user_id hoặc book_id"},
+                {"error": "Thiếu user_id hoặc product_id"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -69,10 +69,10 @@ class AddItemToCartView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        book_data = self.get_book_data(book_id)
-        if not book_data:
+        product_data = self.get_product_data(product_id)
+        if not product_data:
             return Response(
-                {"error": "Không thể lấy thông tin sách"},
+                {"error": "Không thể lấy thông tin sản phẩm"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -83,20 +83,20 @@ class AddItemToCartView(APIView):
 
         cart_item_data = {
             'cart': cart.id,
-            'product_id': str(book_id),
-            'product_name': book_data.get("title", "Sản phẩm không có tên"),
-            'original_price': book_data.get("price"),
-            'sale_price': book_data.get("sale_price"),
+            'product_id': str(product_id),
+            'product_name': product_data.get("name", "Sản phẩm không có tên"),
+            'original_price': product_data.get("base_price"),
+            'sale_price': product_data.get("sale_price"),
             'discount_percentage': self.calculate_discount_percentage(
-                book_data.get("price"),
-                book_data.get("sale_price")
+                product_data.get("base_price"),
+                product_data.get("sale_price")
             ),
             'quantity': quantity
         }
 
         existing_item = CartItem.objects.filter(
             cart=cart,
-            product_id=str(book_id)
+            product_id=str(product_id)
         ).first()
 
         if existing_item:
@@ -118,9 +118,9 @@ class AddItemToCartView(APIView):
             status=status.HTTP_201_CREATED
         )
 
-    def get_book_data(self, book_id):
+    def get_product_data(self, product_id):
         try:
-            response = requests.get(f"{BOOK_SERVICE_URL}{book_id}/")
+            response = requests.get(f"{PRODUCT_SERVICE_URL}{product_id}/")
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException:
@@ -146,17 +146,17 @@ class AddItemToCartView(APIView):
 class RemoveItemFromCartView(APIView):
     def post(self, request):
         user_id = request.data.get("user_id")
-        book_id = request.data.get("book_id")
+        product_id = request.data.get("product_id")
 
-        if not user_id or not book_id:
+        if not user_id or not product_id:
             return Response(
-                {"error": "Thiếu user_id hoặc book_id"},
+                {"error": "Thiếu user_id hoặc product_id"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         cart = get_object_or_404(Cart, user_id=user_id, cart_type="active")
 
-        cart_item = get_object_or_404(CartItem, cart=cart, product_id=str(book_id))
+        cart_item = get_object_or_404(CartItem, cart=cart, product_id=str(product_id))
         cart_item.delete()
 
         return Response(
@@ -177,12 +177,12 @@ class GetCartView(APIView):
 class UpdateCartItemView(APIView):
     def post(self, request):
         user_id = request.data.get("user_id")
-        book_id = request.data.get("book_id")
+        product_id = request.data.get("product_id")
         quantity = request.data.get("quantity")
 
-        if not user_id or not book_id or quantity is None:
+        if not user_id or not product_id or quantity is None:
             return Response(
-                {"error": "Thiếu user_id, book_id hoặc quantity"},
+                {"error": "Thiếu user_id, product_id hoặc quantity"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -198,7 +198,7 @@ class UpdateCartItemView(APIView):
 
         cart = get_object_or_404(Cart, user_id=user_id, cart_type="active")
 
-        cart_item = get_object_or_404(CartItem, cart=cart, product_id=str(book_id))
+        cart_item = get_object_or_404(CartItem, cart=cart, product_id=str(product_id))
         cart_item.quantity = quantity
         cart_item.save()
 

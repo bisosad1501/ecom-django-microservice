@@ -15,10 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
-    'payment.apps.PaymentConfig',
-    'shipping.apps.ShippingConfig',
     'rest_framework',
     'corsheaders',
 ]
@@ -57,7 +54,7 @@ WSGI_APPLICATION = 'service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cart_db',
+        'NAME': 'order_db',
         'USER': 'postgres',
         'PASSWORD': '15012003',
         'HOST': 'db-postgres',

@@ -47,6 +47,23 @@ services:
       networks:
         - ecom-net
 
+  product-service:
+    build: product-service
+    restart: always
+    ports:
+    - "8005:8005"
+    environment:
+      - DB_HOST=db-mongo
+      - DB_PORT=27017
+    command: 'python manage.py runserver 0.0.0.0:8005'
+    volumes:
+    - ./product-service:/app
+    - ./product-service/staticfiles:/app/staticfiles  
+
+    depends_on:
+    - db-mongo
+    networks:
+      - ecom-net
 
   book-service:
     build: book-service
@@ -59,10 +76,28 @@ services:
     command: 'python manage.py runserver 0.0.0.0:8002'
     volumes:
     - ./book-service:/app
-    - ./book-service/staticfiles:/app/staticfiles  # Mount thư mục staticfiles
+    - ./book-service/staticfiles:/app/staticfiles
 
     depends_on:
     - db-mongo
+    networks:
+      - ecom-net
+
+  shoe-service:
+    build: shoe-service
+    restart: always
+    ports:
+      - "8006:8006"
+    environment:
+      - DB_HOST=db-mongo
+      - DB_PORT=27017
+    command: 'python manage.py runserver 0.0.0.0:8006'
+    volumes:
+      - ./shoe-service:/app
+      - ./shoe-service/staticfiles:/app/staticfiles
+
+    depends_on:
+      - db-mongo
     networks:
       - ecom-net
 
@@ -88,6 +123,56 @@ services:
       - DB_HOST=db-postgres
       - DB_PORT=5432
       - DB_NAME=cart_db
+      - DB_USER=postgres
+      - DB_PASSWORD=15012003
+    depends_on:
+      - db-postgres
+    networks:
+      - ecom-net
+
+  order-service:
+    build: order-service
+    ports:
+      - "8007:8007"
+    command: python manage.py runserver 0.0.0.0:8007
+    environment:
+      - DB_HOST=db-postgres
+      - DB_PORT=5432
+      - DB_NAME=order_db
+      - DB_USER=postgres
+      - DB_PASSWORD=15012003
+    depends_on:
+      - db-postgres
+    networks:
+      - ecom-net
+
+  payment-service:
+    build: payment-service
+    ports:
+      - "8008:8008"
+    command: python manage.py runserver 0.0.0.0:8008
+    environment:
+      - DB_HOST=db-postgres
+      - DB_PORT=5432
+      - DB_NAME=payment_db
+      - DB_USER=postgres
+      - DB_PASSWORD=15012003
+    depends_on:
+      - db-postgres
+    networks:
+      - ecom-net
+    volumes:
+      - ./payment-service:/app
+
+  shipment-service:
+    build: shipment-service
+    ports:
+      - "8009:8009"
+    command: python manage.py runserver 0.0.0.0:8009
+    environment:
+      - DB_HOST=db-postgres
+      - DB_PORT=5432
+      - DB_NAME=shipment_db
       - DB_USER=postgres
       - DB_PASSWORD=15012003
     depends_on:

@@ -121,16 +121,18 @@ document.addEventListener('DOMContentLoaded', function() {
     setupBookLink();
 });
 
+// Khai báo hàm updateCartCount ở phạm vi global
 async function updateCartCount() {
     const userId = localStorage.getItem('userId');
     const accessToken = localStorage.getItem('accessToken');
     const cartBadge = document.getElementById('cart-badge');
 
-    if (!userId || !cartBadge) return; // Nếu không có user hoặc không tìm thấy badge, thoát
+    if (!userId || !cartBadge) return;
 
     try {
         const response = await fetch(`http://localhost:8003/cart/get/${userId}/`, {
             method: 'GET',
+            cache: 'no-store',
             headers: { 'Authorization': `Bearer ${accessToken}` }
         });
 
@@ -141,12 +143,17 @@ async function updateCartCount() {
 
         // Cập nhật số lượng trên icon giỏ hàng
         cartBadge.textContent = itemCount;
-        cartBadge.style.display = itemCount > 0 ? 'inline-block' : 'none'; // Ẩn nếu giỏ rỗng
-
+        cartBadge.style.display = itemCount > 0 ? 'inline-block' : 'none';
     } catch (error) {
         console.error('Lỗi cập nhật số lượng giỏ hàng:', error);
     }
 }
 
-// Gọi hàm này mỗi khi trang load
-document.addEventListener('DOMContentLoaded', updateCartCount);
+// Đảm bảo rằng updateCartCount được gán cho window để có thể gọi từ file JS khác
+window.updateCartCount = updateCartCount;
+
+// Nếu muốn gọi hàm này mỗi 1 giây để luôn cập nhật tức thời trên mọi trang:
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    setInterval(updateCartCount, 1000);
+});

@@ -1,99 +1,147 @@
 import uuid
+
+import requests
 from django.db import models
+from django.utils import timezone
 
+ORDER_SERVICE_URL = "http://order-service:8007/orders"
 
-class Order(models.Model):
-    STATUS_CHOICES = [
-        ('draft', 'Nháp'),
-        ('pending_payment', 'Chờ thanh toán'),
-        ('paid', 'Đã thanh toán'),
-        ('processing', 'Đang xử lý'),
-        ('ready_to_ship', 'Sẵn sàng giao hàng'),
-        ('shipped', 'Đang giao hàng'),
+class Shipment(models.Model):
+    SHIPPING_STATUS = [
+        ('pending', 'Chờ xử lý'),
+        ('picked_up', 'Đã lấy hàng'),
+        ('shipped', 'Đang vận chuyển'),
         ('delivered', 'Đã giao hàng'),
-        ('cancelled', 'Đã hủy'),
-        ('refunded', 'Đã hoàn tiền'),
+        ('failed', 'Giao hàng thất bại')
+    ]
+
+    CARRIERS = [
+        ('vnpost', 'VNPost'),
+        ('ghn', 'Giao Hàng Nhanh'),
+        ('ghtk', 'Giao Hàng Tiết Kiệm'),
+        ('dhl', 'DHL'),
+        ('other', 'Khác'),
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    cart_id = models.UUIDField(null=True, blank=True)
-    user_id = models.UUIDField(db_index=True)
+    order_id = models.UUIDField(db_index=True)  # Chỉ lưu ID, không liên kết trực tiếp với Order
 
-    # Customer info
-    customer_name = models.CharField(max_length=255)
-    customer_email = models.EmailField()
-    contact_phone = models.CharField(max_length=20)
+    # Shipping status
+    status = models.CharField(max_length=20, choices=SHIPPING_STATUS, default='pending')
+    carrier = models.CharField(max_length=20, choices=CARRIERS)
+    tracking_number = models.CharField(max_length=50, unique=True, null=True, blank=True)
 
-    # Shipping address
+    # Receiver info
+    receiver_name = models.CharField(max_length=255)
+    receiver_phone = models.CharField(max_length=20)
     shipping_address_line1 = models.CharField(max_length=255)
     shipping_ward = models.CharField(max_length=100)
     shipping_district = models.CharField(max_length=100)
     shipping_city = models.CharField(max_length=100)
     shipping_country = models.CharField(max_length=100, default='Vietnam')
 
-    # Pricing
-    sub_total = models.DecimalField(max_digits=10, decimal_places=2)
-    shipping_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    tax = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    # Package info
+    weight = models.FloatField(default=0)  # in kg
+    dimension = models.CharField(max_length=50, null=True, blank=True)  # LxWxH
+    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    shipment_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
-    # Order info
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending_payment')
-    payment_method = models.CharField(max_length=50)
-    shipping_method = models.CharField(max_length=50)
-    notes = models.TextField(blank=True)
+    # Delivery info
+    pickup_time = models.DateTimeField(null=True, blank=True)
+    estimated_delivery = models.DateField(null=True, blank=True)
+    delivered_at = models.DateTimeField(null=True, blank=True)
+    shipping_notes = models.TextField(blank=True, null=True)
+    failure_reason = models.TextField(null=True, blank=True)
 
-    # External IDs để liên kết với Payment và Shipping Service
-    external_payment_id = models.UUIDField(null=True, blank=True, help_text="ID từ Payment Service")
-    external_shipping_id = models.UUIDField(null=True, blank=True, help_text="ID từ Shipping Service")
+    # Metadata (dữ liệu bổ sung của hãng vận chuyển)
+    metadata = models.JSONField(null=True, blank=True, help_text="Lưu thông tin của hãng vận chuyển")
 
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # Relations
-    coupon = models.ForeignKey('Coupon', null=True, on_delete=models.SET_NULL)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.send_order_update_event()
 
-    def update_status(self, payment_status=None, shipping_status=None):
-        """
-        Cập nhật trạng thái đơn hàng dựa trên Payment Service & Shipping Service.
-        """
-        if self.status == 'cancelled':
-            return
+    def update_status(self, new_status, notes=None):
+        """Update shipment status and handle related logic"""
+        if self.status in ['delivered', 'cancelled']:
+            raise ValueError(f"Cannot update {self.status} shipment")
 
-        # Nếu Payment Service báo thanh toán thành công
-        if payment_status == 'completed':
-            if shipping_status == 'delivered':
-                self.status = 'delivered'
-            elif shipping_status == 'shipped':
-                self.status = 'shipped'
-            elif shipping_status == 'ready_to_ship':
-                self.status = 'ready_to_ship'
-            else:
-                self.status = 'processing'
+        if not self.tracking_number and new_status in ['processing', 'shipped']:
+            raise ValueError("Tracking number required for processing/shipped status")
 
-        # Nếu Payment bị hoàn tiền
-        elif payment_status == 'refunded':
-            self.status = 'refunded'
+        old_status = self.status
+        self.status = new_status
+
+        # Handle specific statuses
+        if new_status == 'confirmed':
+            if not self.carrier:
+                raise ValueError("Carrier required")
+
+        elif new_status == 'picked_up':
+            if not self.estimated_delivery:
+                raise ValueError("Estimated delivery required")
+            self.pickup_time = timezone.now()
+
+        elif new_status == 'shipped':
+            # Additional required fields for shipped status
+            if not all([self.carrier, self.tracking_number]):
+                raise ValueError("Carrier and tracking number required for shipped status")
+            if not self.pickup_time:
+                self.pickup_time = timezone.now()
+
+        elif new_status == 'delivered':
+            if not self.pickup_time:
+                raise ValueError("Missing pickup time")
+            self.delivered_at = timezone.now()
+
+        elif new_status == 'failed':
+            if not notes:
+                raise ValueError("Failure reason required")
+            self.failure_reason = notes
 
         self.save()
 
-    def calculate_total(self):
-        """
-        Tự động tính tổng giá trị đơn hàng dựa trên OrderItems.
-        """
-        self.sub_total = sum(item.total for item in self.items.all())
-        self.total_price = self.sub_total + self.shipping_fee + self.tax - self.discount
-        self.save()
+        ShippingHistory.objects.create(
+            shipment=self,
+            status=new_status,
+            notes=notes or f"Status changed from {old_status} to {new_status}"
+        )
 
-    def __str__(self):
-        return f"Order {self.id} - {self.status}"
+        self.send_order_update_event()
 
+    def send_order_update_event(self):
+        status_mapping = {
+            'shipped': 'shipped',
+            'delivered': 'delivered',
+            'failed': 'cancelled'
+        }
 
-class OrderItem(models.Model):
+        shipping_status = status_mapping.get(self.status)
+        if shipping_status:
+            payload = {
+                "status": shipping_status,
+                "tracking_number": self.tracking_number,
+                "method": self.carrier
+            }
+
+            try:
+                response = requests.put(
+                    f"{ORDER_SERVICE_URL}/{self.order_id}/update-shipping/",
+                    json=payload,
+                    timeout=5
+                )
+                response.raise_for_status()
+                print(f"✅ Order {self.order_id} shipping status updated: {shipping_status}")
+            except Exception as e:
+                print(f"❌ Error sending shipping update: {e}")
+
+class ShipmentItem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    shipment = models.ForeignKey(Shipment, related_name='items', on_delete=models.CASCADE)
+    order_item_id = models.UUIDField()
     product_id = models.CharField(max_length=50)
     product_name = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()
@@ -101,22 +149,10 @@ class OrderItem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    @property
-    def total(self):
-        return self.quantity * self.price
-
-    def save(self, *args, **kwargs):
-        """
-        Khi OrderItem thay đổi, cập nhật tổng giá trị của Order.
-        """
-        super().save(*args, **kwargs)
-        self.order.calculate_total()
-
-
-class OrderHistory(models.Model):
+class ShippingHistory(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    order = models.ForeignKey(Order, related_name='history', on_delete=models.CASCADE)
-    status = models.CharField(max_length=20, choices=Order.STATUS_CHOICES)
-    notes = models.TextField(null=True)
+    shipment = models.ForeignKey(Shipment, related_name='history', on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=Shipment.SHIPPING_STATUS)
+    notes = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.UUIDField()

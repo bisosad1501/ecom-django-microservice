@@ -1,130 +1,80 @@
-from django.http import Http404
-from rest_framework import generics, status
-from rest_framework.permissions import AllowAny
+# book/views.py
+import logging
+from rest_framework import viewsets, status
 from rest_framework.response import Response
-from bson import ObjectId
+from django.conf import settings
+import requests
 
 from .models import Book
-from .serializers import BookListSerializer, BookDetailSerializer
+from .serializers import BookSerializer
+
+# Setup logger
+logger = logging.getLogger(__name__)
 
 
-class BookListView(generics.ListAPIView):
+class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
-    serializer_class = BookListSerializer
-    permission_classes = [AllowAny]
+    serializer_class = BookSerializer
 
-class BookDetailView(generics.RetrieveAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
-    lookup_field = '_id'  # Sử dụng '_id'
-
-    def get_object(self):
-        # Chuyển đổi ObjectId cho MongoDB
-        lookup_value = self.kwargs.get(self.lookup_field)
+    def validate_product(self, product_id):
+        """Kiểm tra product tồn tại và có type là BOOK"""
         try:
-            object_id = ObjectId(lookup_value)
-            return Book.objects.get(_id=object_id)
-        except (TypeError, Book.DoesNotExist):
-            raise generics.Http404("Sách không tồn tại")
-
-    def retrieve(self, request, *args, **kwargs):
-        try:
-            instance = self.get_object()
-            serializer = self.get_serializer(instance)
-
-            # Thêm sách liên quan
-            response_data = serializer.data
-            response_data['related_books'] = self.get_related_books(instance)
-
-            return Response(response_data)
-        except Book.DoesNotExist:
-            return Response({
-                "error": "Sách không tồn tại"
-            }, status=status.HTTP_404_NOT_FOUND)
-
-    def get_related_books(self, book, limit=5):
-        related_books = Book.objects.filter(
-            category=book.category
-        ).exclude(_id=book._id)[:limit]
-
-        return BookListSerializer(related_books, many=True).data
-
-class FeaturedBooksView(generics.ListAPIView):
-    serializer_class = BookListSerializer
-    permission_classes = [AllowAny]
-
-    def get_queryset(self):
-        return Book.objects.filter(
-            is_featured=True,
-            is_active=True
-        )
-
-
-class BookCreateView(generics.CreateAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
-
-
-class BookUpdateView(generics.UpdateAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
-    lookup_field = '_id'
-
-    def get_object(self):
-        # Chuyển đổi ObjectId cho MongoDB
-        lookup_value = self.kwargs.get(self.lookup_field)
-        try:
-            object_id = ObjectId(lookup_value)
-            return Book.objects.get(_id=object_id)
-        except (TypeError, Book.DoesNotExist):
-            raise Http404("Sách không tồn tại")
-
-    def update(self, request, *args, **kwargs):
-        try:
-            # Lấy instance sách
-            instance = self.get_object()
-
-            # Sử dụng serializer với partial=True để cho phép update từng phần
-            serializer = self.get_serializer(
-                instance,
-                data=request.data,
-                partial=True
+            response = requests.get(
+                f"{settings.PRODUCT_SERVICE_URL}/products/{product_id}/"
             )
+            logger.info(f"Product validation response: {response.status_code}")
+            logger.info(f"Product validation data: {response.json()}")
 
-            # Validate dữ liệu
-            serializer.is_valid(raise_exception=True)
+            if response.status_code != 200:
+                return False, "Product không tồn tại"
 
-            # Thực hiện update
-            self.perform_update(serializer)
+            product_data = response.json()
+            if product_data.get('product_type') != 'BOOK':
+                return False, "Product không phải là sách"
 
-            # Trả về dữ liệu đã update
-            return Response(serializer.data)
+            return True, None
+        except requests.RequestException as e:
+            logger.error(f"Error validating product: {str(e)}")
+            return False, "Lỗi kết nối tới Product Service"
 
-        except Book.DoesNotExist:
+    def create(self, request, *args, **kwargs):
+        """Tạo thông tin chi tiết cho sách với product_id đã có"""
+        logger.info(f"Creating book with data: {request.data}")
+
+        if 'product_id' not in request.data:
+            logger.error("Missing product_id in request data")
             return Response(
-                {"error": "Không tìm thấy sách"},
-                status=status.HTTP_404_NOT_FOUND
-            )
-        except Exception as e:
-            # Log lỗi chi tiết
-            print("Update Error:", str(e))
-            return Response(
-                {"error": str(e)},
+                {"error": "product_id là bắt buộc"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-    def perform_update(self, serializer):
-        # Phương thức này có thể được override để thêm logic tùy chỉnh
-        serializer.save()
+        is_valid, error = self.validate_product(request.data['product_id'])
+        if not is_valid:
+            logger.error(f"Product validation failed: {error}")
+            return Response(
+                {"error": error},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-class BookDeleteView(generics.DestroyAPIView):
-    """
-    View xóa sách
-    """
-    queryset = Book.objects.all()
-    serializer_class = BookDetailSerializer
-    permission_classes = [AllowAny]
-    lookup_field = '_id'
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            logger.error(f"Validation errors: {serializer.errors}")
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            instance = serializer.save()
+            logger.info(f"Book created successfully with id: {instance.product_id}")
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+        except Exception as e:
+            error_msg = str(e) if str(e) else "Unknown error occurred while saving book"
+            logger.exception(f"Error saving book: {error_msg}")
+            return Response(
+                {"error": error_msg},
+                status=status.HTTP_400_BAD_REQUEST
+            )

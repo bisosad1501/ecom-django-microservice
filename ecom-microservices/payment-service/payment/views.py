@@ -1,148 +1,125 @@
-# orders/views.py
+import requests
+from django.db import transaction
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import Order, OrderItem
-from .serializers import OrderSerializer, OrderCreateSerializer, OrderItemSerializer, OrderUpdateSerializer
-import requests
+from .models import Payment
+from .serializers import PaymentSerializer, PaymentCreateSerializer, PaymentUpdateSerializer
 
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
+ORDER_SERVICE_URL = "http://order-service:8007/orders"
+
+class PaymentViewSet(viewsets.ModelViewSet):
+    queryset = Payment.objects.all()
 
     def get_serializer_class(self):
         if self.action == 'create':
-            return OrderCreateSerializer
+            return PaymentCreateSerializer
         elif self.action in ['update', 'partial_update']:
-            return OrderUpdateSerializer
-        return OrderSerializer
-
-    def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(serializer.data)
+            return PaymentUpdateSerializer
+        return PaymentSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user_id = serializer.validated_data.get('user_id')
-        if not user_id:
-            return Response({"error": "Thiếu user_id."}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            cart_service_url = "http://localhost:8003"
-            response = requests.get(f"{cart_service_url}/cart/get/{user_id}/")
-            if response.status_code == 200:
-                cart_data = response.json()
-                cart_id = cart_data.get('id')
-                if not cart_id:
-                    return Response({"error": "Không tìm thấy cart_id cho user này"}, status=status.HTTP_404_NOT_FOUND)
-                cart_items = cart_data.get('items', [])
-                if not cart_items:
-                    return Response({"error": "Giỏ hàng trống"}, status=status.HTTP_400_BAD_REQUEST)
-                total_price = sum(item['quantity'] * float(item['sale_price']) for item in cart_items)
-                order = Order.objects.create(
-                    cart_id=cart_id,
-                    user_id=user_id,
-                    shipping_address=serializer.validated_data['shipping_address'],
-                    contact_phone=serializer.validated_data['contact_phone'],
-                    payment_method=request.data.get('payment_method'),
-                    shipping_method=request.data.get('shipping_method'),
-                    total_price=total_price,
-                    status='pending'
-                )
-                for cart_item in cart_items:
-                    OrderItem.objects.create(
-                        order=order,
-                        product_id=cart_item['product_id'],
-                        product_name=cart_item['product_name'],
-                        quantity=cart_item['quantity'],
-                        price=float(cart_item['sale_price'])
-                    )
-                return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"error": f"Không thể lấy thông tin giỏ hàng. Mã lỗi: {response.status_code}"},
-                                status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            return Response({"error": f"Lỗi khi xử lý đơn hàng: {str(e)}"},
-                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    @action(detail=True, methods=['put'], url_path='update-payment')
-    def update_payment(self, request, pk=None):
-        order = self.get_object()
-        payment_status = request.data.get('status')
-        payment_method = request.data.get('method')
-        if not payment_status:
-            return Response({"error": "Thiếu status thanh toán."}, status=status.HTTP_400_BAD_REQUEST)
-        PaymentInfo = type('PaymentInfo', (), {})
-        order.payment_info = PaymentInfo()
-        order.payment_info.status = payment_status
-        if payment_method:
-            order.payment_method = payment_method
-        order.update_status()
-        return Response(OrderSerializer(order).data)
+        order_id = serializer.validated_data.get('order_id')
+        method = serializer.validated_data.get('method')
+        payment_gateway = serializer.validated_data.get('payment_gateway', method)
 
-    @action(detail=True, methods=['put'], url_path='update-shipping')
-    def update_shipping(self, request, pk=None):
-        order = self.get_object()
-        shipping_status = request.data.get('status')
-        shipping_method = request.data.get('method')
-        if not shipping_status:
-            return Response({"error": "Thiếu status giao hàng."}, status=status.HTTP_400_BAD_REQUEST)
-        ShipmentInfo = type('ShipmentInfo', (), {})
-        order.shipment_info = ShipmentInfo()
-        order.shipment_info.status = shipping_status
-        if shipping_method:
-            order.shipping_method = shipping_method
-        order.update_status()
-        return Response(OrderSerializer(order).data)
+        # Lấy thông tin order
+        order_data = self._get_order_data(order_id)
+        if not order_data:
+            return Response({"error": "Không tìm thấy đơn hàng."}, status=status.HTTP_404_NOT_FOUND)
 
-    @action(detail=True, methods=['put'])
-    def cancel(self, request, pk=None):
-        order = self.get_object()
-        if order.status == 'delivered':
-            return Response({"error": "Không thể hủy đơn hàng đã giao"},
-                            status=status.HTTP_400_BAD_REQUEST)
-        order.status = 'cancelled'
-        order.save()
-        return Response(OrderSerializer(order).data)
-
-    @action(detail=False, methods=['get'])
-    def user_orders(self, request):
-        user_id = request.query_params.get('user_id')
-        if not user_id:
-            return Response({"error": "Thiếu user_id"}, status=status.HTTP_400_BAD_REQUEST)
-        orders = Order.objects.filter(user_id=user_id).order_by('-created_at')
-        return Response(OrderSerializer(orders, many=True).data)
-    
-    @action(detail=False, methods=['GET'], url_path='verify-purchase', url_name='verify-purchase')
-    def verify_purchase(self, request):
-        """API để Review Service kiểm tra trạng thái mua hàng"""
-        user_id = request.query_params.get('user_id')
-        product_id = request.query_params.get('product_id')
-
-        if not user_id or not product_id:
+        # Kiểm tra payment method phải khớp với order
+        order_payment_method = order_data.get('payment_method', '').lower()
+        if order_payment_method != method.lower():
             return Response(
-                {"error": "Thiếu user_id hoặc product_id"}, 
+                {
+                    "error": f"Payment method không khớp với order. Order yêu cầu {order_payment_method}, "
+                             f"nhưng payment được tạo với {method}"
+                },
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        order_item = OrderItem.objects.filter(
-            order__user_id=user_id,
-            product_id=product_id,
-            order__status='pending'
-        ).first()
+        amount = order_data.get('total_price')
+        if not amount:
+            return Response({"error": "Lỗi lấy tổng tiền từ đơn hàng."}, status=status.HTTP_400_BAD_REQUEST)
 
-        if order_item:
+        try:
+            with transaction.atomic():
+                payment = Payment.objects.create(
+                    order_id=order_id,
+                    method=method,
+                    payment_gateway=payment_gateway,
+                    amount=amount,
+                    status='pending'
+                )
+            return Response(PaymentSerializer(payment).data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def _get_order_data(self, order_id):
+        try:
+            response = requests.get(f"{ORDER_SERVICE_URL}/{order_id}/", timeout=5)
+            if response.status_code == 200:
+                return response.json()
+        except requests.RequestException:
+            return None
+        return None
+
+    @action(detail=True, methods=['put'], url_path='update-status')
+    def update_status(self, request, pk=None):
+        payment = self.get_object()
+        new_status = request.data.get('status')
+        transaction_id = request.data.get('transaction_id', None)
+
+        if not new_status:
+            return Response({"error": "Thiếu trạng thái thanh toán."}, status=status.HTTP_400_BAD_REQUEST)
+
+        payment.update_status(new_status, transaction_id)
+        return Response(PaymentSerializer(payment).data)
+
+    @action(detail=False, methods=['get'], url_path='user-payments')
+    def user_payments(self, request):
+        user_id = request.query_params.get('user_id')
+        if not user_id:
+            return Response({"error": "Thiếu user_id."}, status=status.HTTP_400_BAD_REQUEST)
+
+        payments = Payment.objects.filter(order__user_id=user_id).order_by('-created_at')
+        return Response(PaymentSerializer(payments, many=True).data)
+
+    @action(detail=True, methods=['post'], url_path='refund')
+    def refund(self, request, pk=None):
+        payment = self.get_object()
+        if payment.status != 'completed':
+            return Response({"error": "Chỉ có thể hoàn tiền cho giao dịch đã thanh toán."}, status=status.HTTP_400_BAD_REQUEST)
+
+        refund_amount = request.data.get('refund_amount', payment.paid_amount)
+        refund_reason = request.data.get('refund_reason', "")
+
+        payment.update_status('refunded')
+        payment.refund_amount = refund_amount
+        payment.refund_reason = refund_reason
+        payment.save()
+
+        return Response(PaymentSerializer(payment).data)
+
+    @action(detail=False, methods=['get'], url_path='verify-payment')
+    def verify_payment(self, request):
+        order_id = request.query_params.get('order_id')
+        if not order_id:
+            return Response({"error": "Thiếu order_id"}, status=status.HTTP_400_BAD_REQUEST)
+
+        payment = Payment.objects.filter(order_id=order_id, status='completed').first()
+        if payment:
             return Response({
-                'verified': True,
-                'order_id': str(order_item.order.id),
-                'purchase_date': order_item.order.created_at,
-                'delivery_date': order_item.order.updated_at
+                "verified": True,
+                "payment_id": str(payment.id),
+                "transaction_id": payment.transaction_id,
+                "paid_amount": payment.paid_amount,
+                "payment_date": payment.payment_date,
+                "method": payment.method
             })
 
-        return Response({
-            'verified': False,
-            'message': 'Không tìm thấy đơn hàng đã giao của sản phẩm này'
-        }, status=status.HTTP_404_NOT_FOUND)
+        return Response({"verified": False, "message": "Không tìm thấy thanh toán hợp lệ."}, status=status.HTTP_404_NOT_FOUND)

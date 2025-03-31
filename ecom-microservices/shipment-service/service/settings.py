@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'orders.apps.OrdersConfig',
+    'shipment.apps.ShipmentConfig',
     'rest_framework',
     'corsheaders',
 ]
@@ -54,7 +54,7 @@ WSGI_APPLICATION = 'service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'order_db',
+        'NAME': 'shipment_db',
         'USER': 'postgres',
         'PASSWORD': '15012003',
         'HOST': 'db-postgres',

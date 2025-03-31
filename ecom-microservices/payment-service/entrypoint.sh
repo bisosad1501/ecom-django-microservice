@@ -16,4 +16,4 @@ echo "🔄 Đang áp dụng migrations..."
 python manage.py migrate --noinput
 
 echo "🚀 Khởi động Django server..."
-exec python manage.py runserver 0.0.0.0:8007
+exec python manage.py runserver 0.0.0.0:8008

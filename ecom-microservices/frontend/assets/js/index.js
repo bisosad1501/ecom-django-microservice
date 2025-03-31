@@ -10,20 +10,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Khởi tạo Category Tabs
     initCategoryTabs();
+
+    // Khởi tạo Lazy Loading cho hình ảnh
+    initLazyLoadingImages();
+
+    // Khởi tạo danh sách sản phẩm
+    initializeProductList();
 });
 
 // Flash Sale Countdown
 function initFlashSaleCountdown() {
     const endTime = new Date();
-    endTime.setHours(endTime.getHours() + 2); // Set countdown 2 hours from now
+    endTime.setHours(endTime.getHours() + 2); // Set countdown 2 giờ từ bây giờ
 
     function updateCountdown() {
         const now = new Date();
         const timeDiff = endTime - now;
 
         if (timeDiff <= 0) {
-            // Reset countdown or hide flash sale section
-            document.querySelector('.flash-sale').style.display = 'none';
+            const flashSaleElem = document.querySelector('.flash-sale');
+            if (flashSaleElem) {
+                flashSaleElem.style.display = 'none';
+            }
             return;
         }
 
@@ -31,20 +39,20 @@ function initFlashSaleCountdown() {
         const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        // Update countdown display
-        document.querySelector('.time-box:nth-child(1)').textContent = hours.toString().padStart(2, '0');
-        document.querySelector('.time-box:nth-child(3)').textContent = minutes.toString().padStart(2, '0');
-        document.querySelector('.time-box:nth-child(5)').textContent = seconds.toString().padStart(2, '0');
+        const timeBoxes = document.querySelectorAll('.time-box');
+        if (timeBoxes.length >= 5) {
+            timeBoxes[0].textContent = hours.toString().padStart(2, '0');
+            timeBoxes[2].textContent = minutes.toString().padStart(2, '0');
+            timeBoxes[4].textContent = seconds.toString().padStart(2, '0');
+        }
     }
 
-    // Update countdown every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
 
 // Product Carousels
 function initProductCarousels() {
-    // Initialize Bootstrap carousel
     const mainBanner = document.getElementById('mainBanner');
     if (mainBanner) {
         new bootstrap.Carousel(mainBanner, {
@@ -60,13 +68,17 @@ function initWishlistHandling() {
 
     wishlistIcons.forEach(icon => {
         icon.addEventListener('click', function() {
-            const productId = this.closest('.product-card').dataset.productId;
+            const productCard = this.closest('.product-card');
+            if (!productCard) return;
+            const productId = productCard.dataset.productId;
             toggleWishlist(productId, this);
         });
 
-        // Check if product is in wishlist and update icon
-        const productId = icon.closest('.product-card').dataset.productId;
-        updateWishlistIcon(productId, icon);
+        const productCard = icon.closest('.product-card');
+        if (productCard) {
+            const productId = productCard.dataset.productId;
+            updateWishlistIcon(productId, icon);
+        }
     });
 }
 
@@ -75,17 +87,21 @@ function toggleWishlist(productId, icon) {
     const index = wishlistItems.indexOf(productId);
 
     if (index === -1) {
-        // Add to wishlist
         wishlistItems.push(productId);
-        icon.querySelector('i').classList.remove('far');
-        icon.querySelector('i').classList.add('fas');
-        icon.querySelector('i').style.color = '#dc3545';
+        const iElem = icon.querySelector('i');
+        if (iElem) {
+            iElem.classList.remove('far');
+            iElem.classList.add('fas');
+            iElem.style.color = '#dc3545';
+        }
     } else {
-        // Remove from wishlist
         wishlistItems.splice(index, 1);
-        icon.querySelector('i').classList.remove('fas');
-        icon.querySelector('i').classList.add('far');
-        icon.querySelector('i').style.color = '';
+        const iElem = icon.querySelector('i');
+        if (iElem) {
+            iElem.classList.remove('fas');
+            iElem.classList.add('far');
+            iElem.style.color = '';
+        }
     }
 
     localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
@@ -95,9 +111,12 @@ function toggleWishlist(productId, icon) {
 function updateWishlistIcon(productId, icon) {
     const wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
     if (wishlistItems.includes(productId)) {
-        icon.querySelector('i').classList.remove('far');
-        icon.querySelector('i').classList.add('fas');
-        icon.querySelector('i').style.color = '#dc3545';
+        const iElem = icon.querySelector('i');
+        if (iElem) {
+            iElem.classList.remove('far');
+            iElem.classList.add('fas');
+            iElem.style.color = '#dc3545';
+        }
     }
 }
 
@@ -108,19 +127,16 @@ function initCategoryTabs() {
 
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            // Remove active class from all tabs
             categoryTabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             this.classList.add('active');
 
             const category = this.textContent.toLowerCase();
 
-            // Filter products
             productCards.forEach(card => {
                 if (category === 'tất cả') {
                     card.style.display = '';
                 } else {
-                    const productCategory = card.dataset.category.toLowerCase();
+                    const productCategory = card.dataset.category ? card.dataset.category.toLowerCase() : '';
                     card.style.display = productCategory === category ? '' : 'none';
                 }
             });
@@ -128,32 +144,73 @@ function initCategoryTabs() {
     });
 }
 
-// Add to Cart Handling
-function addToCart(productId) {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cartItems.push(productId);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    updateCartCount();
+// Async Add to Cart Handling with API Call
+async function addToCart(productId) {
+    const userId = localStorage.getItem('userId');
+    const accessToken = localStorage.getItem('accessToken');
 
-    // Show success message
-    showToast('Sản phẩm đã được thêm vào giỏ hàng');
+    if (!userId || !accessToken) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Lỗi',
+            text: 'Bạn cần đăng nhập để thêm vào giỏ hàng'
+        });
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:8003/cart/add-item/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                user_id: userId,
+                product_id: productId,
+                quantity: 1
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.detail || "Không thể thêm vào giỏ hàng");
+        }
+
+        // Show success notification
+        Swal.fire({
+            icon: 'success',
+            title: 'Thành công!',
+            text: 'Đã thêm sản phẩm vào giỏ hàng',
+            timer: 1500
+        });
+
+        // Immediately update the cart count using the global base function
+        window.updateCartCount();
+    } catch (error) {
+        console.error("Lỗi:", error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Lỗi',
+            text: error.message
+        });
+    }
 }
 
-// Toast Notification
+// Toast Notification (still available for other notifications)
 function showToast(message) {
     const toast = document.createElement('div');
     toast.classList.add('toast-notification');
     toast.textContent = message;
     document.body.appendChild(toast);
-
-    // Remove toast after 3 seconds
     setTimeout(() => {
         toast.remove();
     }, 3000);
 }
 
 // Lazy Loading for Images
-document.addEventListener('DOMContentLoaded', function() {
+function initLazyLoadingImages() {
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -167,4 +224,161 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     images.forEach(img => imageObserver.observe(img));
-});
+}
+
+// Constants
+const DEFAULT_PRODUCT_IMAGE = '/assets/images/product-default.png';
+const API_URL = 'http://localhost:8005/products/';
+
+// Product List Handling
+function initializeProductList() {
+    const productListContainer = document.getElementById("dynamicProductList");
+    if (!productListContainer) return;
+    fetchAndRenderProducts(productListContainer);
+}
+
+async function fetchAndRenderProducts(container) {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const products = await response.json();
+        renderProducts(products, container);
+    } catch (error) {
+        console.error("Error loading products:", error);
+        showErrorMessage(container);
+    }
+}
+
+function renderProducts(products, container) {
+    container.innerHTML = "";
+    products.forEach(product => {
+        const productElement = createProductElement(product);
+        container.insertAdjacentHTML('beforeend', productElement);
+    });
+    initializeProductEventListeners();
+}
+
+function createProductElement(product) {
+    const discountPercentage = calculateDiscount(product.sale_price, product.base_price);
+    const ratingStars = createRatingStars(product.rating);
+    
+    return `
+        <div class="col-6 col-md-3">
+            <div class="product-card" data-product-id="${product._id}" data-category="${product.category || ''}">
+                ${createDiscountBadge(discountPercentage)}
+                <div class="wishlist-icon position-absolute top-0 end-0 m-2">
+                    <i class="far fa-heart"></i>
+                </div>
+                <img 
+                    src="${product.primary_image || DEFAULT_PRODUCT_IMAGE}" 
+                    class="card-img-top" 
+                    alt="${product.name}"
+                    onerror="this.onerror=null; this.src='${DEFAULT_PRODUCT_IMAGE}';"
+                >
+                <div class="card-body p-2">
+                    <h6 class="card-title text-truncate">
+                        <a href="product-detail.html?id=${product._id}" class="product-link">
+                            ${product.name}
+                        </a>
+                    </h6>
+                    <div class="rating mb-1">
+                        ${ratingStars}
+                        <span class="rating-count">(${product.review_count || 0})</span>
+                    </div>
+                    ${createPriceBox(product)}
+                    <div class="mt-2 d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Đã bán ${product.total_sold || 0}</small>
+                        <small class="text-primary">${product.brand || 'No Brand'}</small>
+                    </div>
+                    <button class="btn btn-primary btn-sm w-100 mt-2 add-to-cart" 
+                            data-product-id="${product._id}">
+                        <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function calculateDiscount(salePrice, basePrice) {
+    return salePrice ? Math.round((1 - salePrice / basePrice) * 100) : 0;
+}
+
+function createDiscountBadge(discount) {
+    return discount > 0 ? 
+        `<div class="badge bg-danger position-absolute top-0 start-0 m-2">-${discount}%</div>` 
+        : '';
+}
+
+function createRatingStars(rating) {
+    const fullStars = Math.floor(rating || 0);
+    const hasHalfStar = (rating || 0) % 1 >= 0.5;
+    let stars = '';
+    
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            stars += '<i class="fas fa-star text-warning"></i>';
+        } else if (i === fullStars && hasHalfStar) {
+            stars += '<i class="fas fa-star-half-alt text-warning"></i>';
+        } else {
+            stars += '<i class="far fa-star text-warning"></i>';
+        }
+    }
+    return stars;
+}
+
+function createPriceBox(product) {
+    const currentPrice = formatPrice(product.sale_price || product.base_price);
+    const oldPrice = product.sale_price ? 
+        `<span class="old-price">${formatPrice(product.base_price)}₫</span>` : '';
+    
+    return `
+        <div class="price-box">
+            <span class="new-price">${currentPrice}₫</span>
+            ${oldPrice}
+        </div>
+    `;
+}
+
+function formatPrice(price) {
+    return (price || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function showErrorMessage(container) {
+    container.innerHTML = `
+        <div class="col-12 text-center">
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.
+            </div>
+        </div>
+    `;
+}
+
+function initializeProductEventListeners() {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const productId = e.currentTarget.dataset.productId;
+            // Call the async addToCart function with the product id
+            addToCart(productId);
+        });
+    });
+
+    document.querySelectorAll('.wishlist-icon').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            const productCard = e.currentTarget.closest('.product-card');
+            if (!productCard) return;
+            const productId = productCard.dataset.productId;
+            toggleWishlist(productId, icon);
+        });
+    });
+}
+
+function updateWishlistCount() {
+    const wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+    const wishlistCountElem = document.getElementById('wishlistCount');
+    if (wishlistCountElem) {
+        wishlistCountElem.textContent = wishlistItems.length;
+    }
+}

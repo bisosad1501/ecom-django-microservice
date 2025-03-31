@@ -10,10 +10,10 @@ echo "✅ Đã kết nối thành công tới MySQL!"
 
 # Tạo và áp dụng migrations
 echo "🔄 Đang tạo migrations..."
-python manage.py makemigrations
+python manage.py makemigrations --noinput
 
 echo "🔄 Đang áp dụng migrations..."
-python manage.py migrate
+python manage.py migrate --noinput
 
 echo "🚀 Khởi động Django server..."
 exec python manage.py runserver 0.0.0.0:8001

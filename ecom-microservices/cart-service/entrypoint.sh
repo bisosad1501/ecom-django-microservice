@@ -8,10 +8,12 @@ done
 
 echo "✅ Đã kết nối thành công tới PostgreSQL!"
 
-# Thực hiện migration
-echo "🔄 Áp dụng database migrations..."
-python manage.py makemigrations
-python manage.py migrate
+# Tạo và áp dụng migrations
+echo "🔄 Đang tạo migrations..."
+python manage.py makemigrations --noinput
+
+echo "🔄 Đang áp dụng migrations..."
+python manage.py migrate --noinput
 
 echo "🚀 Khởi động Django server..."
 exec python manage.py runserver 0.0.0.0:8003

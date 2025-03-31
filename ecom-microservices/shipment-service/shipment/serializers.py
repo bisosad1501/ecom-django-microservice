@@ -1,36 +1,85 @@
 from rest_framework import serializers
-from .models import Order, OrderItem
+from .models import Shipment, ShipmentItem, ShippingHistory
 
-class OrderItemSerializer(serializers.ModelSerializer):
+class ShipmentItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OrderItem
-        fields = ['id', 'product_id', 'product_name', 'quantity', 'price']
-
-class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Order
+        model = ShipmentItem
         fields = [
-            'id', 'cart_id', 'user_id', 'shipping_address', 'contact_phone',
-            'total_price', 'status', 'payment_method', 'shipping_method',
-            'created_at', 'updated_at', 'items'
+            'id',
+            'order_item_id',
+            'product_id',
+            'product_name',
+            'quantity',
+            'price'
+        ]
+
+class ShippingHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingHistory
+        fields = ['id', 'status', 'notes', 'created_at', 'created_by']
+
+class ShipmentSerializer(serializers.ModelSerializer):
+    items = ShipmentItemSerializer(many=True, read_only=True)
+    history = ShippingHistorySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Shipment
+        fields = [
+            'id',
+            'order_id',
+            'status',
+            'carrier',
+            'tracking_number',
+            'receiver_name',
+            'receiver_phone',
+            'shipping_address_line1',
+            'shipping_ward',
+            'shipping_district',
+            'shipping_city',
+            'shipping_country',
+            'weight',
+            'dimension',
+            'shipping_cost',
+            'shipment_fee',
+            'pickup_time',
+            'estimated_delivery',
+            'delivered_at',
+            'shipping_notes',
+            'failure_reason',
+            'metadata',
+            'created_at',
+            'updated_at',
+            'items',
+            'history'
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
 
-class OrderCreateSerializer(serializers.ModelSerializer):
+class ShipmentCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Order
-        fields = ['user_id', 'shipping_address', 'contact_phone', 'payment_method', 'shipping_method']
+        model = Shipment
+        fields = [
+            'order_id',
+            'carrier',
+            'receiver_name',
+            'receiver_phone',
+            'shipping_address_line1',
+            'shipping_ward',
+            'shipping_district',
+            'shipping_city',
+            'shipping_country',
+            'weight',
+            'dimension',
+            'shipping_notes'
+        ]
 
-class OrderUpdateSerializer(serializers.ModelSerializer):
+class ShipmentUpdateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Order
-        fields = ['shipping_address', 'contact_phone', 'status', 'payment_method', 'shipping_method']
-        extra_kwargs = {
-            'shipping_address': {'required': False},
-            'contact_phone': {'required': False},
-            'status': {'required': False},
-            'payment_method': {'required': False},
-            'shipping_method': {'required': False}
-        }
+        model = Shipment
+        fields = [
+            'status',
+            'tracking_number',
+            'estimated_delivery',
+            'shipping_notes',
+            'failure_reason',
+            'metadata'
+        ]

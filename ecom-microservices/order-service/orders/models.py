@@ -1,17 +1,17 @@
 import uuid
+from decimal import Decimal
+from django.apps import apps
 from django.db import models
+
 
 class Order(models.Model):
     STATUS_CHOICES = [
-        ('draft', 'Nháp'),
         ('pending_payment', 'Chờ thanh toán'),
-        ('paid', 'Đã thanh toán'),
         ('processing', 'Đang xử lý'),
-        ('ready_to_ship', 'Sẵn sàng giao hàng'),
-        ('shipped', 'Đang giao hàng'),
+        ('shipping', 'Đang giao hàng'),
         ('delivered', 'Đã giao hàng'),
         ('cancelled', 'Đã hủy'),
-        ('refunded', 'Đã hoàn tiền'),
+        ('refunded', 'Đã hoàn tiền')
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -38,7 +38,7 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     # Order info
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending_payment')
     payment_method = models.CharField(max_length=50)
     shipping_method = models.CharField(max_length=50)
     notes = models.TextField(blank=True)
@@ -47,65 +47,62 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # Relations
-    coupon = models.ForeignKey('Coupon', null=True, on_delete=models.SET_NULL)
-
-    # Thêm các trường để tracking payment và shipping
-    payment_status = models.CharField(max_length=20, default='pending')
-    shipping_status = models.CharField(max_length=20, default='pending')
-
-    def update_status(self):
-        if self.status == 'cancelled':
-            return
-
-        payment = self.payment_info
-        shipment = self.shipment_info
-
-        if payment and payment.status == 'completed':
-            if not shipment:
-                self.status = 'ready_to_ship'
-            elif shipment.status == 'delivered':
-                self.status = 'delivered'
-            elif shipment.status == 'shipped':
-                self.status = 'shipped'
-            else:
-                self.status = 'processing'
-
-        elif payment and payment.status == 'refunded':
-            self.status = 'refunded'
-
-        self.save()
-
-    def update_status(self):
-        if self.status == 'cancelled':
-            return
-
-        if hasattr(self, 'payment_info'):
-            payment = self.payment_info
-            if payment.status == 'refunded':
-                self.status = 'refunded'
-            elif payment.status == 'completed':
-                if hasattr(self, 'shipment_info'):
-                    shipment = self.shipment_info
-                    if shipment.status == 'delivered':
-                        self.status = 'delivered'
-                    elif shipment.status == 'shipped':
-                        self.status = 'shipped'
-                    else:
-                        self.status = 'processing'
-                else:
-                    self.status = 'processing'
-        self.save()
+    # Relations  coupon = models.ForeignKey('Coupon', null=True, on_delete=models.SET_NULL)
 
     def calculate_total(self):
+        self.sub_total = sum(item.total for item in self.items.all())
+        self.shipping_fee = Decimal(str(self.shipping_fee or '0'))
+        self.tax = Decimal(str(self.tax or '0'))
+        self.discount = Decimal(str(self.discount or '0'))
+
         self.total_price = (
-                self.sub_total
-                + self.shipping_fee
-                + self.tax
-                - self.discount
+                self.sub_total +
+                self.shipping_fee +
+                self.tax -
+                self.discount
         )
         self.save()
 
+    def update_status(self, payment_status=None, shipping_status=None):
+        if self.status in ['delivered', 'cancelled', 'refunded']:
+            raise ValueError(f"Cannot update {self.status} order")
+
+        old_status = self.status  # Store old status before changes
+
+        # Payment updates
+        if payment_status:
+            if payment_status == 'completed':
+                self.status = 'processing'
+            elif payment_status == 'failed':
+                self.status = 'cancelled'
+            elif payment_status == 'refunded':
+                self.status = 'refunded'
+
+        # Shipping updates
+        if shipping_status:
+            if shipping_status == 'shipped':
+                self.status = 'shipping'
+            elif shipping_status == 'delivered':
+                self.status = 'delivered'
+                if self.payment_method == 'cod':
+                    # Get Payment model using lazy loading
+                    Payment = apps.get_model('payment', 'Payment')
+                    try:
+                        payment = Payment.objects.get(order_id=self.id)
+                        payment.update_status('completed')
+                    except Payment.DoesNotExist:
+                        print(f"❌ Payment not found for order {self.id}")
+
+        self.save()
+
+        # Record history if status changed
+        if old_status != self.status:
+            OrderHistory.objects.create(
+                order=self,
+                status=self.status,
+                notes=f"Status changed from {old_status} to {self.status}",
+                created_by=self.user_id
+            )
 
 class OrderItem(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -120,6 +117,10 @@ class OrderItem(models.Model):
     @property
     def total(self):
         return self.quantity * self.price
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.order.calculate_total()
 
 
 class OrderHistory(models.Model):

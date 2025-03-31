@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (!window.location.pathname.includes('/booklist.html')) return;
 
-    const API_BASE_URL = window.location.hostname === 'localhost' ?
-        'http://localhost:8002/books/' : '/books/';
+    const API_BASE_URL = 'http://localhost:8002/books/'; // Luôn gọi API từ localhost
 
     function showLoading() {
         const existingOverlay = document.getElementById('loading-overlay');
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             showLoading();
             const queryParams = new URLSearchParams(params).toString();
-            const response = await fetch(`${API_BASE_URL}list/?${queryParams}`, {
+            const response = await fetch(`${API_BASE_URL}?${queryParams}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'same-origin'
