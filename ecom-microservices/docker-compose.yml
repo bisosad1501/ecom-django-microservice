@@ -5,21 +5,40 @@ services:
     ports:
       - "3000:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html
+      - ./frontend/build:/usr/share/nginx/html
     networks:
       - ecom-net
     command: [ nginx-debug, '-g', 'daemon off;' ]
 
   api-gateway:
-    build: ./api-gateway/nginx
+    build: ./api-gateway
     ports:
       - "80:80"
     depends_on:
+      - customer-service
       - book-service
       - cart-service
-      - customer-service
-      - recommendation-service
+      - review-service
+      - product-service
+      - shoe-service
+      - order-service
+      - payment-service
+      - shipment-service
       - sentiment-service
+      - recommendation-service
+    environment:
+      - CUSTOMER_SERVICE=customer-service
+      - BOOK_SERVICE=book-service
+      - CART_SERVICE=cart-service
+      - REVIEW_SERVICE=review-service
+      - PRODUCT_SERVICE=product-service
+      - SHOE_SERVICE=shoe-service
+      - ORDER_SERVICE=order-service
+      - PAYMENT_SERVICE=payment-service
+      - SHIPMENT_SERVICE=shipment-service
+      - SENTIMENT_SERVICE=sentiment-service
+      - RECOMMENDATION_SERVICE=recommendation-service
+      - ML_SERVICE=ml-service
     networks:
       - ecom-net
 
@@ -46,6 +65,7 @@ services:
         MYSQL_DATABASE: customer_db
       volumes:
         - mysql_data:/var/lib/mysql
+        - ./docker/mysql/init.sh:/docker-entrypoint-initdb.d/init.sh
       networks:
         - ecom-net
 
@@ -190,6 +210,7 @@ services:
       POSTGRES_DB: cart_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sh:/docker-entrypoint-initdb.d/init.sh
     networks:
       - ecom-net
 
@@ -207,14 +228,26 @@ services:
       - db-mysql
     networks:
       - ecom-net
+
   sentiment-service:
-    build: ./sentiment-service
+    build: sentiment-service
     ports:
       - "8010:8010"
+    command: python -m src.app
     environment:
+      - PORT=8010
+      - HOST=0.0.0.0
       - REVIEW_SERVICE_URL=http://review-service:8004
+      - USE_MOCK_DATA=false
+      - MOCK_DATA_SIZE=200
+      - USE_GPU=false
+      - PRELOAD_MULTILINGUAL_MODEL=false
+      - USE_FALLBACK_MODEL=true
+      - MAX_LENGTH=512
     depends_on:
       - review-service
+    networks:
+      - ecom-net
 
   recommendation-service:
     build: ./recommendation-service
@@ -256,4 +289,3 @@ volumes:
   postgres_data:
   mysql_data:
   redis-recommendation-data:
-

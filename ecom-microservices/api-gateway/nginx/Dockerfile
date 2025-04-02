@@ -1,4 +1,4 @@
-FROM nginx:1.23-alpine
+FROM nginx:1.25-alpine
 
 # Xóa các file mặc định
 RUN rm -rf /etc/nginx/conf.d/*

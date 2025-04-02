@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure--90g*5w&=i_%-&vbvus^+9t0ekg+9&-38o5q#+9g8-&7fr=^8g'
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
