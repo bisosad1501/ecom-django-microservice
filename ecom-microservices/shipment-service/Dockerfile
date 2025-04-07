@@ -25,4 +25,4 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 8009
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]

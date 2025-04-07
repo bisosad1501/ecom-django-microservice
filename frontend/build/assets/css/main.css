@@ -1,0 +1,169 @@
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #F5F5F5;
+    --text-color: #333333;
+    --transition-speed: 0.3s;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #ffffff;
+}
+
+/* Navigation Styles */
+.navbar {
+    background: linear-gradient(to right, var(--primary-color), #6A5ACD);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Dropdown Submenu */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(135deg, var(--primary-color), #6A5ACD);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner img {
+    transition: transform var(--transition-speed) ease;
+}
+
+.hero-banner img:hover {
+    transform: scale(1.05);
+}
+
+/* Featured Categories */
+.featured-categories .category-card {
+    transition: all var(--transition-speed) ease;
+    border: none;
+    overflow: hidden;
+}
+
+.featured-categories .category-card img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.featured-categories .category-card:hover img {
+    transform: scale(1.1);
+}
+
+.featured-categories .category-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-primary:hover {
+    background-color: #3A7BD5;
+    border-color: #3A7BD5;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #2C3E50, #3498DB);
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: all var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-banner {
+        text-align: center;
+    }
+
+    .hero-banner .btn {
+        margin-bottom: 10px;
+    }
+
+    .featured-categories .category-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-light {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Additional Hover Effects */
+.card {
+    transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}

@@ -25,7 +25,7 @@ SHOE_SERVICE_URL = "http://shoe-service:8006"
 SECRET_KEY = 'django-insecure-7!y5_+watq9_*!-zcg+@xq#c-8iza5f=sb1%t1tg7+)nfklo8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Cấu hình CORS chi tiết

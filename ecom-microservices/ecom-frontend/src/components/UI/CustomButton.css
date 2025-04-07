@@ -1,0 +1,25 @@
+.custom-button {
+  position: relative;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+}
+
+.button-text-hidden {
+  visibility: hidden;
+} 

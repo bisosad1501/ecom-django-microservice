@@ -11,7 +11,7 @@ from .serializers import (
 )
 from decimal import Decimal
 
-CUSTOMER_SERVICE_URL = "http://customer-service:8001/user/list/"
+CUSTOMER_SERVICE_URL = "http://customer-service:8001/user/users/"
 PRODUCT_SERVICE_URL = "http://product-service:8005/products/"
 
 def is_valid_user(user_id):
@@ -81,15 +81,23 @@ class AddItemToCartView(APIView):
             cart_type="active"
         )
 
+        # Lấy giá từ product_data
+        base_price = product_data.get("base_price", 0)
+        sale_price = product_data.get("sale_price")
+        
+        # Nếu không có giá khuyến mãi hoặc giá khuyến mãi là null, sử dụng giá gốc
+        if sale_price is None:
+            sale_price = base_price
+        
         cart_item_data = {
             'cart': cart.id,
             'product_id': str(product_id),
             'product_name': product_data.get("name", "Sản phẩm không có tên"),
-            'original_price': product_data.get("base_price"),
-            'sale_price': product_data.get("sale_price"),
+            'original_price': base_price,
+            'sale_price': sale_price,
             'discount_percentage': self.calculate_discount_percentage(
-                product_data.get("base_price"),
-                product_data.get("sale_price")
+                base_price,
+                sale_price
             ),
             'quantity': quantity
         }

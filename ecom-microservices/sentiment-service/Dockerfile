@@ -55,8 +55,11 @@ ENV PYTHONUNBUFFERED=1 \
     HOST=0.0.0.0 \
     REVIEW_SERVICE_URL=http://review-service:8004
 
+# Cấp quyền thực thi cho entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Expose the application port
 EXPOSE 8010
 
 # Set the entrypoint
-CMD ["python", "-m", "src.app"]
+ENTRYPOINT ["/app/entrypoint.sh"]

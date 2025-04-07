@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShopNow">
+    <title>ShopNow - Mua Sắm Đa Dạng</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/base.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-book me-2"></i>ShopNow
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Sách</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Sách văn học</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách kỹ năng</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách thiếu nhi</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Quần áo</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Điện tử</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Điện thoại</a></li>
+                                    <li><a class="dropdown-item" href="#">Laptop</a></li>
+                                    <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Giày dép</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Giày nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày thể thao</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <!-- Phần chưa đăng nhập - ẩn khi đã đăng nhập -->
+                    <div id="authButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2" id="loginBtn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                        </a>
+                        <a href="register.html" class="btn btn-light" id="registerBtn">
+                            <i class="fas fa-user-plus me-2"></i>Đăng ký
+                        </a>
+                    </div>
+
+                    <!-- Phần đã đăng nhập - ẩn khi chưa đăng nhập -->
+                    <div id="userProfile" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>
+                                <span id="userNameDisplay">Xin chào</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user me-2"></i>Hồ sơ cá nhân</a></li>
+                                <li><a class="dropdown-item" href="orders.html">
+                                    <i class="fas fa-shopping-cart me-2"></i>Đơn hàng của tôi</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Nội dung động sẽ được thêm vào đây -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>Về ShopNow</h5>
+                    <p>Nền tảng thương mại điện tử hàng đầu Việt Nam</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Dịch Vụ Khách Hàng</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Chăm Sóc Khách Hàng</a></li>
+                        <li><a href="#" class="text-white">Điều Khoản</a></li>
+                        <li><a href="#" class="text-white">Chính Sách Bảo Mật</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kết Nối Với Chúng Tôi</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2025 ShopNow. Bản quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/base.js"></script>
+</body>
+</html>
+
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>BookStore</h5>
+                    <p class="text-muted">Kết nối tri thức - Lan tỏa đam mê đọc sách</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-muted"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-muted"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6>Danh mục</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">Sách mới</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Bán chạy</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Khuyến mãi</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>Hỗ trợ</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">Liên hệ</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">FAQs</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Đổi trả</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Giao hàng</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Đăng ký nhận tin</h6>
+                    <p class="text-muted">Nhận thông tin về sách mới và khuyến mãi</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email của bạn">
+                        <button class="btn btn-outline-secondary" type="button">Đăng ký</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <p class="text-muted small">© 2025 BookStore. Tất cả quyền được bảo lưu.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-muted small">Điều khoản</a>
+                    <a href="#" class="text-muted small">Quyền riêng tư</a>
+                </div>
+            </div>
+        </div>
+    </footer>

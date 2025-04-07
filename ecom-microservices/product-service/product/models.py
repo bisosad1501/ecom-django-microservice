@@ -38,9 +38,9 @@ class Product(models.Model):
     product_type = models.CharField(max_length=50, choices=ProductType.choices)
     category_path = models.JSONField(default=list)
 
-    # 🔹 **Giá cả**
-    base_price = models.DecimalField(max_digits=12, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
-    sale_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    # 🔹 **Giá cả** - Sử dụng FloatField thay vì DecimalField
+    base_price = models.FloatField(validators=[MinValueValidator(0.01)])
+    sale_price = models.FloatField(null=True, blank=True)
 
     # 🔹 **Tồn kho**
     quantity = models.IntegerField(default=0)
@@ -66,7 +66,7 @@ class Product(models.Model):
     rating = models.FloatField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])  # ⭐ 0-5
     review_count = models.IntegerField(default=0)  # 📝 Tổng số đánh giá
 
-    weight = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # ⚖️ Trọng lượng sản phẩm
+    weight = models.FloatField(null=True, blank=True)  # ⚖️ Trọng lượng sản phẩm
     dimensions = models.JSONField(default=dict, blank=True)  # 📏 {'length': 30, 'width': 20, 'height': 10}
 
     tags = models.JSONField(default=list, blank=True)  # 🔖 ['electronics', 'gaming', 'sony']
@@ -110,8 +110,42 @@ class Product(models.Model):
 
         self.save()
 
-    def update_metrics(self, sale_amount: Decimal = None):
+    def update_metrics(self, sale_amount: float = None):
         """Cập nhật doanh số"""
         if sale_amount:
             self.total_sold += 1
         self.save()
+
+    def save(self, *args, **kwargs):
+        # Đảm bảo tính nhất quán giữa product_type và category_path
+        product_type_mapping = {
+            'BOOK': 'Books',
+            'SHOE': 'Shoes',
+            'ELECTRONIC': 'Electronics',
+            'CLOTHING': 'Clothing',
+            'HOME_APPLIANCE': 'Home Appliances',
+            'FURNITURE': 'Furniture',
+            'BEAUTY': 'Beauty & Personal Care',
+            'FOOD': 'Food & Beverage',
+            'SPORTS': 'Sports Equipment',
+            'TOYS': 'Toys & Games',
+            'AUTOMOTIVE': 'Automotive',
+            'PET_SUPPLIES': 'Pet Supplies',
+            'HEALTH': 'Health & Wellness',
+            'OFFICE': 'Office Supplies',
+            'MUSIC': 'Musical Instruments'
+        }
+        
+        # Đảm bảo category_path không rỗng
+        if not self.category_path or len(self.category_path) == 0:
+            # Nếu category_path trống, tạo mặc định từ product_type
+            self.category_path = [product_type_mapping.get(self.product_type, self.product_type)]
+        else:
+            # Đảm bảo phần tử đầu tiên khớp với product_type
+            expected_category = product_type_mapping.get(self.product_type)
+            if expected_category and self.category_path[0] != expected_category:
+                # Ghi lại thay đổi vào log để dễ debug
+                print(f"Chuẩn hóa category_path từ {self.category_path[0]} thành {expected_category} cho sản phẩm {self.name}")
+                self.category_path[0] = expected_category
+                
+        super().save(*args, **kwargs)

@@ -1,0 +1,850 @@
+{
+	"info": {
+		"_postman_id": "f5a25c88-d4bd-4d42-9c22-fea8e5c6ca7b",
+		"name": "Customer Service API",
+		"description": "API collection cho Customer Service - Các endpoint trực tiếp sử dụng cổng 8001",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Đăng ký tài khoản",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"secure_password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"register",
+								""
+							]
+						},
+						"description": "Đăng ký tài khoản người dùng mới\n\n**Quyền truy cập**: Public\n\n**Response**: \n- User object với thông tin cơ bản\n- Tokens (access và refresh) để đăng nhập ngay lập tức"
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng nhập",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"secure_password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"login",
+								""
+							]
+						},
+						"description": "Đăng nhập vào hệ thống\n\n**Quyền truy cập**: Public\n\n**Response**: \n- User object với thông tin đầy đủ\n- Tokens (access và refresh)\n- Yêu cầu 2FA (nếu đã bật)"
+					},
+					"response": []
+				},
+				{
+					"name": "Đăng xuất",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/logout/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"logout",
+								""
+							]
+						},
+						"description": "Đăng xuất khỏi hệ thống, vô hiệu hóa refresh token hiện tại\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: Thông báo đăng xuất thành công"
+					},
+					"response": []
+				},
+				{
+					"name": "Làm mới Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/auth/refresh/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"auth",
+								"refresh",
+								""
+							]
+						},
+						"description": "Làm mới access token bằng refresh token\n\n**Quyền truy cập**: User có refresh token hợp lệ\n\n**Response**: \n- Access token mới\n- Refresh token mới (tùy cấu hình)"
+					},
+					"response": []
+				},
+				{
+					"name": "Xác thực OTP (2FA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": \"{{user_id}}\",\n  \"code\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/2fa/verify/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"2fa",
+								"verify",
+								""
+							]
+						},
+						"description": "Xác thực mã OTP khi đăng nhập với 2FA\n\n**Quyền truy cập**: Public (sử dụng sau khi đăng nhập thành công nhưng cần xác thực 2FA)\n\n**Response**: \n- Tokens nếu xác thực thành công\n- Lỗi nếu mã không đúng"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến xác thực và đăng nhập"
+		},
+		{
+			"name": "Quản lý mật khẩu",
+			"item": [
+				{
+					"name": "Đổi mật khẩu",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"old_password\": \"secure_password123\",\n  \"new_password\": \"new_secure_password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/change-password/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"change-password",
+								""
+							]
+						},
+						"description": "Đổi mật khẩu người dùng\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: Thông báo đổi mật khẩu thành công"
+					},
+					"response": []
+				},
+				{
+					"name": "Yêu cầu đặt lại mật khẩu",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"user@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/reset-password/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"reset-password",
+								""
+							]
+						},
+						"description": "Yêu cầu đặt lại mật khẩu, gửi email với link reset\n\n**Quyền truy cập**: Public\n\n**Response**: Thông báo đã gửi email đặt lại mật khẩu"
+					},
+					"response": []
+				},
+				{
+					"name": "Xác nhận đặt lại mật khẩu",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"{{reset_token}}\",\n  \"new_password\": \"new_secure_password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/reset-password-confirm/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"reset-password-confirm",
+								""
+							]
+						},
+						"description": "Xác nhận đặt lại mật khẩu với token từ email\n\n**Quyền truy cập**: Public (với token hợp lệ)\n\n**Response**: Thông báo đặt lại mật khẩu thành công"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến quản lý mật khẩu"
+		},
+		{
+			"name": "Thiết lập 2FA",
+			"item": [
+				{
+					"name": "Thiết lập xác thực hai yếu tố",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enable\": true,\n  \"code\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/2fa/setup/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"2fa",
+								"setup",
+								""
+							]
+						},
+						"description": "Thiết lập hoặc tắt xác thực hai yếu tố. Trong trường hợp bật 2FA (enable=true), cần cung cấp mã OTP để xác thực. Trường hợp tắt 2FA (enable=false), không cần mã OTP.\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Lưu ý**: Cần gọi GET trước để lấy QR code và setup ứng dụng xác thực, sau đó mới gọi POST để kích hoạt."
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin QR Code cho 2FA",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/2fa/setup/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"2fa",
+								"setup",
+								""
+							]
+						},
+						"description": "Lấy thông tin cài đặt 2FA bao gồm QR code và secret key để cấu hình trong ứng dụng xác thực.\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: \n- QR code URL hoặc base64 image\n- Secret key\n- Trạng thái 2FA hiện tại"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến xác thực hai yếu tố (2FA)"
+		},
+		{
+			"name": "Xác thực email",
+			"item": [
+				{
+					"name": "Yêu cầu gửi lại email xác thực",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/verify-email-request/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"verify-email-request",
+								""
+							]
+						},
+						"description": "Yêu cầu gửi lại email xác thực tài khoản. Chỉ áp dụng cho tài khoản chưa được xác thực email.\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: Thông báo đã gửi email xác thực"
+					},
+					"response": []
+				},
+				{
+					"name": "Xác thực email bằng token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"{{verification_token}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/verify-email/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"verify-email",
+								""
+							]
+						},
+						"description": "Xác thực email bằng token đã gửi qua email. Cũng có thể truy cập trực tiếp /verify-email/<token>/ để xác thực.\n\n**Quyền truy cập**: Public (với token hợp lệ)\n\n**Response**: Thông báo xác thực thành công và trạng thái tài khoản hiện tại"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến xác thực email"
+		},
+		{
+			"name": "Quản lý tài khoản",
+			"item": [
+				{
+					"name": "Thông tin tài khoản",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/detail/me/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"detail",
+								"me",
+								""
+							]
+						},
+						"description": "Lấy thông tin tài khoản của người dùng hiện tại. API trả về thông tin cơ bản của user và profile tương ứng với role của user (CustomerProfile với Customer, thêm SellerProfile cho Seller).\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: \n- Thông tin cơ bản của user\n- CustomerProfile (nếu là Customer)\n- SellerProfile (nếu là Seller)"
+					},
+					"response": []
+				},
+				{
+					"name": "Lịch sử đăng nhập",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/login-history/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"login-history",
+								""
+							]
+						},
+						"description": "Lấy lịch sử đăng nhập của người dùng hiện tại, bao gồm thông tin về địa chỉ IP, thiết bị, thời gian đăng nhập.\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: Danh sách các lần đăng nhập gần đây"
+					},
+					"response": []
+				},
+				{
+					"name": "Cập nhật thông tin tài khoản",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"new_email@example.com\",\n  \"phone\": \"0987654321\",\n  \"customer_profile\": {\n    \"address\": \"123 Main St\",\n    \"province\": \"HCM\"\n  }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/detail/me/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"detail",
+								"me",
+								""
+							]
+						},
+						"description": "Cập nhật thông tin tài khoản của người dùng hiện tại\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: Thông tin tài khoản đã cập nhật"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload ảnh đại diện",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/path/to/your/avatar.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/upload-avatar/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"upload-avatar",
+								""
+							]
+						},
+						"description": "Upload ảnh đại diện mới\n\n**Quyền truy cập**: User đã đăng nhập\n\n**Response**: URL ảnh đại diện mới"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến quản lý tài khoản"
+		},
+		{
+			"name": "Quản lý Seller",
+			"item": [
+				{
+					"name": "Yêu cầu trở thành Seller",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"is_seller_request\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/seller-requests/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"seller-requests",
+								""
+							]
+						},
+						"description": "Yêu cầu trở thành người bán (Seller)\n\n**Quyền truy cập**: Customer đã đăng nhập\n\n**Response**: Thông báo đã gửi yêu cầu thành công"
+					},
+					"response": []
+				},
+				{
+					"name": "Danh sách yêu cầu Seller chờ duyệt",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/seller-requests/pending/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"seller-requests",
+								"pending",
+								""
+							]
+						},
+						"description": "Lấy danh sách các yêu cầu trở thành Seller đang chờ duyệt\n\n**Quyền truy cập**: Admin\n\n**Response**: Danh sách user có yêu cầu trở thành Seller"
+					},
+					"response": []
+				},
+				{
+					"name": "Duyệt yêu cầu Seller",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": \"seller\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/seller-requests/approve/{{user_id}}/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"seller-requests",
+								"approve",
+								"{{user_id}}",
+								""
+							]
+						},
+						"description": "Phê duyệt yêu cầu trở thành Seller của một user\n\n**Quyền truy cập**: Admin\n\n**Response**: Thông tin user đã được duyệt"
+					},
+					"response": []
+				},
+				{
+					"name": "Danh sách Sellers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/sellers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"sellers",
+								""
+							]
+						},
+						"description": "Lấy danh sách tất cả Sellers\n\n**Quyền truy cập**: Admin\n\n**Response**: Danh sách các user có role là Seller"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint liên quan đến quản lý Seller"
+		},
+		{
+			"name": "Quản lý người dùng (Admin)",
+			"item": [
+				{
+					"name": "Danh sách người dùng",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/list/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"list",
+								""
+							]
+						},
+						"description": "Lấy danh sách tất cả người dùng\n\n**Quyền truy cập**: Admin\n\n**Response**: Danh sách tất cả users"
+					},
+					"response": []
+				},
+				{
+					"name": "Danh sách khách hàng",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"customers",
+								""
+							]
+						},
+						"description": "Lấy danh sách tất cả khách hàng\n\n**Quyền truy cập**: Admin\n\n**Response**: Danh sách các user có role là Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Cập nhật trạng thái tài khoản",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8001/user/status/{{user_id}}/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"status",
+								"{{user_id}}",
+								""
+							]
+						},
+						"description": "Cập nhật trạng thái tài khoản của một user (active, suspended, pending)\n\n**Quyền truy cập**: Admin\n\n**Response**: Thông tin user đã cập nhật"
+					},
+					"response": []
+				},
+				{
+					"name": "Chi tiết người dùng",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8001/user/detail/{{user_id}}/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"user",
+								"detail",
+								"{{user_id}}",
+								""
+							]
+						},
+						"description": "Lấy thông tin chi tiết của một user\n\n**Quyền truy cập**: Admin hoặc chủ tài khoản\n\n**Response**: Chi tiết thông tin user bao gồm cả profile"
+					},
+					"response": []
+				}
+			],
+			"description": "Các endpoint chỉ dành cho Admin"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Tự động lưu tokens khi login thành công",
+					"if (pm.response.code === 200 && pm.request.url.toString().includes('/login/')) {",
+					"    var jsonData = pm.response.json();",
+					"    if (jsonData.tokens && jsonData.tokens.access) {",
+					"        pm.environment.set('access_token', jsonData.tokens.access);",
+					"        pm.environment.set('refresh_token', jsonData.tokens.refresh);",
+					"        if (jsonData.user && jsonData.user.id) {",
+					"            pm.environment.set('user_id', jsonData.user.id);",
+					"        }",
+					"        console.log('Tokens lưu thành công');",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost/api"
+		}
+	]
+} 

@@ -1,0 +1,26 @@
+.book-detail-btn {
+    background-color: #007bff !important; /* Màu xanh dương */
+    color: white !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.book-detail-btn:hover {
+    background-color: #0056b3 !important;
+    transform: scale(1.1);
+}
+
+.book-add-cart-btn {
+    background-color: #007bff !important; /* Màu xanh dương */
+    color: white !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.book-add-cart-btn:hover {
+    background-color: #0056b3 !important;
+    transform: scale(1.1);
+}
+

@@ -2,13 +2,10 @@ from rest_framework import serializers
 from .models import Product, ProductType, ProductStatus
 import requests
 from django.conf import settings
-from decimal import Decimal
 
 
 class ProductSerializer(serializers.ModelSerializer):    
-    current_price = serializers.DecimalField(
-        max_digits=12, decimal_places=2, read_only=True
-    )  # Giá hiện tại (chỉ đọc)
+    current_price = serializers.FloatField(read_only=True)  # Giá hiện tại (chỉ đọc)
 
     category_path = serializers.JSONField(default=list)  # Danh mục cha-con
     image_urls = serializers.JSONField(default=list)  # Danh sách ảnh
@@ -50,7 +47,7 @@ class ProductSerializer(serializers.ModelSerializer):
     def validate_sale_price(self, value):
         """Không cho phép sale_price cao hơn base_price"""
         base_price = self.initial_data.get("base_price", None)
-        if base_price and value and Decimal(value) > Decimal(base_price):
+        if base_price and value and float(value) > float(base_price):
             raise serializers.ValidationError("Sale price cannot be higher than base price.")
         return value
 

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopNow - Cart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-store"></i>ShopNow
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="booklist.html">Sách</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="booklist.html">Sách văn học</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách kỹ năng</a></li>
+                                    <li><a class="dropdown-item" href="#">Sách thiếu nhi</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Quần áo</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Điện tử</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Điện thoại</a></li>
+                                    <li><a class="dropdown-item" href="#">Laptop</a></li>
+                                    <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Giày dép</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Giày nam</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày nữ</a></li>
+                                    <li><a class="dropdown-item" href="#">Giày thể thao</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <!-- Phần chưa đăng nhập - ẩn khi đã đăng nhập -->
+                    <div id="authButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2" id="loginBtn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                        </a>
+                        <a href="register.html" class="btn btn-light" id="registerBtn">
+                            <i class="fas fa-user-plus me-2"></i>Đăng ký
+                        </a>
+                    </div>
+
+                    <!-- Phần đã đăng nhập - ẩn khi chưa đăng nhập -->
+                    <div id="userProfile" class="d-none d-flex align-items-center">
+                        <!-- Icon Yêu thích -->
+                        <a href="wishlist.html" class="btn btn-outline-light me-2 position-relative">
+                            <i class="fas fa-heart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                                <span class="visually-hidden">sản phẩm yêu thích</span>
+                            </span>
+                        </a>
+
+                        <!-- Icon Giỏ hàng -->
+                        <a href="cart.html" class="btn btn-outline-light me-3 position-relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                                <span class="visually-hidden">sản phẩm trong giỏ</span>
+                            </span>
+                        </a>
+
+                        <!-- User Dropdown -->
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>
+                                <span id="userNameDisplay">Xin chào</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user me-2"></i>Hồ sơ cá nhân</a></li>
+                                <li><a class="dropdown-item" href="cart.html">
+                                    <i class="fas fa-shopping-cart me-2"></i>Đơn hàng của tôi</a></li>
+                                <li><a class="dropdown-item" href="wishlist.html">
+                                    <i class="fas fa-heart me-2"></i>Danh sách yêu thích</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+        <div class="container mt-5 mb-5">
+            <div class="row g-4">
+            <!-- Cart Items -->
+            <div class="col-lg-8">
+                <div class="cart-container">
+                    <h2 class="section-title">Sản phẩm</h2>
+                    <div id="cart-items-container">
+                        <!-- Cart items will be loaded here -->
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                            <p class="mt-3">Đang tải giỏ hàng...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-lg-4">
+                <div class="cart-summary">
+                    <h2 class="section-title">Tóm tắt đơn hàng</h2>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Số lượng:</span>
+                        <span id="total-quantity">0</span>
+                    </div>
+                    <div id="savings-section" class="d-none mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Giá gốc:</span>
+                            <span id="original-price" class="text-decoration-line-through text-muted">0đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tiết kiệm:</span>
+                            <span>
+                                <span id="total-savings" class="savings-badge">0đ</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="fw-bold">Tổng cộng:</span>
+                        <span id="total-price" class="fw-bold fs-5">0đ</span>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        <i class="bi bi-info-circle me-1"></i>
+                        Giá trên chưa bao gồm phí vận chuyển. Phí vận chuyển sẽ được tính ở bước tiếp theo.
+                    </p>
+                    <div class="d-grid gap-2">
+                        <a href="checkout.html" id="checkout-btn" class="btn btn-primary btn-lg" role="button" disabled>
+                            Tiến hành thanh toán <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                        <a href="/" class="btn continue-shopping-btn">
+                            <i class="bi bi-arrow-left me-2"></i> Tiếp tục mua sắm
+                        </a>
+                    </div>
+                    <hr class="my-4">
+                    <div class="payment-methods">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Chúng tôi chấp nhận:</span>
+                            <div>
+                                <i class="bi bi-credit-card me-2" style="font-size: 1.5rem;"></i>
+                                <i class="bi bi-wallet2 me-2" style="font-size: 1.5rem;"></i>
+                                <i class="bi bi-bank" style="font-size: 1.5rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Products -->
+        <div class="mt-5">
+            <h3 class="mb-4">Có thể bạn cũng thích</h3>
+            <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3">
+                <!-- Recommended products could be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="shopee-footer">
+    <div class="container">
+        <div class="row">
+            <!-- Cột 1: Chăm sóc khách hàng -->
+            <div class="col-md-2">
+                <h6>CHĂM SÓC KHÁCH HÀNG</h6>
+                <ul class="footer-list">
+                    <li><a href="#">Trung tâm trợ giúp</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                    <li><a href="#">Hướng dẫn bán hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 2: Giới thiệu -->
+            <div class="col-md-2">
+                <h6>VỀ SHOPNOW</h6>
+                <ul class="footer-list">
+                    <li><a href="#">Giới thiệu ShopNow</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Điều khoản</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Thanh toán & Vận chuyển -->
+            <div class="col-md-2">
+                <h6>THANH TOÁN</h6>
+                <div class="payment-icons">
+                    <img src="https://i.pinimg.com/474x/de/72/b5/de72b5cd21b9c827639853f666b51b50.jpg" alt="Visa">
+                    <img src="https://i.pinimg.com/474x/48/40/de/4840deeea4afad677728525d165405d0.jpg" alt="MasterCard">
+                    <img src="https://i.pinimg.com/474x/72/1e/b1/721eb1ec1b5bf1d229e74174affe469b.jpg" alt="MoMo">
+                    <img src="https://play-lh.googleusercontent.com/woYAzPCG1I8Z8HXCsdH3diL7oly0N8uth_1g6k7R_9Gu7lbxrsYeriEXLecRG2E9rP0" alt="ZaloPay">
+                </div>
+
+                <h6 class="mt-3">ĐƠN VỊ VẬN CHUYỂN</h6>
+                <div class="shipping-icons">
+                    <img src="https://file.hstatic.net/200000472237/file/1200-01_66f85e686b2b4cf09b5324143a2fb3ea.png" alt="GHN">
+                    <img src="https://i.pinimg.com/474x/ae/9d/0b/ae9d0b78b41e163170347747eaa7db76.jpg" alt="GHTK">
+                    <img src="https://i.pinimg.com/474x/ec/0f/e4/ec0fe4a0c4fbace134d2191add0289fe.jpg" alt="Viettel Post">
+                    <img src="https://i.pinimg.com/474x/a1/85/7d/a1857dc26f465a882706f9f79354f984.jpg" alt="VNPost">
+                </div>
+            </div>
+
+            <!-- Cột 4: Kết nối với chúng tôi -->
+            <div class="col-md-2">
+                <h6>KẾT NỐI VỚI CHÚNG TÔI</h6>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Cột 5: Tải ứng dụng -->
+            <div class="col-md-2">
+                <h6>TẢI ỨNG DỤNG</h6>
+                <div class="app-icons">
+                    <img src="assets/images/appstore.png" alt="App Store">
+                    <img src="assets/images/google-play.png" alt="Google Play">
+                </div>
+            </div>
+        </div>
+
+        <!-- Dòng bản quyền -->
+        <hr>
+        <p class="text-center copyright">© 2025 ShopNow. Bản quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xác nhận xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete-btn">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty Cart Template -->
+    <template id="empty-cart-template">
+        <div class="empty-cart-container">
+            <div class="empty-cart-icon">
+                <i class="bi bi-cart-x"></i>
+            </div>
+            <h3>Giỏ hàng của bạn đang trống</h3>
+            <p class="text-muted mb-4">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+            <a href="/" class="btn btn-primary px-4 py-2">
+                Khám phá sách ngay
+            </a>
+        </div>
+    </template>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/base.js"></script>
+</body>
+</html>

@@ -1,14 +1,28 @@
 services:
 
-  frontend:
-    image: nginx:alpine
+  # frontend:
+    # image: nginx:alpine
+    # ports:
+      # - "3001:80"
+    # volumes:
+      # - ./frontend/build:/usr/share/nginx/html
+    # networks:
+      # - ecom-net
+    # command: [ nginx-debug, '-g', 'daemon off;' ]
+
+  ecom-frontend:
+    build: ./ecom-frontend
     ports:
-      - "3000:80"
+      - "3000:3000"
     volumes:
-      - ./frontend/build:/usr/share/nginx/html
+      - ./ecom-frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=/api
     networks:
       - ecom-net
-    command: [ nginx-debug, '-g', 'daemon off;' ]
+    depends_on:
+      - api-gateway
 
   api-gateway:
     build: ./api-gateway
@@ -46,7 +60,9 @@ services:
     build: customer-service
     ports:
       - "8001:8001"
-    command: python manage.py runserver 0.0.0.0:8001
+    volumes:
+      - ./customer-service:/app
+    command: ./entrypoint.sh
     environment:
       - DB_HOST=db-mysql
       - DB_PORT=3306
@@ -77,13 +93,11 @@ services:
     environment:
       - DB_HOST=db-mongo
       - DB_PORT=27017
-    command: 'python manage.py runserver 0.0.0.0:8005'
+    command: ./entrypoint.sh
     volumes:
-    - ./product-service:/app
-    - ./product-service/staticfiles:/app/staticfiles  
-
+      - ./product-service:/app
     depends_on:
-    - db-mongo
+      - db-mongo
     networks:
       - ecom-net
 
@@ -95,13 +109,11 @@ services:
     environment:
       - DB_HOST=db-mongo
       - DB_PORT=27017
-    command: 'python manage.py runserver 0.0.0.0:8002'
+    command: ./entrypoint.sh
     volumes:
-    - ./book-service:/app
-    - ./book-service/staticfiles:/app/staticfiles
-
+      - ./book-service:/app
     depends_on:
-    - db-mongo
+      - db-mongo
     networks:
       - ecom-net
 
@@ -113,11 +125,9 @@ services:
     environment:
       - DB_HOST=db-mongo
       - DB_PORT=27017
-    command: 'python manage.py runserver 0.0.0.0:8006'
+    command: ./entrypoint.sh
     volumes:
       - ./shoe-service:/app
-      - ./shoe-service/staticfiles:/app/staticfiles
-
     depends_on:
       - db-mongo
     networks:
@@ -140,7 +150,9 @@ services:
     build: cart-service
     ports:
       - "8003:8003"
-    command: python manage.py runserver 0.0.0.0:8003
+    command: ./entrypoint.sh
+    volumes:
+      - ./cart-service:/app
     environment:
       - DB_HOST=db-postgres
       - DB_PORT=5432
@@ -156,7 +168,9 @@ services:
     build: order-service
     ports:
       - "8007:8007"
-    command: python manage.py runserver 0.0.0.0:8007
+    command: ./entrypoint.sh
+    volumes:
+      - ./order-service:/app
     environment:
       - DB_HOST=db-postgres
       - DB_PORT=5432
@@ -172,7 +186,9 @@ services:
     build: payment-service
     ports:
       - "8008:8008"
-    command: python manage.py runserver 0.0.0.0:8008
+    command: ./entrypoint.sh
+    volumes:
+      - ./payment-service:/app
     environment:
       - DB_HOST=db-postgres
       - DB_PORT=5432
@@ -183,14 +199,14 @@ services:
       - db-postgres
     networks:
       - ecom-net
-    volumes:
-      - ./payment-service:/app
 
   shipment-service:
     build: shipment-service
     ports:
       - "8009:8009"
-    command: python manage.py runserver 0.0.0.0:8009
+    command: ./entrypoint.sh
+    volumes:
+      - ./shipment-service:/app
     environment:
       - DB_HOST=db-postgres
       - DB_PORT=5432
@@ -218,6 +234,9 @@ services:
     build: review-service
     ports:
       - "8004:8004"
+    command: ./entrypoint.sh
+    volumes:
+      - ./review-service:/app
     environment:
       - DB_HOST=db-mysql
       - DB_PORT=3306
@@ -233,7 +252,8 @@ services:
     build: sentiment-service
     ports:
       - "8010:8010"
-    command: python -m src.app
+    volumes:
+      - ./sentiment-service:/app
     environment:
       - PORT=8010
       - HOST=0.0.0.0
@@ -253,6 +273,8 @@ services:
     build: ./recommendation-service
     ports:
       - "5002:5000"
+    volumes:
+      - ./recommendation-service:/app
     environment:
       - DEBUG=True
       - PRODUCT_SERVICE_URL=http://product-service:8005

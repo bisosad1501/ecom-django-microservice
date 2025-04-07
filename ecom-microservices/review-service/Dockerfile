@@ -24,4 +24,4 @@ RUN chmod +x entrypoint.sh
 EXPOSE 8004
 
 # Use the entrypoint script to start the service
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]

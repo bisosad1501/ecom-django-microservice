@@ -1,0 +1,64 @@
+.product-filter {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.filter-section {
+  margin-bottom: 16px;
+}
+
+.brands-filter {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.filter-actions {
+  margin-top: 24px;
+}
+
+/* Mobile styles */
+.product-filter.mobile {
+  padding: 16px;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  top: 0;
+}
+
+/* Scrollbar styles */
+.brands-filter::-webkit-scrollbar {
+  width: 6px;
+}
+
+.brands-filter::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.brands-filter::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 10px;
+}
+
+.brands-filter::-webkit-scrollbar-thumb:hover {
+  background: #888;
+} 

@@ -20,8 +20,63 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
-        """Refresh queryset mỗi lần get"""
-        return Product.objects.all().order_by('-created_at')
+        """Refresh queryset mỗi lần get và hỗ trợ lọc sản phẩm"""
+        queryset = Product.objects.all().order_by('-created_at')
+        
+        # Thêm xử lý filter
+        if self.request.query_params:
+            # Lọc theo product_type
+            product_type = self.request.query_params.get('product_type')
+            if product_type:
+                print(f"Filtering by product_type: {product_type}")
+                queryset = queryset.filter(product_type=product_type)
+                # Debug - in ra số lượng sản phẩm sau khi lọc
+                print(f"Found {queryset.count()} products after filtering")
+                
+            # Lọc theo category_path - đơn giản
+            category = self.request.query_params.get('category')
+            if category:
+                queryset = queryset.filter(category_path__contains=[category])
+            
+            # Lọc theo category_path - phân cấp
+            parent_category = self.request.query_params.get('parent_category')
+            subcategory = self.request.query_params.get('subcategory')
+            if parent_category and subcategory:
+                # Tìm các sản phẩm có cả category cha và con trong category_path
+                queryset = queryset.filter(
+                    category_path__contains=[parent_category, subcategory]
+                )
+                
+            # Lọc theo giá - Chuyển đổi sang float thay vì Decimal
+            min_price = self.request.query_params.get('min_price')
+            if min_price:
+                queryset = queryset.filter(base_price__gte=float(min_price))
+                
+            max_price = self.request.query_params.get('max_price')
+            if max_price:
+                queryset = queryset.filter(base_price__lte=float(max_price))
+            
+            # Lọc theo rating
+            min_rating = self.request.query_params.get('min_rating')
+            if min_rating:
+                queryset = queryset.filter(rating__gte=float(min_rating))
+            
+            # Lọc theo brand
+            brand = self.request.query_params.get('brand')
+            if brand:
+                queryset = queryset.filter(brand=brand)
+            
+            # Lọc theo status
+            status_filter = self.request.query_params.get('status')
+            if status_filter:
+                queryset = queryset.filter(status=status_filter)
+                
+            # Tìm kiếm theo tên
+            search = self.request.query_params.get('search')
+            if search:
+                queryset = queryset.filter(name__icontains=search)
+        
+        return queryset
 
     def create(self, request, *args, **kwargs):
         """Tạo mới sản phẩm."""
@@ -127,7 +182,14 @@ class ProductViewSet(viewsets.ModelViewSet):
         queryset = Product.objects.order_by("-total_sold")[:limit]
 
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        # Trả về dạng phân trang để frontend hiển thị nhất quán
+        response_data = {
+            'results': serializer.data,
+            'count': len(serializer.data),
+            'total_pages': 1,
+            'current_page': 1
+        }
+        return Response(response_data)
 
     @action(detail=True, methods=["get"])
     def related(self, request, *args, **kwargs):
@@ -136,19 +198,60 @@ class ProductViewSet(viewsets.ModelViewSet):
         related_products = Product.objects.filter(tags__overlap=instance.tags).exclude(pk=instance.pk)[:5]
 
         serializer = self.get_serializer(related_products, many=True)
-        return Response(serializer.data)
+        # Trả về dạng phân trang để frontend hiển thị nhất quán
+        response_data = {
+            'results': serializer.data,
+            'count': len(serializer.data),
+            'total_pages': 1,
+            'current_page': 1
+        }
+        return Response(response_data)
 
     def list(self, request, *args, **kwargs):
-        """Lấy danh sách sản phẩm (có caching)."""
-        cache_key = f"product_list_{request.query_params.get('page', 1)}"
-        cached_data = cache.get(cache_key)
+        """Lấy danh sách sản phẩm."""
+        # Tạm thời bỏ qua cache
+        # cache_key = f"product_list_{request.query_params.get('page', 1)}"
+        # cached_data = cache.get(cache_key)
 
-        if cached_data:
-            return Response(cached_data, status=status.HTTP_200_OK)
+        # if cached_data:
+        #     return Response(cached_data, status=status.HTTP_200_OK)
 
-        response = super().list(request, *args, **kwargs)
-        cache.set(cache_key, response.data, timeout=300)
-        return response
+        queryset = self.get_queryset()
+        print(f"Total products before pagination: {queryset.count()}")
+        
+        # In ra loại của tất cả sản phẩm để debug
+        for product in queryset:
+            print(f"Product ID: {product._id}, Type: {product.product_type}, Name: {product.name}")
+            
+        page = self.paginate_queryset(queryset)
+        
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            
+            # Tạo response theo định dạng chuẩn
+            response_data = {
+                'results': serializer.data,
+                'count': self.paginator.page.paginator.count,
+                'total_pages': self.paginator.page.paginator.num_pages,
+                'current_page': self.paginator.page.number
+            }
+            
+            # Không lưu cache để tránh dữ liệu cũ
+            # cache.set(cache_key, response_data, timeout=300)
+            return Response(response_data)
+        
+        # Nếu không có pagination
+        serializer = self.get_serializer(queryset, many=True)
+        response_data = {
+            'results': serializer.data,
+            'count': len(serializer.data),
+            'total_pages': 1,
+            'current_page': 1
+        }
+        
+        # Không lưu cache
+        # cache.set(cache_key, response_data, timeout=300)
+        return Response(response_data)
 
     @action(detail=True, methods=["POST"])
     def update_stock(self, request, *args, **kwargs):
@@ -178,7 +281,14 @@ class ProductViewSet(viewsets.ModelViewSet):
         """Lấy danh sách sản phẩm mới nhất."""
         products = Product.objects.filter(status=ProductStatus.ACTIVE).order_by("-created_at")[:10]
         serializer = self.get_serializer(products, many=True)
-        return Response(serializer.data)
+        # Trả về dạng phân trang để frontend hiển thị nhất quán
+        response_data = {
+            'results': serializer.data,
+            'count': len(serializer.data),
+            'total_pages': 1,
+            'current_page': 1
+        }
+        return Response(response_data)
 
     @action(detail=False, methods=["GET"])
     def recommend(self, request):
@@ -194,7 +304,14 @@ class ProductViewSet(viewsets.ModelViewSet):
         ).exclude(id__in=past_orders)[:10]
 
         serializer = self.get_serializer(recommended_products, many=True)
-        return Response(serializer.data)
+        # Trả về dạng phân trang để frontend hiển thị nhất quán
+        response_data = {
+            'results': serializer.data,
+            'count': len(serializer.data),
+            'total_pages': 1,
+            'current_page': 1
+        }
+        return Response(response_data)
 
     @action(detail=False, methods=["POST"])
     def bulk_update(self, request):
@@ -392,3 +509,77 @@ class ProductViewSet(viewsets.ModelViewSet):
                 "error": "Lỗi kết nối tới Shoe Service",
                 "detail": str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @action(detail=False, methods=["GET"])
+    def get_categories(self, request):
+        """Lấy danh sách danh mục sản phẩm có cấu trúc phân cấp."""
+        # Tạo ánh xạ từ product_type sang tên danh mục
+        product_type_mapping = {
+            'BOOK': 'Books',
+            'SHOE': 'Shoes',
+            'ELECTRONIC': 'Electronics',
+            'CLOTHING': 'Clothing',
+            'HOME_APPLIANCE': 'Home Appliances',
+            'FURNITURE': 'Furniture',
+            'BEAUTY': 'Beauty & Personal Care',
+            'FOOD': 'Food & Beverage',
+            'SPORTS': 'Sports Equipment',
+            'TOYS': 'Toys & Games',
+            'AUTOMOTIVE': 'Automotive',
+            'PET_SUPPLIES': 'Pet Supplies',
+            'HEALTH': 'Health & Wellness',
+            'OFFICE': 'Office Supplies',
+            'MUSIC': 'Musical Instruments'
+        }
+        
+        # Xây dựng cấu trúc danh mục từ dữ liệu sản phẩm
+        categories = {}
+        subcategories = {}
+        
+        # Lấy tất cả sản phẩm
+        products = Product.objects.all()
+        
+        # Tạo danh sách danh mục cấp 1 dựa trên product_type
+        for product_type, display_name in product_type_mapping.items():
+            count = Product.objects.filter(product_type=product_type).count()
+            if count > 0:
+                category_id = display_name.lower().replace(' & ', '-').replace(' ', '-')
+                categories[display_name] = {
+                    'id': category_id,
+                    'name': display_name,
+                    'count': count,
+                    'image': f'/images/category-{category_id}.jpg',
+                    'product_type': product_type,
+                    'subcategories': []
+                }
+        
+        # Thu thập các danh mục con (cấp 2) từ category_path
+        for product in products:
+            if len(product.category_path) > 1:
+                main_category = product.category_path[0]
+                for i in range(1, len(product.category_path)):
+                    sub_category = product.category_path[i]
+                    if main_category in categories and sub_category not in [s['name'] for s in categories[main_category]['subcategories']]:
+                        # Tính số lượng sản phẩm trong danh mục con này
+                        subcategory_count = Product.objects.filter(
+                            category_path__contains=[main_category, sub_category]
+                        ).count()
+                        
+                        # Thêm danh mục con vào danh mục chính
+                        subcategory_id = sub_category.lower().replace(' ', '-')
+                        categories[main_category]['subcategories'].append({
+                            'id': subcategory_id,
+                            'name': sub_category,
+                            'count': subcategory_count,
+                            'parent': main_category
+                        })
+        
+        # Chuyển đổi dictionary thành danh sách để trả về
+        result = []
+        for category_name, category_data in categories.items():
+            result.append(category_data)
+        
+        # Sắp xếp theo số lượng sản phẩm (giảm dần)
+        result.sort(key=lambda x: x['count'], reverse=True)
+        
+        return Response(result)

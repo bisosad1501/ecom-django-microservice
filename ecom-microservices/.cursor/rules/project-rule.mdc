@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Quy tắc cho Dự án Ecom-Microservices
+
+## Kiến trúc & Công nghệ
+
+- Tuân thủ kiến trúc microservice hiện tại
+- Backend: Django/DRF cho các service Python
+- Frontend: HTML/CSS/JS với templates
+- Cơ sở dữ liệu:
+  - MySQL: customer-service, review-service
+  - MongoDB: product-service, book-service, shoe-service
+  - PostgreSQL: cart-service, order-service, payment-service, shipment-service
+- API Gateway: Nginx làm reverse proxy
+- Cổng dịch vụ theo quy ước: 8001-8010+
+
+## Phát triển Code
+
+- Tuân thủ cấu trúc dự án Django chuẩn
+- Sử dụng tên biến/hàm mô tả bằng tiếng Anh
+- Triển khai xử lý lỗi với mã trạng thái HTTP thích hợp
+- Luôn thêm requirements.txt khi tạo service mới
+- Đảm bảo tương thích Docker/docker-compose
+- Mỗi service chịu trách nhiệm cho dữ liệu riêng
+
+## API & Tích hợp
+
+- Mọi giao tiếp giữa các service đều qua API gateway
+- Tài liệu hóa tất cả các endpoint API
+- Kiểm tra API bằng Postman collection trước khi tích hợp
+- Duy trì biến môi trường trong docker-compose.yml
+- Cập nhật tài liệu flow-*.md khi thay đổi API
+
+## Hiệu suất & Bảo trì
+
+- Tập trung vào giải pháp đơn giản, dễ bảo trì
+- Đề xuất tối ưu dựa trên quy mô dự án hiện tại
+- Gợi ý cải tiến kiến trúc khi cần thiết
+- Ưu tiên khả năng mở rộng và tái sử dụng
+
+## Quy ước Giao tiếp
+
+- Trả lời ngắn gọn, đúng trọng tâm bằng tiếng Việt
+- Ưu tiên code và giải pháp thực tế hơn lý thuyết
+- Giải thích chi tiết kỹ thuật chỉ khi được yêu cầu
+- Đề xuất giải pháp sáng tạo khi cần

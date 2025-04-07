@@ -1,0 +1,211 @@
+/* Checkout progress steps */
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.checkout-steps:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-size: 1rem;
+}
+
+.step.active .step-icon {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.step-icon.current {
+    box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.2);
+}
+
+/* Card enhancements */
+.hover-shadow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(to right, #0d6efd, #0b5ed7);
+}
+
+/* Shipping methods */
+.shipping-option, .payment-option {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #dee2e6;
+}
+
+.shipping-option:hover, .payment-option:hover {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+input:checked + .shipping-option,
+input:checked + .payment-option {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.payment-radio {
+    width: 20px;
+}
+
+input:checked + .shipping-option .fa-check-circle,
+input:checked + .payment-option .fa-check-circle {
+    display: inline-block;
+    color: #0d6efd;
+}
+
+.fa-check-circle {
+    display: none;
+}
+
+/* Order summary */
+.order-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.order-item-img {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.item-quantity {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.order-item-title {
+    max-width: 200px;
+}
+
+/* Coupon code */
+.coupon-section .input-group {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .checkout-steps {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .step {
+        margin: 0 10px 15px;
+    }
+
+    .step-title {
+        font-size: 0.8rem;
+    }
+
+    .order-summary-card {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Address form animations */
+.address-form {
+    transition: all 0.3s ease;
+}
+
+.address-form.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Sticky order summary */
+.sticky-md-top {
+    position: sticky;
+    top: 80px;
+}
+
+/* Place order button pulse animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+#place-order-btn {
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+#place-order-btn:hover {
+    animation: none;
+    transform: translateY(-2px);
+}
+
+/* Toast notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1060;
+}
+
+/* Better form focus styles */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}

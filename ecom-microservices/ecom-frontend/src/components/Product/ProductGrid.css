@@ -1,0 +1,111 @@
+.product-grid-container {
+  width: 100%;
+  position: relative;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  contain: content;
+}
+
+/* Hỗ trợ virtualization */
+.product-grid-virtualized {
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  contain: content;
+}
+
+.product-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.product-grid-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  contain: content;
+}
+
+/* Loading, empty và error states */
+.product-grid-loading,
+.product-grid-empty,
+.product-grid-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  width: 100%;
+  min-height: 300px;
+  text-align: center;
+}
+
+/* Pagination */
+.product-grid-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+  width: 100%;
+}
+
+/* Responsive grid */
+@media (max-width: 1200px) {
+  .product-grid,
+  .product-grid-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .product-grid,
+  .product-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .product-grid-row {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid,
+  .product-grid-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .product-grid-pagination {
+    padding: 24px 0;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  .product-grid-container {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+}
+
+.product-grid-loading {
+  color: #1976d2;
+}
+
+.product-grid-error {
+  color: #d32f2f;
+}
+
+.product-grid-empty {
+  color: #757575;
+} 

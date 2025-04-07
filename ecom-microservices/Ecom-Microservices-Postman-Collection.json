@@ -1,0 +1,1440 @@
+{
+  "info": {
+    "name": "Ecom Microservices API Collection",
+    "description": "Collection API cho hệ thống Ecom Microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API Gateway",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "Authentication",
+          "item": [
+            {
+              "name": "Đăng ký người dùng",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/register/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"user123\",\n    \"email\": \"user123@example.com\",\n    \"password\": \"securepassword\",\n    \"first_name\": \"Nguyễn\",\n    \"last_name\": \"Văn A\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Đăng nhập",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/login/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"user123\",\n    \"password\": \"securepassword\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Đăng xuất",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/logout/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refresh_token\": \"{{refresh_token}}\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Làm mới Token",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/auth/refresh/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Kiểm tra người dùng",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/check/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"user123\"\n}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "2FA",
+          "item": [
+            {
+              "name": "Thiết lập xác thực hai yếu tố",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/2fa/setup/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"enable\": true,\n    \"code\": \"123456\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Lấy thông tin QR Code cho 2FA",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/2fa/setup/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Xác thực OTP (2FA)",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/2fa/verify/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_id\": \"{{user_id}}\",\n    \"code\": \"123456\"\n}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quản lý mật khẩu",
+          "item": [
+            {
+              "name": "Đổi mật khẩu",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/change-password/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"old_password\": \"secure_password123\",\n    \"new_password\": \"new_secure_password123\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Yêu cầu đặt lại mật khẩu",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/password-reset-request/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"user@example.com\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Xác nhận đặt lại mật khẩu",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/password-reset/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"token\": \"{{reset_token}}\",\n    \"new_password\": \"new_secure_password123\"\n}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Xác thực email",
+          "item": [
+            {
+              "name": "Yêu cầu gửi lại email xác thực",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/verify-email-request/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                }
+              }
+            },
+            {
+              "name": "Xác thực email bằng token",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/verify-email/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"token\": \"{{verification_token}}\"\n}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quản lý tài khoản",
+          "item": [
+            {
+              "name": "Chi tiết người dùng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/user/profile/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Lịch sử đăng nhập",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/login-history/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cập nhật thông tin người dùng",
+              "request": {
+                "method": "PUT",
+                "url": "http://localhost/api/user/profile/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"first_name\": \"Nguyễn\",\n    \"last_name\": \"Văn B\",\n    \"email\": \"updated@example.com\",\n    \"phone\": \"0987654321\",\n    \"customer_profile\": {\n        \"address\": \"123 Main St\",\n        \"province\": \"HCM\"\n    }\n}"
+                }
+              }
+            },
+            {
+              "name": "Upload ảnh đại diện",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/upload-avatar/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "avatar",
+                      "type": "file",
+                      "src": "/path/to/your/avatar.jpg"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quản lý Seller",
+          "item": [
+            {
+              "name": "Yêu cầu trở thành Seller",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/seller-request/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"is_seller_request\": true\n}"
+                }
+              }
+            },
+            {
+              "name": "Danh sách yêu cầu Seller chờ duyệt",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/sellers/pending/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Duyệt yêu cầu Seller",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/seller-approve/{{user_id}}/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"role\": \"seller\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Danh sách Sellers",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/sellers/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quản lý người dùng (Admin)",
+          "item": [
+            {
+              "name": "Danh sách người dùng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Danh sách khách hàng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/customers/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cập nhật trạng thái tài khoản",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/users/status/{{user_id}}/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\": \"active\"\n}"
+                }
+              }
+            },
+            {
+              "name": "Chi tiết người dùng theo ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/{{user_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Phân tích và An ninh",
+          "item": [
+            {
+              "name": "Thông tin phân tích người dùng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/insights/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Thông tin phân tích người dùng theo ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/insights/{{user_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Phân tích Seller",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/seller-analytics/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Phân tích Seller theo ID",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/seller-analytics/{{seller_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bảo mật tài khoản",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/users/account-security/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product Service",
+      "item": [
+        {
+          "name": "Quản lý sản phẩm cơ bản",
+          "item": [
+            {
+              "name": "Danh sách sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/products/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách tất cả các sản phẩm trong hệ thống."
+              }
+            },
+            {
+              "name": "Chi tiết sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/products/{{product_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Xem chi tiết một sản phẩm cụ thể, bao gồm thông tin sản phẩm, đánh giá, và thông tin kho."
+              }
+            },
+            {
+              "name": "Tạo sản phẩm mới",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Sản phẩm mới\",\n    \"description\": \"Mô tả sản phẩm\",\n    \"price\": 100000,\n    \"category\": \"Điện tử\",\n    \"brand\": \"Thương hiệu\",\n    \"stock\": 100,\n    \"is_available\": true\n}"
+                },
+                "description": "Tạo một sản phẩm mới với thông tin cơ bản."
+              }
+            },
+            {
+              "name": "Cập nhật thông tin sản phẩm",
+              "request": {
+                "method": "PUT",
+                "url": "http://localhost/api/products/{{product_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Sản phẩm đã cập nhật\",\n    \"description\": \"Mô tả mới\",\n    \"price\": 120000,\n    \"category\": \"Điện tử\",\n    \"brand\": \"Thương hiệu\",\n    \"stock\": 120,\n    \"is_available\": true\n}"
+                },
+                "description": "Cập nhật thông tin cơ bản của một sản phẩm."
+              }
+            },
+            {
+              "name": "Xóa sản phẩm",
+              "request": {
+                "method": "DELETE",
+                "url": "http://localhost/api/products/{{product_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Xóa một sản phẩm khỏi hệ thống."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tìm kiếm và lọc",
+          "item": [
+            {
+              "name": "Tìm kiếm sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/products/search/?q={{query}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "products", "search", ""],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "{{query}}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Tìm kiếm sản phẩm dựa trên từ khóa."
+              }
+            },
+            {
+              "name": "Lọc sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/products/filter/?category={{category}}&brand={{brand}}&price_min={{price_min}}&price_max={{price_max}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "products", "filter", ""],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "{{category}}"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "{{brand}}"
+                    },
+                    {
+                      "key": "price_min",
+                      "value": "{{price_min}}"
+                    },
+                    {
+                      "key": "price_max",
+                      "value": "{{price_max}}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lọc sản phẩm dựa trên danh mục, thương hiệu, và khoảng giá."
+              }
+            },
+            {
+              "name": "Sản phẩm bán chạy",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/products/best-sellers/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách các sản phẩm bán chạy nhất."
+              }
+            },
+            {
+              "name": "Sản phẩm liên quan",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/products/related/?product_id={{product_id}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "products", "related", ""],
+                  "query": [
+                    {
+                      "key": "product_id",
+                      "value": "{{product_id}}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách các sản phẩm liên quan đến một sản phẩm cụ thể."
+              }
+            },
+            {
+              "name": "Sản phẩm mới nhất",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/products/latest/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách các sản phẩm mới nhất."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quản lý kho",
+          "item": [
+            {
+              "name": "Cập nhật trạng thái sản phẩm",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/{{product_id}}/update-status/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"is_available\": false\n}"
+                },
+                "description": "Cập nhật trạng thái của một sản phẩm (có sẵn hoặc hết hàng)."
+              }
+            },
+            {
+              "name": "Cập nhật số lượng tồn kho",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/{{product_id}}/update-stock/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"stock\": 150\n}"
+                },
+                "description": "Cập nhật số lượng tồn kho của một sản phẩm."
+              }
+            },
+            {
+              "name": "Cập nhật nhiều sản phẩm",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/bulk-update/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n    {\n        \"id\": \"{{product_id_1}}\",\n        \"stock\": 200\n    },\n    {\n        \"id\": \"{{product_id_2}}\",\n        \"stock\": 180\n    }\n]"
+                },
+                "description": "Cập nhật thông tin cho nhiều sản phẩm cùng một lúc."
+              }
+            },
+            {
+              "name": "Thống kê kho",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/products/inventory-metrics/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy thông tin thống kê về kho, bao gồm số lượng sản phẩm, tổng giá trị kho, và sản phẩm sắp hết hàng."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sản phẩm chuyên biệt",
+          "item": [
+            {
+              "name": "Tạo sản phẩm sách",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/create-book/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Sách mới\",\n    \"description\": \"Mô tả sách\",\n    \"price\": 100000,\n    \"category\": \"Sách\",\n    \"brand\": \"Nhà xuất bản\",\n    \"stock\": 100,\n    \"is_available\": true,\n    \"author\": \"Tác giả\",\n    \"publisher\": \"Nhà xuất bản\",\n    \"publication_year\": 2022\n}"
+                },
+                "description": "Tạo một sản phẩm sách mới với thông tin cụ thể."
+              }
+            },
+            {
+              "name": "Tạo sản phẩm giày",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/create-shoe/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Giày mới\",\n    \"description\": \"Mô tả giày\",\n    \"price\": 200000,\n    \"category\": \"Giày dép\",\n    \"brand\": \"Thương hiệu\",\n    \"stock\": 50,\n    \"is_available\": true,\n    \"size\": 42,\n    \"color\": \"Đen\",\n    \"material\": \"Da\"\n}"
+                },
+                "description": "Tạo một sản phẩm giày mới với thông tin cụ thể."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Gợi ý sản phẩm",
+          "item": [
+            {
+              "name": "Thêm sản phẩm vào danh sách yêu thích",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/products/{{product_id}}/add-to-wishlist/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Thêm một sản phẩm vào danh sách yêu thích của người dùng."
+              }
+            },
+            {
+              "name": "Gợi ý sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/products/recommend/?user_id={{user_id}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "products", "recommend", ""],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "{{user_id}}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách các sản phẩm được gợi ý dựa trên lịch sử mua hàng và hoạt động của người dùng."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cart Service",
+      "item": [
+        {
+          "name": "Quản lý giỏ hàng",
+          "item": [
+            {
+              "name": "Xem giỏ hàng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/carts/get/{{user_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Xem nội dung của giỏ hàng của người dùng."
+              }
+            },
+            {
+              "name": "Tạo giỏ hàng mới",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/carts/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_id\": \"{{user_id}}\"\n}"
+                },
+                "description": "Tạo một giỏ hàng mới cho người dùng."
+              }
+            },
+            {
+              "name": "Thêm sản phẩm vào giỏ hàng",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/carts/add-item/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"seller_response\": \"Cảm ơn quý khách đã mua sản phẩm và đánh giá. Chúng tôi rất vui khi sản phẩm đáp ứng được nhu cầu của quý khách!\"\n}"
+                },
+                "description": "Cho phép người bán thêm phản hồi vào đánh giá đã xác minh của khách hàng."
+              }
+            },
+            {
+              "name": "Kiểm tra trạng thái mua hàng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/reviews/verify-purchase/?user_id={{user_id}}&product_id={{product_id}}",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Kiểm tra xem người dùng đã mua sản phẩm này chưa để xác minh đánh giá."
+              }
+            },
+            {
+              "name": "Ẩn đánh giá",
+              "request": {
+                "method": "PATCH", 
+                "url": "http://localhost/api/reviews/hide/{{review_id}}/",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"is_hidden\": true,\n    \"reason\": \"Vi phạm quy tắc cộng đồng\"\n}"
+                },
+                "description": "Cho phép quản trị viên ẩn đánh giá vi phạm sau khi nhận được báo cáo."
+              }
+            },
+            {
+              "name": "Thống kê đánh giá",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/reviews/stats/{{product_id}}/",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy thống kê về số lượng đánh giá, điểm trung bình cho một sản phẩm."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sentiment Service",
+      "item": [
+        {
+          "name": "Phân tích cảm xúc cơ bản",
+          "item": [
+            {
+              "name": "Phân tích cảm xúc văn bản",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/sentiment/analyze",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"text\": \"Sản phẩm tốt, đáng mua nhưng giá hơi cao\"\n}"
+                },
+                "description": "Phân tích cảm xúc của một đoạn văn bản và trả về nhãn cảm xúc (tích cực, tiêu cực hoặc trung tính) kèm điểm tin cậy."
+              }
+            },
+            {
+              "name": "Phân tích cảm xúc hàng loạt",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/sentiment/analyze_batch",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"texts\": [\n        \"Sản phẩm tốt, đáng mua nhưng giá hơi cao\",\n        \"Chất lượng kém, không đúng như mô tả\",\n        \"Giao hàng nhanh, đóng gói cẩn thận\"\n    ]\n}"
+                },
+                "description": "Phân tích cảm xúc của nhiều đoạn văn bản cùng lúc và trả về kết quả cho từng đoạn."
+              }
+            },
+            {
+              "name": "Phân tích cảm xúc reviews",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/sentiment/reviews/sentiment",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"reviews\": [\n        {\n            \"id\": \"rev123\",\n            \"product_id\": \"prod456\",\n            \"user_id\": \"user789\",\n            \"rating\": 4,\n            \"title\": \"Sản phẩm tốt\",\n            \"comment\": \"Sản phẩm dùng khá tốt, giao hàng nhanh\",\n            \"created_at\": \"2023-05-01T14:30:00Z\"\n        },\n        {\n            \"id\": \"rev124\",\n            \"product_id\": \"prod789\",\n            \"user_id\": \"user456\",\n            \"rating\": 2,\n            \"title\": \"Không như mong đợi\",\n            \"comment\": \"Sản phẩm không đúng màu, chất liệu kém\",\n            \"created_at\": \"2023-05-02T10:15:00Z\"\n        }\n    ]\n}"
+                },
+                "description": "Phân tích cảm xúc cho một danh sách các đánh giá sản phẩm và trả về kết quả kèm thông tin chi tiết."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Phân tích sản phẩm",
+          "item": [
+            {
+              "name": "Phân tích cảm xúc sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/sentiment/product/{{product_id}}/sentiment",
+                "description": "Phân tích cảm xúc cho tất cả đánh giá của một sản phẩm cụ thể và trả về thống kê tổng hợp."
+              }
+            },
+            {
+              "name": "So sánh cảm xúc giữa các sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/sentiment/products/compare?product_ids={{product_id_1}},{{product_id_2}},{{product_id_3}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "sentiment", "products", "compare"],
+                  "query": [
+                    {
+                      "key": "product_ids",
+                      "value": "{{product_id_1}},{{product_id_2}},{{product_id_3}}"
+                    }
+                  ]
+                },
+                "description": "So sánh cảm xúc giữa nhiều sản phẩm và trả về đánh giá chi tiết cho từng sản phẩm."
+              }
+            },
+            {
+              "name": "Top sản phẩm theo cảm xúc",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/sentiment/products/top?limit=10&category={{category}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "sentiment", "products", "top"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "category",
+                      "value": "{{category}}"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách các sản phẩm có cảm xúc tích cực nhất, có thể lọc theo danh mục."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Phân tích xu hướng",
+          "item": [
+            {
+              "name": "Phân phối cảm xúc",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/sentiment/trends/distribution?product_id={{product_id}}",
+                  "host": ["http://localhost"],
+                  "path": ["api", "sentiment", "trends", "distribution"],
+                  "query": [
+                    {
+                      "key": "product_id",
+                      "value": "{{product_id}}"
+                    }
+                  ]
+                },
+                "description": "Lấy phân phối cảm xúc tổng thể hoặc cho một sản phẩm cụ thể với tỷ lệ phần trăm."
+              }
+            },
+            {
+              "name": "Xu hướng cảm xúc theo thời gian",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/sentiment/trends/overtime?product_id={{product_id}}&time_unit=month",
+                  "host": ["http://localhost"],
+                  "path": ["api", "sentiment", "trends", "overtime"],
+                  "query": [
+                    {
+                      "key": "product_id",
+                      "value": "{{product_id}}"
+                    },
+                    {
+                      "key": "time_unit",
+                      "value": "month"
+                    }
+                  ]
+                },
+                "description": "Phân tích thay đổi cảm xúc theo thời gian (ngày, tuần, tháng) cho một sản phẩm hoặc tất cả sản phẩm."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Báo cáo phân tích",
+          "item": [
+            {
+              "name": "Tạo báo cáo phân tích cảm xúc",
+              "request": {
+                "method": "POST",
+                "url": "http://localhost/api/sentiment/reports/generate",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"product_ids\": [\"{{product_id_1}}\", \"{{product_id_2}}\"],\n    \"use_sample\": false,\n    \"limit\": 100\n}"
+                },
+                "description": "Tạo báo cáo phân tích cảm xúc chi tiết cho một hoặc nhiều sản phẩm và trả về đường dẫn để xem báo cáo."
+              }
+            },
+            {
+              "name": "Xem báo cáo phân tích cảm xúc",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/sentiment/reports/view?file=index.html",
+                  "host": ["http://localhost"],
+                  "path": ["api", "sentiment", "reports", "view"],
+                  "query": [
+                    {
+                      "key": "file",
+                      "value": "index.html"
+                    }
+                  ]
+                },
+                "description": "Xem báo cáo phân tích cảm xúc đã được tạo trước đó."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Recommendation Service",
+      "item": [
+        {
+          "name": "Đề xuất sản phẩm",
+          "item": [
+            {
+              "name": "Sản phẩm đề xuất cho người dùng",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/recommendations/user/{{user_id}}?limit=10&include_sentiment=true",
+                  "host": ["http://localhost"],
+                  "path": ["api", "recommendations", "user", "{{user_id}}"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "include_sentiment",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách sản phẩm được đề xuất riêng cho người dùng dựa trên lịch sử mua hàng và xem sản phẩm của họ."
+              }
+            },
+            {
+              "name": "Sản phẩm tương tự",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/recommendations/product/{{product_id}}/similar?limit=10&include_sentiment=true",
+                  "host": ["http://localhost"],
+                  "path": ["api", "recommendations", "product", "{{product_id}}", "similar"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "include_sentiment",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách các sản phẩm tương tự dựa trên thuộc tính và đặc điểm của sản phẩm được chỉ định."
+              }
+            },
+            {
+              "name": "Sản phẩm đề xuất dựa trên cảm xúc",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/recommendations/sentiment-based?user_id={{user_id}}&limit=10",
+                  "host": ["http://localhost"],
+                  "path": ["api", "recommendations", "sentiment-based"],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "{{user_id}}"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Lấy danh sách sản phẩm được đề xuất cho người dùng với trọng số cao hơn cho các sản phẩm có điểm cảm xúc tích cực."
+              }
+            },
+            {
+              "name": "Sản phẩm phổ biến",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/recommendations/popular?category={{category}}&limit=10",
+                  "host": ["http://localhost"],
+                  "path": ["api", "recommendations", "popular"],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "{{category}}"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách các sản phẩm phổ biến nhất, có thể lọc theo danh mục cụ thể."
+              }
+            },
+            {
+              "name": "Sản phẩm tốt nhất theo cảm xúc",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "http://localhost/api/recommendations/sentiment?category={{category}}&limit=10",
+                  "host": ["http://localhost"],
+                  "path": ["api", "recommendations", "sentiment"],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "{{category}}"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Lấy danh sách các sản phẩm có đánh giá cảm xúc tốt nhất, dựa trên phân tích cảm xúc của đánh giá."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Phân tích và Thông tin",
+          "item": [
+            {
+              "name": "Sở thích người dùng",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/insights/user/{{user_id}}/preferences",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "Phân tích sở thích của người dùng dựa trên hành vi mua sắm và xem sản phẩm của họ."
+              }
+            },
+            {
+              "name": "Lý do đề xuất sản phẩm",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/insights/product/{{product_id}}/recommendation-reasons",
+                "description": "Lấy thông tin về lý do tại sao một sản phẩm có thể được đề xuất cho người dùng."
+              }
+            },
+            {
+              "name": "Kiểm tra trạng thái service",
+              "request": {
+                "method": "GET",
+                "url": "http://localhost/api/health",
+                "description": "Kiểm tra trạng thái của recommendation service."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
